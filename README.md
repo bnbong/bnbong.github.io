@@ -10,6 +10,6 @@ This is my personal repository.
 
 For my project that i've made, its uploaded in this repository or goto following URL.
 
-    1. project FoodDecisionMaker  https://github.com/bnbong/ERICA_FoodDecisionMaker
+1. project FoodDecisionMaker  https://github.com/bnbong/ERICA_FoodDecisionMaker
 
 Thanks for watching!
