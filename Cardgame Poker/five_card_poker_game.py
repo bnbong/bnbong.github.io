@@ -9,29 +9,53 @@ class not_in_number(Exception): pass
 
 import time
 
+"""
+    **** READ ME ****
+        
+        
+        
+"""
 
-# card_game_five_card_draw_poker 1.03
-# 팀이름 : 부드러운
-# 조원구성 : 2019043927 김동한, 2019011758 이준혁, 2019003163 허재원
+"""
+        **** card game Five Card Draw Poker ver. 1.04 ****
 
-# 본 코드는 파이브 카드 드로우 포커를 적용, 참조하였습니다.
-# 딜러(AI)가 결정을 확률적으로 하게 하는 함수를 도입함으로써, 딜러가 블러핑을 하는 효과를 낼 수 있게 했습니다.
-# 딜러나 플레이어 둘 중 한명이라도 올인을 했을 경우, 바로 결과를 보여줍니다.
+// developer : bnbong (https://github.com/bnbong/bnbong)
 
-# 2019.6.9 수정: 딜러의 의사표현확률 소폭조정, 딜러와 플레이어의 레이즈 & 콜 & 올인함수 도입, members.txt파일에 자신이 칩을 빚졌는지 그렇지 않았는지\n
+>> 본 코드는 파이브 카드 드로우 포커를 적용, 참조하였습니다.
+>> 딜러(AI)가 결정을 확률적으로 하게 하는 함수를 도입함으로써, 딜러가 블러핑을 하는 효과를 낼 수 있게 했습니다.
+
+>> This Python-based game is based on Five-card-draw Poker game.
+>> We make The Dealer on this game (We can call it AI) can do 'Bluffing' by adding function that pick up response Probability.
+
+# 2019.6.9: 
+# 딜러의 의사표현확률 소폭조정, 딜러와 플레이어의 레이즈 & 콜 & 올인함수 도입, members.txt파일에 자신이 칩을 빚졌는지 그렇지 않았는지
 # 알 수 있게 member의 구성요소에 debt와 빚진 칩의 개수 debtchips를 추가, 그 외 자잘한 오류 또는 알고리즘 벗어난 부분 수정.
 
-# 2019.6.10수정: members.txt에 새로운 계정에 대한 정보를 입력하는 함수와 게임결과를 갱신해주는 함수 수정.
+# 2019.6.10: 
+# members.txt에 새로운 계정에 대한 정보를 입력하는 함수와 게임결과를 갱신해주는 함수 수정.
 # 딜러 또는 플레이어가 다이했을 때, 딜러 또는 플레이어의 승패여부를 먼저 프린트 해주고 두명의 카드의 현황을
 # 나타내주는 함수 추가, 카드를 바꾸는 함수에서 카드를 5회 바꾸게 되면 카드를 더 바꿀건지 물어보지 않고 바로 break하게 변경.
 # login함수에서 자기 계정이 있다고 입력했을 때 members.txt에 자기 계정이 존재하지 않는다면 다시login함수로 리턴하는 부분 수정
 # 딜러와 자기의 카드를 보여주는 부분에서 J,Q,K,A를 숫자로 변환한 것을 다시 문자로 되돌리는 부분이 작동하지 않는 것 수정.
 
-# 2019.6.12수정: 플레이어가 콜을 할 때 배팅된 금액을 프린트 하는 값이 잘못 나온 경우 수정.
+# 2019.6.12: 
+# 플레이어가 콜을 할 때 배팅된 금액을 프린트 하는 값이 잘못 나온 경우 수정.
 # 딜러나 플레이어가 다이를 하지 않는 경우 패를 공개할 때 5초 후에 공개하는 함수 추가. 카드를 공개할 때 카드의 문자가 프린트 안되는 경우 수정.
 
+# 2019.12.26:
+# 딜러의 의사표현부분 소폭 조정.
+# 딜러의 승률을 올리기 위해 처음 딜러가 카드를 뽑았을 때 족보를 확인하여 보다 높은 등급의 족보를 얻을 수 있는 카드를 뽑는 함수를 추가함.
+# 여러번 시뮬레이팅해본 결과, 확실히 딜러의 승률이 15퍼센트 정도 더 올랐다는 것이 체감됨.
+# 메인함수를 추가하려는 시도를 했으나, 추가 하지 않는 것이 낫다고 판단함.
+# 보다 게임에 긴장감을 주기위해 각각의 턴마다 시간간격을 두고 인터페이스를 띄워주는 함수 추가.
+# 플레이어가 카드를 바꾸겠다는 의사를 표현한 뒤, 바꿀 카드의 번호를 넣는 부분에 n을눌러 그 과정을 빠져나가는 코드 추가.
+"""
 
 def fresh_deck():
+    """
+    make new deck
+    :return: deck
+    """
     import random
     suits = {"Spade", "Heart", "Diamond", "Club"}
     ranks = {"A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"}
@@ -47,6 +71,11 @@ def fresh_deck():
 
 
 def store_members(members):
+    """
+    storing new member at members.txt
+    :param members: members (read members.txt)
+    :return: none (just storing)
+    """
     file = open("members.txt", "w")
     names = members.keys()
     for name in names:
@@ -58,6 +87,11 @@ def store_members(members):
 
 
 def more(message):
+    """
+    asking player's response
+    :param message: input text from player
+    :return: answer y or n
+    """
     answer = input(message)
     while not answer == 'y' and answer != 'n':  # (반복 조건):
         answer = input(message)
@@ -65,6 +99,12 @@ def more(message):
 
 
 def show_cards(cards, message):
+    """
+    showing card to player
+    :param cards: player or dealer's card
+    :param message: printing message "player's card" or "dealer's card"
+    :return: none (showing cards and message)
+    """
     print(message)
     for card in cards:
         print(" ", card["suit"], card["rank"])
@@ -72,6 +112,13 @@ def show_cards(cards, message):
 
 
 def show_cards_listed(cards, message):
+    """
+    just almost same as show_cards function.
+    In this function, showing cards at lists.
+    :param cards:  player or dealer's cards
+    :param message: printing message "player's card" or "dealer's card"
+    :return: none (showing cards and message)
+    """
     while True:
         try:
             for i in range(0, 5):
@@ -93,13 +140,32 @@ def show_cards_listed(cards, message):
 
 
 def countdown(n):
+    """
+    give a little time to show result
+    :param n: time amount
+    :return: none (printing remaining time to player)
+    """
     while n > 0:
         print(n)
         time.sleep(1)
         n = n - 1
 
+def calmdown(n):
+    """
+    just as same as countdown, but don't print remaining time
+    :param n: time amount
+    :return: none
+    """
+    while n > 0:
+        time.sleep(1)
+        n -= 1
 
 def login(members):
+    """
+    login process
+    :param members: read members at members.txt
+    :return: username, tries, wins, chips, debt, debtchips, members
+    """
     x = more("First Try?: ")  # 처음 오시는건지 물어보고 처음으로 온다면 계정을 새로 만들어줌
     if x == False:  # 계정이 이미 있는 경우
         username = input("Enter your name: ")
@@ -134,6 +200,7 @@ def login(members):
             # 예시 : 개수가 음수이면 You owe 5 chips.
             return username, tries, wins, chips, debt, debtchips, members
         else:
+            print("Your put wrong account id / password.")
             return login(members)
     elif x == True:  # 계정이 없는경우 (새로온경우)
         username = input("Enter your new name: ")
@@ -149,6 +216,10 @@ def login(members):
 
 
 def load_members():
+    """
+    load members at members.txt
+    :return: members
+    """
     file = open("members.txt", "r")
     members = {}
     for line in file:
@@ -159,6 +230,11 @@ def load_members():
 
 
 def hit(deck):
+    """
+    pick one card at deck
+    :param deck: card deck
+    :return: one card that picked from deck
+    """
     if len(deck) == 0:  # deck이 비어있으면:
         deck = fresh_deck()
         # 카드 1벌을 새로 만듬
@@ -166,6 +242,10 @@ def hit(deck):
 
 
 def who_is_first():  # 순서를 정해주는 함수
+    """
+    deciding who is first
+    :return: true or false
+    """
     percent = ["y", "y", "y", "y", "y", "n", "n", "n", "n", "n"]
     random.shuffle(percent)
     if percent[0] == "y":
@@ -175,6 +255,13 @@ def who_is_first():  # 순서를 정해주는 함수
 
 
 def dealer_response(x, y, z):  # 확률적으로 딜러의 대답을 결정
+    """
+    decide dealer's response
+    :param x: first response probability
+    :param y: second response probability
+    :param z: third response probability
+    :return: response
+    """
     response = ["A"] * x + ["B"] * y + ["C"] * z
     random.shuffle(response)
     if response[0] == "A":
@@ -186,6 +273,12 @@ def dealer_response(x, y, z):  # 확률적으로 딜러의 대답을 결정
 
 
 def dealer_response2(x, y):
+    """
+    decide dealer's response
+    :param x: first response probability
+    :param y: second response probability
+    :return: response
+    """
     response = ["A"] * x + ["B"] * y
     random.shuffle(response)
     if response[0] == "A":
@@ -195,6 +288,14 @@ def dealer_response2(x, y):
 
 
 def dealer_response3(x, y, z, k):  # 확률적으로 딜러의 대답을 결정
+    """
+    decide dealer's response
+    :param x: first response probability
+    :param y: second response probability
+    :param z: third response probability
+    :param k: fourth response probability
+    :return: response
+    """
     response = ["A"] * x + ["B"] * y + ["C"] * z + ["D"] * k
     random.shuffle(response)
     if response[0] == "A":
@@ -208,6 +309,11 @@ def dealer_response3(x, y, z, k):  # 확률적으로 딜러의 대답을 결정
 
 
 def card_sorting_player(player):
+    """
+    sorting player's card (including sequence like Changing num to J, Q, k, A)
+    :param player: player's card
+    :return: player's card
+    """
     playerlist = [[]] * len(player)
     for i in range(len(player)):
         playerlist[i] = [player[i]["suit"], player[i]["rank"]]
@@ -234,6 +340,11 @@ def card_sorting_player(player):
 
 
 def card_sorting_dealer(dealer):
+    """
+    sorting dealer's card (including sequence like Changing num to J, Q, k, A)
+    :param dealer: dealer's card
+    :return: dealer's card
+    """
     dealerlist = [[]] * len(dealer)
     for i in range(len(dealer)):
         dealerlist[i] = [dealer[i]["suit"], dealer[i]["rank"]]
@@ -260,6 +371,11 @@ def card_sorting_dealer(dealer):
 
 
 def jokbo(realcards):
+    """
+    return cards' priority written with integer
+    :param realcards: dealer or player's cards
+    :return: priority (written with integer)
+    """
     cards = realcards[:]
     for i in range(len(cards)):
         if cards[i][1] == "J":
@@ -295,8 +411,7 @@ def jokbo(realcards):
     if cards[0][0] == cards[1][0] == cards[2][0] == cards[3][0] == cards[4][0]:
         if cards[0][1] == "10" and cards[1][1] == 11 and cards[2][1] == 12 and cards[3][1] == 13 and cards[4][1] == 14:
             return 100  # 로얄 스트레이트 플러시
-        if cards[1][1] - cards[0][1] == cards[2][1] - cards[1][1] == cards[3][1] - cards[2][1] == cards[4][1] - \
-                cards[3][1] == 1:
+        if cards[1][1] - cards[0][1] == cards[2][1] - cards[1][1] == cards[3][1] - cards[2][1] == cards[4][1] - cards[3][1] == 1:
             return 50  # 스트레이트 플러시
         return 5  # 플러시(같은 문자)
 
@@ -305,10 +420,18 @@ def jokbo(realcards):
             return 30  # 포카드
 
     else:
-        return 0
+        return 0 #하이카드
 
 
 def first_one(person, dealercards, chips, money):
+    """
+    first sequence of game
+    :param person: player's turn?
+    :param dealercards: cards of dealer
+    :param chips: player's chip
+    :param money: player's money
+    :return: persongiveup, dealergiveup, money, chips, people, dealerallin, personallin, bettingmoney, dealermoney
+    """
     dealercheck = False  # 체크를 하면 True으로 바뀜
     personcheck = False  # 체크를 하면 True으로 바뀜
     dealergiveup = 1  # 딜러가 다이했을때 0으로 변환
@@ -322,11 +445,13 @@ def first_one(person, dealercards, chips, money):
         if person == True:  # 손님이 첫번째 순서로 걸렸을때,
             if dealercheck == True:  # 딜러가 체크를 한 상태일때(플레이어는 체크불가)
                 print("Your turn!")
+                calmdown(2)
                 response = input("Enter your response: (Enter Die / Bet)")
                 while not response == "Die" and response != "Bet":
                     response = input("Enter the word Die / Bet")
             elif dealercheck == False:  # 딜러가 체크를 하지 않았을 때
                 print("You are first!")
+                calmdown(2)
                 response = input("Enter your response: (Enter Die / Check / Bet)")
                 while not response == "Die" and response != "Check" and response != "Bet":
                     response = input("Enter the word Die / Check / Bet")
@@ -377,25 +502,26 @@ def first_one(person, dealercards, chips, money):
         elif person == False:  # 딜러가 첫번째로 베팅을 할 때
             if personcheck == True:  # 플레이어가 체크를 한 상태일때 이후 바로 next_player_turn으로 넘어감
                 print("Dealer turn!")
+                calmdown(2)
                 if jokbo(dealercards) == 1:  # 원페어
-                    response = dealer_response(3, 3, 1)  # (x,y) = (다이, 배팅, 올인)
+                    response = dealer_response(3, 4, 1)  # (x,y) = (다이, 배팅, 올인)
                 elif jokbo(dealercards) == 2:  # 투페어
-                    response = dealer_response(2, 3, 1)  # (x,y) = (다이, 배팅, 올인)
+                    response = dealer_response(2, 5, 2)  # (x,y) = (다이, 배팅, 올인)
                 elif jokbo(dealercards) == 3:  # 트리플
-                    response = dealer_response(2, 4, 1)  # (x,y) = (다이, 배팅, 올인)
+                    response = dealer_response(2, 7, 5)  # (x,y) = (다이, 배팅, 올인)
                 elif jokbo(dealercards) == 4:  # 스트레이트
-                    response = dealer_response(2, 7, 2)  # (x,y) = (다이, 배팅, 올인)
+                    response = dealer_response(2, 9, 7)  # (x,y) = (다이, 배팅, 올인)
                 elif jokbo(dealercards) == 5:  # 플러시
-                    response = dealer_response(2, 4, 4)  # (x,y) = (다이, 배팅, 올인)
+                    response = dealer_response(2, 12, 8)  # (x,y) = (다이, 배팅, 올인)
                 elif jokbo(dealercards) == 9:  # 풀하우스
-                    response = dealer_response(1, 6, 5)  # (x,y) = (다이, 배팅, 올인)
+                    response = dealer_response(1, 15, 9)  # (x,y) = (다이, 배팅, 올인)
                 elif jokbo(dealercards) == 30:  # 포카드
-                    response = dealer_response(1, 10, 8)  # (x,y) = (다이, 베팅, 올인)
+                    response = dealer_response(1, 25, 11)  # (x,y) = (다이, 베팅, 올인)
                 elif jokbo(dealercards) == 50:  # 스트레이트 플러시
-                    response = dealer_response(1, 9, 10)  # (x,y) = (다이, 배팅, 올인)
+                    response = dealer_response(1, 30, 12)  # (x,y) = (다이, 배팅, 올인)
                 elif jokbo(dealercards) == 100:  # 로열 스트레이트 플러시
-                    response = dealer_response(1, 10, 11)  # (x,y) = (다이, 배팅, 올인)
-                elif jokbo(dealercards) == 0:
+                    response = dealer_response(1, 50, 15)  # (x,y) = (다이, 배팅, 올인)
+                elif jokbo(dealercards) == 0: #하이카드
                     response = dealer_response(5, 3, 1)  # (x,y) = (다이, 배팅, 올인)
                 #
                 if response == "A":
@@ -436,6 +562,7 @@ def first_one(person, dealercards, chips, money):
 
             else:  # 플레이어가 체크를 하지 않았고, 딜러가 첫 배팅을 할 때. 딜러가 배팅을 했다면 next_player_turn()으로 넘어감
                 print("Dealer is first!")
+                calmdown(2)
                 if jokbo(dealercards) == 1:  # 원페어
                     response = dealer_response3(3, 3, 2, 1)  # (x,y,z) = (다이, 체크, 배팅, 올인)
                 elif jokbo(dealercards) == 2:  # 투페어
@@ -501,9 +628,24 @@ def first_one(person, dealercards, chips, money):
 
 def next_step(dealercards, persongiveup, dealergiveup, money, chips, people, dealerallin, personallin, bettingmoney,
               dealermoney):
+    """
+    next step of game
+    :param dealercards: cards of dealer
+    :param persongiveup: is player give up
+    :param dealergiveup: is dealer give up
+    :param money: player's money
+    :param chips: player's chip
+    :param people: player's turn?
+    :param dealerallin: is dealer all-in (show result immediately)
+    :param personallin: is player all-in (show result immediately)
+    :param bettingmoney: betted money in this game
+    :param dealermoney: betted money that dealer bets
+    :return: persongiveup, dealergiveup, money, chips, personallin, bettingmoney, dealermoney
+    """
     while True:
         if people == 1:  # 플레이어턴
             print("Your turn!")
+            calmdown(2)
             if dealerallin == True:
                 response = input("Enter your response: (Die / Call)")
                 while not response == "Die" and response != "Call":
@@ -555,24 +697,25 @@ def next_step(dealercards, persongiveup, dealergiveup, money, chips, people, dea
 
         elif people == 0:
             print("Dealer's turn!")
+            calmdown(2)
             if jokbo(dealercards) == 1:  # 원페어
-                response = dealer_response3(2, 3, 2, 1)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(2, 3, 4, 2)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 2:  # 투페어
-                response = dealer_response3(2, 3, 3, 1)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(2, 4, 6, 4)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 3:  # 트리플
-                response = dealer_response3(2, 3, 5, 2)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(2, 5, 7, 6)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 4:  # 스트레이트
-                response = dealer_response3(2, 3, 8, 4)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(2, 6, 8, 7)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 5:  # 플러시
-                response = dealer_response3(2, 2, 6, 4)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(2, 9, 10, 6)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 9:  # 풀하우스
-                response = dealer_response3(1, 2, 7, 6)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(1, 10, 12, 9)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 30:  # 포카드
-                response = dealer_response3(1, 2, 9, 10)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(1, 15, 20, 11)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 50:  # 스트레이트 플러시
-                response = dealer_response3(1, 3, 9, 10)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(1, 20, 25, 15)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 100:  # 로열 스트레이트 플러시
-                response = dealer_response3(1, 3, 10, 13)  # (x,y,z) = (다이, 체크, 배팅, 올인)
+                response = dealer_response3(1, 26, 30, 20)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             elif jokbo(dealercards) == 0:
                 response = dealer_response3(3, 2, 1, 1)  # (x,y,z) = (다이, 체크, 배팅, 올인)
             #
@@ -619,8 +762,81 @@ def next_step(dealercards, persongiveup, dealergiveup, money, chips, people, dea
                 break
 
 
+def make_dealer_cards_more_fun(deck, dealer):
+    """
+    to make dealercards more fun to make dealer win this game more.
+    :param dealercards: dealercards
+    :return: none
+
+    maybe has a lot of memory work will arise.
+    """
+
+    dealercards = card_sorting_dealer(dealer)
+    if jokbo(dealercards) == 0 or jokbo(dealercards) == 1 or jokbo(dealercards) == 2:
+        deck.append({"suit": dealer[0]["suit"], "rank": dealer[0]["rank"]})
+        deck.append({"suit": dealer[1]["suit"], "rank": dealer[1]["rank"]})
+        deck.append({"suit": dealer[2]["suit"], "rank": dealer[2]["rank"]})
+        deck.append({"suit": dealer[3]["suit"], "rank": dealer[3]["rank"]})
+        deck.append({"suit": dealer[4]["suit"], "rank": dealer[4]["rank"]})
+    if jokbo(dealercards) == 0: #하이카드
+        while True:
+            dealer = []
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            dealercards = card_sorting_dealer(dealer)
+            if jokbo(dealercards) != 0 and jokbo(dealercards) != 1:
+                break
+            else:
+                deck.append({"suit": dealer[0]["suit"], "rank": dealer[0]["rank"]})
+                deck.append({"suit": dealer[1]["suit"], "rank": dealer[1]["rank"]})
+                deck.append({"suit": dealer[2]["suit"], "rank": dealer[2]["rank"]})
+                deck.append({"suit": dealer[3]["suit"], "rank": dealer[3]["rank"]})
+                deck.append({"suit": dealer[4]["suit"], "rank": dealer[4]["rank"]})
+                continue
+        return dealer
+    elif jokbo(dealercards) == 1: #원페어
+        while True:
+            dealer = []
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            dealercards = card_sorting_dealer(dealer)
+            if jokbo(dealercards) != 0 and jokbo(dealercards) != 1:
+                break
+            else:
+                deck.append({"suit": dealer[0]["suit"], "rank": dealer[0]["rank"]})
+                deck.append({"suit": dealer[1]["suit"], "rank": dealer[1]["rank"]})
+                deck.append({"suit": dealer[2]["suit"], "rank": dealer[2]["rank"]})
+                deck.append({"suit": dealer[3]["suit"], "rank": dealer[3]["rank"]})
+                deck.append({"suit": dealer[4]["suit"], "rank": dealer[4]["rank"]})
+                continue
+        return dealer
+    else:
+        return dealer
+
+
 def card_game_Five_Poker():
-    print("Welcome to SMaSH's Five Poker Game!")
+    """
+    main function
+    :return: game sequence
+    """
+
+    print("Welcome to Five Card Draw Poker Game!")
     print("-----")
     username, tries, wins, chips, debt, debtchips, members = login(load_members())
     while True:
@@ -628,28 +844,44 @@ def card_game_Five_Poker():
         money = 0
         dealer = []
         player = []
+
         card, deck = hit(deck)  # 손님 첫번째카드
         player.append(card)
-        card, deck = hit(deck)  # 딜러 첫번째카드
-        dealer.append(card)
         card, deck = hit(deck)  # 손님 두번째카드
         player.append(card)
-        card, deck = hit(deck)  # 딜러 두번째카드
-        dealer.append(card)
         card, deck = hit(deck)  # 손님 세번째카드
         player.append(card)
-        card, deck = hit(deck)  # 딜러 세번째카드
-        dealer.append(card)
         card, deck = hit(deck)  # 손님 네번째카드
         player.append(card)
-        card, deck = hit(deck)  # 딜러 네번째카드
-        dealer.append(card)
         card, deck = hit(deck)  # 손님 다섯번째카드
         player.append(card)
-        card, deck = hit(deck)  # 딜러 다섯번째카드
-        dealer.append(card)
         playercards = card_sorting_player(player)
-        dealercards = card_sorting_dealer(dealer)
+        dealercard_sorting_response = dealer_response2(60, 5)
+        if dealercard_sorting_response == "A":  # 50퍼센트의 확률로 딜러의 카드가 좀 더 높은 족보가 나오게 임의의 카드 변경작업이 이루어짐.
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            dealer = make_dealer_cards_more_fun(deck, dealer)
+            dealercards = card_sorting_dealer(dealer)
+        elif dealercard_sorting_response == "B":
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            card, deck = hit(deck)
+            dealer.append(card)
+            dealercards = card_sorting_dealer(dealer)
         show_cards(player, "Your cards are:")
         cardchange = more("Do you want to change your card?")
         cardroom = []
@@ -661,7 +893,10 @@ def card_game_Five_Poker():
                 cardroom.append([player[i]["suit"], player[i]["rank"]])
             while True:
                 try:
-                    changing = int(input("Which card do you want to change?: (Write number) %s. " % cardcount))
+                    changing = input("Which card do you want to change?: (Write number or 'n' to quit) %s. " % cardcount)
+                    if changing == "n":
+                        break
+                    changing = int(changing)
                     if not 1 <= int(changing) <= 5: raise not_in_number
                     break
                 except ValueError:
@@ -693,14 +928,16 @@ def card_game_Five_Poker():
                 elif x == False:  # 카드를 그만 바꾸려는 경우
                     break
         playercards = card_sorting_player(player)
-        person = who_is_first()
+        person = who_is_first() #순서를 정한다.
         persongiveup, dealergiveup, money, chips, people, dealerallin, personallin, bettingmoney, dealermoney = first_one(person, dealercards, chips, money)
-        dealercards = card_sorting_dealer(dealer)
         if dealergiveup == 0:  # 첫번째 턴에서 딜러가 다이했을 때
             print("You won this game!")
+            print("\n")
             show_cards_listed(playercards, "Your cards are: ")
+            print("\n")
             show_cards_listed(dealercards, "Dealer cards are: ")
             wins += 1
+            print("\n")
             print("You earned " + str(money * 2) + " chips.")
             chips = int(chips) + int(money) * 2
             if debt == True and int(chips) > 20:
@@ -714,8 +951,11 @@ def card_game_Five_Poker():
                 print("You lost additional 8 chips for penalty.")
         elif persongiveup == 0:  # 첫번째 턴에서 플레이어가 다이했을 때
             print("Dealer won this game.")
+            print("\n")
             show_cards_listed(playercards, "Your cards are: ")
+            print("\n")
             show_cards_listed(dealercards, "Dealer cards are: ")
+            print("\n")
             print("you lost " + str(bettingmoney) + "chips.")
             chips = int(chips) - int(bettingmoney)
             if jokbo(playercards) == 1 or jokbo(playercards) == 0:
@@ -731,9 +971,12 @@ def card_game_Five_Poker():
             if jokbo(dealercards) > jokbo(playercards):  # 진경우
                 countdown(5)
                 show_cards_listed(playercards, "Your cards are: ")
+                print("\n")
                 show_cards_listed(dealercards, "Dealer cards are: ")
+                print("\n")
                 print("Dealer won this game!")
                 chips = int(chips) - int(bettingmoney)
+                print("\n")
                 print("You lost " + str(bettingmoney) + " chips.")
                 if jokbo(playercards) == 1 or jokbo(playercards) == 0:
                     chips = int(chips) - 8
@@ -747,10 +990,13 @@ def card_game_Five_Poker():
             elif jokbo(dealercards) < jokbo(playercards):  # 이긴경우
                 countdown(5)
                 show_cards_listed(playercards, "Your cards are: ")
+                print("\n")
                 show_cards_listed(dealercards, "Dealer cards are: ")
+                print("\n")
                 print("You won this game!!")
                 wins += 1
                 chips = int(chips) + int(money) * 2
+                print("\n")
                 print("You earned " + str(money * 2) + " chips.")
                 if debt == True and int(chips) > 20:
                     debtchips = int(debtchips) - 20
@@ -772,8 +1018,11 @@ def card_game_Five_Poker():
             elif jokbo(playercards) == jokbo(dealercards):  # 비긴경우
                 countdown(5)
                 show_cards_listed(playercards, "Your cards are: ")
+                print("\n")
                 show_cards_listed(dealercards, "Dealer cards are: ")
+                print("\n")
                 print("We draw this game.")
+                print("\n")
                 chips = int(chips) + bettingmoney
                 if jokbo(playercards) == 1 or jokbo(playercards) == 0:
                     chips = int(chips) - 8
@@ -789,8 +1038,11 @@ def card_game_Five_Poker():
             dealercards = card_sorting_dealer(dealer)
             if dealergiveup == 0:  # 두번째 턴이상에서 딜러가 다이했을 때
                 print("You won this game!")
+                print("\n")
                 show_cards_listed(playercards, "Your cards are: ")
+                print("\n")
                 show_cards_listed(dealercards, "Dealer cards are: ")
+                print("\n")
                 wins += 1
                 print("You earned " + str(money * 2) + " chips.")
                 chips = int(chips) + int(money) * 2
@@ -811,8 +1063,11 @@ def card_game_Five_Poker():
                     print("You owe 20 chips.")
             elif persongiveup == 0:  # 두번째 턴 이상에서 플레이어가 다이했을 때
                 print("Dealer won this game.")
+                print("\n")
                 show_cards_listed(playercards, "Your cards are: ")
+                print("\n")
                 show_cards_listed(dealercards, "Dealer cards are: ")
+                print("\n")
                 print("you lost " + str(bettingmoney) + " chips.")
                 chips = int(chips) - int(bettingmoney)
                 if int(chips) <= 0:  # 칩의 개수가 음수일 때 대출받음
@@ -825,8 +1080,11 @@ def card_game_Five_Poker():
                 if jokbo(dealercards) > jokbo(playercards):  # 진경우
                     countdown(5)
                     show_cards_listed(playercards, "Your cards are: ")
+                    print("\n")
                     show_cards_listed(dealercards, "Dealer cards are: ")
+                    print("\n")
                     print("Dealer won this game!")
+                    print("\n")
                     chips = int(chips) - int(bettingmoney)
                     print("You lost " + str(bettingmoney) + " chips.")
                     if jokbo(playercards) == 1 or jokbo(playercards) == 0:
@@ -841,8 +1099,11 @@ def card_game_Five_Poker():
                 elif jokbo(dealercards) < jokbo(playercards):  # 이긴경우
                     countdown(5)
                     show_cards_listed(playercards, "Your cards are: ")
+                    print("\n")
                     show_cards_listed(dealercards, "Dealer cards are: ")
+                    print("\n")
                     print("You won this game!!")
+                    print("\n")
                     wins += 1
                     chips = int(chips) + int(money) * 2
                     print("You earned " + str(money * 2) + " chips.")
@@ -866,8 +1127,11 @@ def card_game_Five_Poker():
                 elif jokbo(playercards) == jokbo(dealercards):  # 비긴경우
                     countdown(5)
                     show_cards_listed(playercards, "Your cards are: ")
+                    print("\n")
                     show_cards_listed(dealercards, "Dealer cards are: ")
+                    print("\n")
                     print("We draw this game.")
+                    print("\n")
                     chips = int(chips) + bettingmoney
                     if jokbo(playercards) == 1 or jokbo(playercards) == 0:
                         chips = int(chips) - 8
@@ -882,8 +1146,11 @@ def card_game_Five_Poker():
                 if jokbo(dealercards) > jokbo(playercards):  # 진경우
                     countdown(5)
                     show_cards_listed(playercards, "Your cards are: ")
+                    print("\n")
                     show_cards_listed(dealercards, "Dealer cards are: ")
+                    print("\n")
                     print("Dealer won this game!")
+                    print("\n")
                     chips = int(chips) - int(bettingmoney)
                     print("You lost " + str(bettingmoney) + " chips.")
                     if jokbo(playercards) == 1 or jokbo(playercards) == 0:
@@ -898,8 +1165,11 @@ def card_game_Five_Poker():
                 elif jokbo(dealercards) < jokbo(playercards):  # 이긴경우
                     countdown(5)
                     show_cards_listed(playercards, "Your cards are: ")
+                    print("\n")
                     show_cards_listed(dealercards, "Dealer cards are: ")
+                    print("\n")
                     print("You won this game!!")
+                    print("\n")
                     wins += 1
                     chips = int(chips) + int(money) * 2
                     print("You earned " + str(money * 2) + " chips.")
@@ -923,8 +1193,11 @@ def card_game_Five_Poker():
                 elif jokbo(playercards) == jokbo(dealercards):  # 비긴경우
                     countdown(5)
                     show_cards_listed(playercards, "Your cards are: ")
+                    print("\n")
                     show_cards_listed(dealercards, "Dealer cards are: ")
+                    print("\n")
                     print("We draw this game.")
+                    print("\n")
                     chips = int(chips) + bettingmoney
                     if jokbo(playercards) == 1 or jokbo(playercards) == 0:
                         chips = int(chips) - 8
