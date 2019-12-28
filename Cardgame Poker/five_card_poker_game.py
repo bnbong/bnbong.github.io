@@ -11,13 +11,17 @@ import time
 
 """
     **** READ ME ****
-        
+    
+bug reporting : 
+when make_dealer_cards_more_fun runs, the game stops moments. (solved)
+
+it seems because has a lot of memory work to make higher cards. (solved)
         
         
 """
 
 """
-        **** card game Five Card Draw Poker ver. 1.04 ****
+        **** card game Five Card Draw Poker ver. 1.05 ****
 
 // developer : bnbong (https://github.com/bnbong/bnbong)
 
@@ -27,6 +31,17 @@ import time
 >> This Python-based game is based on Five-card-draw Poker game.
 >> We make The Dealer on this game (We can call it AI) can do 'Bluffing' by adding function that pick up response Probability.
 
+**** Development Environment ****
+
+Tool : PyCharm
+Build #PY-191.8026.44, built on July 30, 2019
+Licensed to 이 준혁 (bnbong)
+For educational use only.
+JRE: 11.0.2+9-b159.64 amd64
+JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+Windows 10 10.0  (Education ver.1809)
+
+
 # 2019.6.9: 
 # 딜러의 의사표현확률 소폭조정, 딜러와 플레이어의 레이즈 & 콜 & 올인함수 도입, members.txt파일에 자신이 칩을 빚졌는지 그렇지 않았는지
 # 알 수 있게 member의 구성요소에 debt와 빚진 칩의 개수 debtchips를 추가, 그 외 자잘한 오류 또는 알고리즘 벗어난 부분 수정.
@@ -34,8 +49,8 @@ import time
 # 2019.6.10: 
 # members.txt에 새로운 계정에 대한 정보를 입력하는 함수와 게임결과를 갱신해주는 함수 수정.
 # 딜러 또는 플레이어가 다이했을 때, 딜러 또는 플레이어의 승패여부를 먼저 프린트 해주고 두명의 카드의 현황을
-# 나타내주는 함수 추가, 카드를 바꾸는 함수에서 카드를 5회 바꾸게 되면 카드를 더 바꿀건지 물어보지 않고 바로 break하게 변경.
-# login함수에서 자기 계정이 있다고 입력했을 때 members.txt에 자기 계정이 존재하지 않는다면 다시login함수로 리턴하는 부분 수정
+# 나타내주는 함수 추가, 카드를 바꾸는 함수에서 카드를 5회 바꾸게 되면 카드를 더 바꿀건지 물어보지 않고 바로 break 하게 변경.
+# login 함수에서 자기 계정이 있다고 입력했을 때 members.txt에 자기 계정이 존재하지 않는다면 다시 login 함수로 리턴하는 부분 수정
 # 딜러와 자기의 카드를 보여주는 부분에서 J,Q,K,A를 숫자로 변환한 것을 다시 문자로 되돌리는 부분이 작동하지 않는 것 수정.
 
 # 2019.6.12: 
@@ -45,10 +60,15 @@ import time
 # 2019.12.26:
 # 딜러의 의사표현부분 소폭 조정.
 # 딜러의 승률을 올리기 위해 처음 딜러가 카드를 뽑았을 때 족보를 확인하여 보다 높은 등급의 족보를 얻을 수 있는 카드를 뽑는 함수를 추가함.
-# 여러번 시뮬레이팅해본 결과, 확실히 딜러의 승률이 15퍼센트 정도 더 올랐다는 것이 체감됨.
+# 여러번 시뮬레이팅해본 결과, 사람과 단 둘이 할때와 비슷한 승률을 보이게 되었음.
 # 메인함수를 추가하려는 시도를 했으나, 추가 하지 않는 것이 낫다고 판단함.
 # 보다 게임에 긴장감을 주기위해 각각의 턴마다 시간간격을 두고 인터페이스를 띄워주는 함수 추가.
 # 플레이어가 카드를 바꾸겠다는 의사를 표현한 뒤, 바꿀 카드의 번호를 넣는 부분에 n을눌러 그 과정을 빠져나가는 코드 추가.
+
+# 2019.12.28:
+# 게임의 규칙을 설명하는 텍스트 추가.
+# 본 소스코드의 부연설명 추가.
+# 딜러의 카드가 보다 상위등급의 패를 얻을 수 있게하는 함수의 확률 조정.
 """
 
 def fresh_deck():
@@ -772,6 +792,7 @@ def make_dealer_cards_more_fun(deck, dealer):
     """
 
     dealercards = card_sorting_dealer(dealer)
+    count = 0
     if jokbo(dealercards) == 0 or jokbo(dealercards) == 1 or jokbo(dealercards) == 2:
         deck.append({"suit": dealer[0]["suit"], "rank": dealer[0]["rank"]})
         deck.append({"suit": dealer[1]["suit"], "rank": dealer[1]["rank"]})
@@ -780,6 +801,7 @@ def make_dealer_cards_more_fun(deck, dealer):
         deck.append({"suit": dealer[4]["suit"], "rank": dealer[4]["rank"]})
     if jokbo(dealercards) == 0: #하이카드
         while True:
+            count += 1
             dealer = []
             card, deck = hit(deck)
             dealer.append(card)
@@ -792,6 +814,7 @@ def make_dealer_cards_more_fun(deck, dealer):
             card, deck = hit(deck)
             dealer.append(card)
             dealercards = card_sorting_dealer(dealer)
+            if count == 30: break
             if jokbo(dealercards) != 0 and jokbo(dealercards) != 1:
                 break
             else:
@@ -804,6 +827,7 @@ def make_dealer_cards_more_fun(deck, dealer):
         return dealer
     elif jokbo(dealercards) == 1: #원페어
         while True:
+            count += 1
             dealer = []
             card, deck = hit(deck)
             dealer.append(card)
@@ -816,6 +840,7 @@ def make_dealer_cards_more_fun(deck, dealer):
             card, deck = hit(deck)
             dealer.append(card)
             dealercards = card_sorting_dealer(dealer)
+            if count == 30: break
             if jokbo(dealercards) != 0 and jokbo(dealercards) != 1:
                 break
             else:
@@ -839,6 +864,26 @@ def card_game_Five_Poker():
     print("Welcome to Five Card Draw Poker Game!")
     print("-----")
     username, tries, wins, chips, debt, debtchips, members = login(load_members())
+    print("*******************************************\n"
+          "*               GAME RULE                 *\n"
+          "*                                         *\n"
+          "*  1. If you have one pair or high card,  *\n"
+          "*     you lose 8 chips no matter result.  *\n"
+          "*                                         *\n"
+          "*  2. You have five chance to change your *\n"
+          "*     cards.                              *\n"
+          "*                                         *\n"
+          "*  3. When someone call the game or       *\n"
+          "*     All-in at the game, the result of   *\n"
+          "*     game will appear after five seconds.*\n"
+          "*                                         *\n"
+          "*  4. When you don't have enough chips    *\n"
+          "*     that you want to pay, 20 chips will *\n"
+          "*     automatically get into debt. Your   *\n"
+          "*     debt will automatically pay off when*\n"
+          "*     you have chips more than 20.        *\n"
+          "*                                         *\n"
+          "*******************************************\n")
     while True:
         deck = fresh_deck()
         money = 0
@@ -856,8 +901,8 @@ def card_game_Five_Poker():
         card, deck = hit(deck)  # 손님 다섯번째카드
         player.append(card)
         playercards = card_sorting_player(player)
-        dealercard_sorting_response = dealer_response2(60, 5)
-        if dealercard_sorting_response == "A":  # 50퍼센트의 확률로 딜러의 카드가 좀 더 높은 족보가 나오게 임의의 카드 변경작업이 이루어짐.
+        dealercard_sorting_response = dealer_response2(6, 4)
+        if dealercard_sorting_response == "A":  # 60퍼센트의 확률로 딜러의 카드가 좀 더 높은 족보가 나오게 임의의 카드 변경작업이 이루어짐.
             card, deck = hit(deck)
             dealer.append(card)
             card, deck = hit(deck)
