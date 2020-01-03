@@ -1,38 +1,39 @@
-import random
-
-
-class not_natural_number(Exception): pass
-
-
-class not_in_number(Exception): pass
-
-
-import time
-
 """
     **** READ ME ****
-    
-bug reporting : 
-when make_dealer_cards_more_fun runs, the game stops moments. (solved)
 
-it seems because has a lot of memory work to make higher cards. (solved)
-        
+플레이어의 패가 트리플이고 딜러의 패가 투페어 일 때 무승부로 처리되는 버그 발생. (두 번째 턴에서 딜러가 올인했을 때) -> 족보 함수의 문제였음(solved)
         
 """
 
 """
-        **** card game Five Card Draw Poker ver. 1.05 ****
+        **** card game Five Card Draw Poker ver. 1.06 ****
 
 // developer : bnbong (https://github.com/bnbong/bnbong)
 
 >> 본 코드는 파이브 카드 드로우 포커를 적용, 참조하였습니다.
->> 딜러(AI)가 결정을 확률적으로 하게 하는 함수를 도입함으로써, 딜러가 블러핑을 하는 효과를 낼 수 있게 했습니다.
+>> 딜러(프로그램)가 결정을 확률적으로 하게 하는 함수를 도입함으로써, 딜러가 블러핑을 하는 효과를 낼 수 있게 했습니다.
 
 >> This Python-based game is based on Five-card-draw Poker game.
 >> We make The Dealer on this game (We can call it AI) can do 'Bluffing' by adding function that pick up response Probability.
 
+**** How to Use? ****
+
+0. 64비트를 지원, 8GB 이상의 충분한 메모리 저장공간을 가진 환경에서 플레이 하는 것을 추천드립니다.
+
+1. 게임을 실행시키고 로그인하는 과정까지 수행하게 되면, 본 포커게임을 플레이하는 플레이어의 정보를 저장하는 members.txt 파일이 생성되고 정보가 저장됩니다.
+   만약 이 과정에 오류가 발생하면, members.txt 라는 txt 형식의 파일 (ex. 메모장) 을 직접 추가하시면 됩니다.
+
+2. 본 게임은 파이썬에서 제공해주는 IDLE 또는 기타 파이썬 실행기를 통해 실행시킬 수 있습니다.
+
+3. 게임의 각 단계는 프로그램에서 알려주는 대로 진행하시면 됩니다.
+
+4. 기타 문의 사항이나 버그 리포팅, 그 외 request 는 개발자 bnbong 의 GitHub 리포지토리 (https://github.com/bnbong/bnbong) 의 Issue 항목을 사용해 주십시오.
+
 **** Development Environment ****
 
+CPU : Intel Core i5 - 8265U (64bit)
+RAM : 16GB ddr4
+Language : Korean
 Tool : PyCharm
 Build #PY-191.8026.44, built on July 30, 2019
 Licensed to 이 준혁 (bnbong)
@@ -63,13 +64,33 @@ Windows 10 10.0  (Education ver.1809)
 # 여러번 시뮬레이팅해본 결과, 사람과 단 둘이 할때와 비슷한 승률을 보이게 되었음.
 # 메인함수를 추가하려는 시도를 했으나, 추가 하지 않는 것이 낫다고 판단함.
 # 보다 게임에 긴장감을 주기위해 각각의 턴마다 시간간격을 두고 인터페이스를 띄워주는 함수 추가.
-# 플레이어가 카드를 바꾸겠다는 의사를 표현한 뒤, 바꿀 카드의 번호를 넣는 부분에 n을눌러 그 과정을 빠져나가는 코드 추가.
+# 플레이어가 카드를 바꾸겠다는 의사를 표현한 뒤, 바꿀 카드의 번호를 넣는 부분에 n 을 입력해서 그 과정을 빠져나가는 코드 추가.
 
 # 2019.12.28:
 # 게임의 규칙을 설명하는 텍스트 추가.
 # 본 소스코드의 부연설명 추가.
 # 딜러의 카드가 보다 상위등급의 패를 얻을 수 있게하는 함수의 확률 조정.
+
+# 2020.1.3:
+# 딜러의 카드가 보다 상위등급의 패를 얻을 수 있게하는 함수의 확률 조정.
+# 개발환경 텍스트 부분 수정.
+# 게임이 끝난 후 게임을 이어서 할 건지 묻는 부분에 현재까지 플레이어의 승률을 알려주는 코드 추가.
+# 딜러가 다이했을 때, 결과를 1초 뒤에 보여주게 함.
+# 본 프로그램의 사용법 추가.
+# 두 번째 턴 이상에서 플레이어가 다이했을 시, 플레이어의 패가 원페어 이거나 하이카드 일 때, 8개의 패널티 칩을 수거하지 않는 상황 수정.
+# 족보 함수에서 일부 족보를 읽지 못하는 버그 수정.
 """
+
+import random
+
+
+class not_natural_number(Exception): pass
+
+
+class not_in_number(Exception): pass
+
+
+import time
 
 def fresh_deck():
     """
@@ -406,41 +427,46 @@ def jokbo(realcards):
             cards[i][1] = 13
         if cards[i][1] == "A":
             cards[i][1] = 14
-    for i in range(0, 4):
+    if cards[0][1] == cards[1][1] != cards[2][1] == cards[3][1] == cards[4][1] or cards[0][1] == cards[1][1] == \
+            cards[2][1] != cards[3][1] == cards[4][1]:
+        return 9  # 풀하우스
+
+    if cards[0][1] != cards[1][1] == cards[2][1] == cards[3][1] == cards[4][1] or cards[0][1] == cards[1][1] == \
+            cards[2][1] == cards[3][1] != cards[4][1]:
+        return 30  # 포카드
+
+    if cards[0][1] == 2 and cards[1][1] == 3 and cards[2][1] == 4 and cards[3][1] == 5 and cards[4][1] == 14:
+        if cards[0][0] == cards[1][0] == cards[2][0] == cards[3][0] == cards[4][0]:
+            return 50  # 스트레이트 플러시
+        return 4  # A 2 3 4 5 (스트레이트)
+
+    if cards[0][0] == cards[1][0] == cards[2][0] == cards[3][0] == cards[4][0]:
+        return 5  # 플러시(같은 문자)
+
+    if int(cards[1][1]) - int(cards[0][1]) == int(cards[2][1]) - int(cards[1][1]) == int(cards[3][1]) - int(
+            cards[2][1]) == int(cards[4][1]) - int(cards[3][1]) == 1:
+        if cards[0][1] == 10 and cards[1][1] == 11 and cards[2][1] == 12 and cards[3][1] == 13 and cards[4][1] == 14:
+            return 100  # 로얄 스트레이트 플러시
+
+        if cards[1][1] - cards[0][1] == cards[2][1] - cards[1][1] == cards[3][1] - cards[2][1] == cards[4][1] - \
+                cards[3][1] == 1:
+            return 50  # 스트레이트 플러시
+
+        return 4  # 스트레이트
+
+    for i in range(0, 3):
         if cards[i][1] == cards[i + 1][1]:
+            if cards[i + 1][1] == cards[i + 2][1]:
+                return 3  # 트리플
+
             for j in range(i + 1, 4):
                 if cards[j][1] == cards[j + 1][1]:
                     return 2  # 투페어일경우
+
             return 1  # 원페어일경우
 
-    for i in range(0, 3):
-        if cards[i][1] == cards[i + 1][1] == cards[i + 2][1]:
-            for j in range(i + 2, len(cards) - 1):
-                if cards[j][1] == cards[j + 1][1]:
-                    return 9  # 풀하우스
-            return 3  # 똑같은 숫자 3장
-
-    for i in range(0, 4):
-        if cards[i][1] == 14:
-            if cards[0][1] == "2" and cards[1][1] == "3" and cards[2][1] == "4" and cards[3][1] == "5":
-                return 4  # A 2 3 4 5 일 경우
-    if int(cards[1][1]) - int(cards[0][1]) == int(cards[2][1]) - int(cards[1][1]) == int(cards[3][1]) - int(
-            cards[2][1]) == int(cards[4][1]) - int(cards[3][1]) == 1:
-        return 4  # 스트레이트
-
-    if cards[0][0] == cards[1][0] == cards[2][0] == cards[3][0] == cards[4][0]:
-        if cards[0][1] == "10" and cards[1][1] == 11 and cards[2][1] == 12 and cards[3][1] == 13 and cards[4][1] == 14:
-            return 100  # 로얄 스트레이트 플러시
-        if cards[1][1] - cards[0][1] == cards[2][1] - cards[1][1] == cards[3][1] - cards[2][1] == cards[4][1] - cards[3][1] == 1:
-            return 50  # 스트레이트 플러시
-        return 5  # 플러시(같은 문자)
-
-    for i in range(0, 1):
-        if cards[i][1] == cards[i + 1][1] == cards[i + 2][1] == cards[i + 3][1]:
-            return 30  # 포카드
-
     else:
-        return 0 #하이카드
+        return 0  # 하이카드
 
 
 def first_one(person, dealercards, chips, money):
@@ -883,6 +909,9 @@ def card_game_Five_Poker():
           "*     debt will automatically pay off when*\n"
           "*     you have chips more than 20.        *\n"
           "*                                         *\n"
+          "*  5. When dealer response to all-in, he  *\n"
+          "*     will put 30 chips on game.          *\n"
+          "*                                         *\n"
           "*******************************************\n")
     while True:
         deck = fresh_deck()
@@ -901,7 +930,7 @@ def card_game_Five_Poker():
         card, deck = hit(deck)  # 손님 다섯번째카드
         player.append(card)
         playercards = card_sorting_player(player)
-        dealercard_sorting_response = dealer_response2(6, 4)
+        dealercard_sorting_response = dealer_response2(7, 4)
         if dealercard_sorting_response == "A":  # 60퍼센트의 확률로 딜러의 카드가 좀 더 높은 족보가 나오게 임의의 카드 변경작업이 이루어짐.
             card, deck = hit(deck)
             dealer.append(card)
@@ -976,6 +1005,7 @@ def card_game_Five_Poker():
         person = who_is_first() #순서를 정한다.
         persongiveup, dealergiveup, money, chips, people, dealerallin, personallin, bettingmoney, dealermoney = first_one(person, dealercards, chips, money)
         if dealergiveup == 0:  # 첫번째 턴에서 딜러가 다이했을 때
+            calmdown(1)
             print("You won this game!")
             print("\n")
             show_cards_listed(playercards, "Your cards are: ")
@@ -1082,6 +1112,7 @@ def card_game_Five_Poker():
             persongiveup, dealergiveup, money, chips, personallin, bettingmoney, dealermoney = next_step(dealercards, persongiveup, dealergiveup, money, chips, people, dealerallin, personallin, bettingmoney, dealermoney)
             dealercards = card_sorting_dealer(dealer)
             if dealergiveup == 0:  # 두번째 턴이상에서 딜러가 다이했을 때
+                calmdown(1)
                 print("You won this game!")
                 print("\n")
                 show_cards_listed(playercards, "Your cards are: ")
@@ -1115,6 +1146,9 @@ def card_game_Five_Poker():
                 print("\n")
                 print("you lost " + str(bettingmoney) + " chips.")
                 chips = int(chips) - int(bettingmoney)
+                if jokbo(playercards) == 1 or jokbo(playercards) == 0:
+                    chips = int(chips) - 8
+                    print("You lost additional 8 chips for penalty.")
                 if int(chips) <= 0:  # 칩의 개수가 음수일 때 대출받음
                     debtchips += 20
                     chips = 0
@@ -1256,6 +1290,9 @@ def card_game_Five_Poker():
         print("You have " + str(chips) + " chips.")
         tries += 1
         print("You played " + str(tries) + " games and won " + str(wins) + " games.")
+        percentage = str(wins / tries * 100)
+        print(
+            "Your all-time winning percentage is " + percentage[:4] + " %")
         passwd = members[username][0]
         members[username] = (passwd, int(tries), float(wins), int(chips), str(debt), str(debtchips))
         store_members(members)
