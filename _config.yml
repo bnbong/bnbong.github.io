@@ -93,11 +93,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "bnbong"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "Hanyang Univ. ERICA Department of Software"
+  location         : "Pangyo"
+  email            : "bbbong9@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
