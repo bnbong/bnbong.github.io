@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">WeatherForecast</string>
+
+    <string name="action_refresh">Refresh</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="pref_title_city">City</string>
+    <string-array name="pref_city_list_values">
+        <item>1835847</item>
+        <item>1835235</item>
+        <item>1835327</item>
+        <item>1838524</item>
+    </string-array>
+    <string-array name="pref_city_list_titles">
+        <item>Seoul</item>
+        <item>Daejeon</item>
+        <item>Taegu</item>
+        <item>Busan</item>
+    </string-array>
+
 </resources>

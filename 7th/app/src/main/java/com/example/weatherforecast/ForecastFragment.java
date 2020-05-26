@@ -1,11 +1,7 @@
 package com.example.weatherforecast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-
-import android.app.AppComponentFactory;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -13,8 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,15 +36,49 @@ import java.util.List;
 
 public class ForecastFragment extends Fragment {
 
+    public static final String ACTION_RETRIEVE_WEATHER_DATA = "com.loyid.WeatherForecast.RETRIEVE_DATA";
+
     private MainViewModel mViewModel;
     private ArrayList<String> sample_data;
     private ArrayAdapter<String> listViewAddapter;
     private ArrayAdapter<String> mForecastAdapter;
 
 
+
     public static ForecastFragment newInstance() {
         return new ForecastFragment();
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.action_refresh) {
+            FetchWeatherTask weatherTask = new FetchWeatherTask();
+            weatherTask.execute();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void refreshWeatherData() {
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String cityId = preferences.getString("city", String.valueOf(1835847));
+        weatherTask.execute(cityId);
+    }
+
 
     @Nullable
     @Override
@@ -84,19 +118,16 @@ public class ForecastFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
-    public class FetchWeatherTask extends AsyncTask<Void, Void, Void> {
+    public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
 
         private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
 
+        public FetchWeatherTask() {
+
+        }
+
         @Override
-        protected Void doInBackground(Void... params) {
+        protected String[] doInBackground(String... params) {
             // These two need to be declared outside the try/catch
             // so that they can be closed in the finally block.
             HttpURLConnection urlConnection = null;
@@ -159,7 +190,17 @@ public class ForecastFragment extends Fragment {
             }
             return null;
         }
-    }
 
+        @Override
+        protected void onPostExecute(String[] result) {
+            if (result != null) {
+                mForecastAdapter.clear();
+                for(String dayForecastStr : result) {
+                    mForecastAdapter.add(dayForecastStr);
+                }
+                // New data is back from the server.  Hooray!
+            }
+        }
+    }
 
 }
