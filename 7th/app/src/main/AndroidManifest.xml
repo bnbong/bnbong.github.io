@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DetailActivity" />
+        <service
+            android:name=".FetchWeatherService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

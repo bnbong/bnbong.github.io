@@ -1,6 +1,9 @@
 package com.example.weatherforecast;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,11 +39,22 @@ import java.util.List;
 
 public class ForecastFragment extends Fragment {
 
-    public static final String ACTION_RETRIEVE_WEATHER_DATA = "com.loyid.WeatherForecast.RETRIEVE_DATA";
+    public static final String ACTION_RETRIEVE_WEATHER_DATA = "com.example.WeatherForecast.RETRIEVE_DATA";
 
-    private MainViewModel mViewModel;
-    private ArrayList<String> sample_data;
-    private ArrayAdapter<String> listViewAddapter;
+
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if(action.equals(FetchWeatherService.ACTION_RETREVE_WEATHER_DATA)) {
+                String[] data = intent.getStringArrayExtra(FetchWeatherService.EXTRA_WEATHER_DATA);
+                mForecastAdapter.clear();
+                for(String dayForecastStr : data) {
+                    mForecastAdapter.add(dayForecastStr);
+                }
+            }
+        }
+    };
     private ArrayAdapter<String> mForecastAdapter;
 
 
@@ -97,6 +111,8 @@ public class ForecastFragment extends Fragment {
             }
         });
 
+        IntentFilter intentFilter = new IntentFilter(FetchWeatherService.ACTION_RETREVE_WEATHER_DATA);
+        getActivity().registerReceiver(mBroadcastReceiver, intentFilter);
         return rootView;
     }
 
