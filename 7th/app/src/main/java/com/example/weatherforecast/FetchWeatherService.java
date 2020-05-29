@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 
 import static android.app.PendingIntent.getActivity;
@@ -48,6 +49,17 @@ public class FetchWeatherService extends Service {
         }
 
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    private ArrayList<IFetchDataListener> mListener = new ArrayList<IFetchDataListener>();
+    private void registerFetchDataListener(IFetchDataListener listener){
+        if(mListener.contains(listener)) return ;
+        mListener.add(listener);
+    }
+
+    private void unregisterFetchDataListener(IFetchDataListener listener){
+        if(!mListener.contains(listener)) return ;
+        mListener.remove(listener);
     }
 
     private void retrieveWeatherData(int startId) {
