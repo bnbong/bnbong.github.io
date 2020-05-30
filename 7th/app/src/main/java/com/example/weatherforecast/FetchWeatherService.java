@@ -73,7 +73,7 @@ public class FetchWeatherService extends Service {
         if(!mListener.contains(listener)) return ;
         mListener.remove(listener);
     }
-
+    
     private void retrieveWeatherData(int startId) {
         FetchWeatherTask weatherTask = new FetchWeatherTask(startId);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);

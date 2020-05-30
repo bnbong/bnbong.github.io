@@ -31,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+//        if(id == R.id.action_refresh) {
+//            startActivity(new Intent(this, ForecastFragment.class));
+//            return true;
+//        }
+
         return super.onOptionsItemSelected(item);
     }
 }

@@ -4,9 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+
+import com.example.weatherforecast.FetchWeatherService;
+import com.example.weatherforecast.FetchWeatherService.FetchWeatherTask;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,8 +22,12 @@ import androidx.loader.content.Loader;
 
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.preference.PreferenceManager;
 import android.text.format.Time;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -64,6 +73,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
             WeatherContract.WeatherColumns.COLUMN_MAX_TEMP,
             WeatherContract.WeatherColumns.COLUMN_MIN_TEMP,
     };
+
 
 
     public static final String ACTION_RETRIEVE_WEATHER_DATA = "com.example.WeatherForecast.RETRIEVE_DATA";
@@ -136,7 +146,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            mServiceConnection = (ServiceConnection) IFetchWeatherService.Stub.asInterface(service);
+            mService = IFetchWeatherService.Stub.asInterface(service);
 
             try {
                 mService.registerFetchDataListener(mFetchDataListener);
@@ -154,7 +164,6 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     private IFetchDataListener.Stub mFetchDataListener = new IFetchDataListener.Stub() {
         @Override
         public void onWeatherDataRetrieved(String[] data) throws RemoteException {
-
         }
     };
 
@@ -192,6 +201,36 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         super.onDestroy();
     }
 
+
+    private void refreshWeatherData(){
+        Intent intent = new Intent(getActivity(),FetchWeatherService.class);
+        intent.setAction(FetchWeatherService.ACTION_RETRIEVE_WEATHER_DATA);
+        getActivity().startService(intent);
+//        if(mService != null){
+//            try {
+//                mService.retrieveWeatherData();
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
+//        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_refresh) {
+            refreshWeatherData();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -219,6 +258,8 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
             }
         });
 
+        IntentFilter intentFilter = new IntentFilter(FetchWeatherService.ACTION_RETRIEVE_WEATHER_DATA);
+        getActivity().registerReceiver(mBroadcastReceiver, intentFilter);
         return rootView;
     }
 
