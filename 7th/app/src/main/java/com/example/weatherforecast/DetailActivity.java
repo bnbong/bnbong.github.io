@@ -25,7 +25,6 @@ public class DetailActivity extends AppCompatActivity {
                     .commit();
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

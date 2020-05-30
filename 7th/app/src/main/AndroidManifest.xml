@@ -19,10 +19,23 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.weatherforecast.MainActivity" />
+        </activity>
         <service
             android:name=".FetchWeatherService"
             android:enabled="true"
             android:exported="true" />
+        <provider
+            android:name=".WeatherProvider"
+            android:authorities="com.example.weatherforecast"
+            android:enabled="true"
+            android:exported="true"></provider>
     </application>
 
 </manifest>
