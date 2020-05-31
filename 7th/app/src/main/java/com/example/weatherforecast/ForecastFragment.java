@@ -34,6 +34,7 @@ import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -254,7 +255,11 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+//                String forecast = String.valueOf(mForecastAdapter.getItem(position));
+//                Toast.makeText(getActivity(), forecast, Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getActivity(), DetailActivity.class);
+//                intent.putExtra("data", forecast);
+//                startActivity(intent);
             }
         });
 

@@ -26,15 +26,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
 
-        if(id == R.string.action_settings) { //why can't R.id.action_settings?
+        if(id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
-//        if(id == R.id.action_refresh) {
-//            startActivity(new Intent(this, ForecastFragment.class));
-//            return true;
-//        }
 
         return super.onOptionsItemSelected(item);
     }
