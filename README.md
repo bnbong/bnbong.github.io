@@ -1,7 +1,11 @@
 한양대학교 ERICA에 재학하는 이준혁(bnbong)의 개인 레포지토리 입니다.
 
+Personal info : Hanyang Univ. ERICA Software department
+Email : bbbong9@gmail.com
 
-### 진행했던 프로젝트 :
+
+### 진행했던 프로젝트
+-------------------------------------------------------
 
 표시된 URL을 통해 각 프로젝트의 내용, 소스코드를 확인할 수 있습니다.
 
@@ -11,6 +15,9 @@
   2. AwesomeChatting App (Worked As : Main Director, Document)
   ***URL*** https://github.com/bnbong/Awesome_ChattingApp
   
+-------------------------------------------------------
+
+
 본 레포지토리는 MIT LICENSE를 준수합니다.
 
 ```
