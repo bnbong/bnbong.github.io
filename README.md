@@ -4,7 +4,7 @@ Personal info : Hanyang Univ. ERICA Software department
 Email : bbbong9@gmail.com
 
 
-### 진행했던 프로젝트
+진행했던 프로젝트
 -------------------------------------------------------
 
 표시된 URL을 통해 각 프로젝트의 내용, 소스코드를 확인할 수 있습니다.
@@ -14,9 +14,7 @@ Email : bbbong9@gmail.com
   
   2. AwesomeChatting App (Worked As : Main Director, Document)
   ***URL*** https://github.com/bnbong/Awesome_ChattingApp
-  
--------------------------------------------------------
-
+ 
 
 본 레포지토리는 MIT LICENSE를 준수합니다.
 
