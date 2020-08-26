@@ -19,9 +19,9 @@ Email : bbbong9@gmail.com
 본 레포지토리는 MIT LICENSE를 준수합니다.
 
 ```
-MIT LICENSE
+MIT License
 
-Copyright (c) 2020 이준혁
+Copyright (c) 2019 bnbong
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
