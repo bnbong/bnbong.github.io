@@ -1,22 +1,6 @@
-한양대학교 ERICA에 재학하는 이준혁(bnbong)의 개인 레포지토리 입니다.
+한양대학교 ERICA에 재학하는 이준혁(bnbong)의 개인 프로젝트 레포지토리 입니다.
 
-Personal info : Hanyang Univ. ERICA Software department
-Email : bbbong9@gmail.com
-
-
-진행했던 프로젝트
--------------------------------------------------------
-
-표시된 URL을 통해 각 프로젝트의 내용, 소스코드를 확인할 수 있습니다.
-
-  1. FoodDecisionMaker (Worked As : Main Director, Main Coder)
-  ***URL***  https://github.com/bnbong/ERICA_FoodDecisionMaker
-  
-  2. AwesomeChatting App (Worked As : Main Director, Document)
-  ***URL*** https://github.com/bnbong/Awesome_ChattingApp
- 
-
-본 레포지토리는 MIT LICENSE를 준수합니다.
+Personal info : [Link](https://github.com/bnbong/bnbong)
 
 ```
 MIT License
@@ -41,3 +25,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+Projects
+-------------------------------------------------------
+
+### Toy Projects
+
+  1. FoodDecisionMaker (Worked As : Main Director, Main Coder)
+  ***URL***  https://github.com/bnbong/ERICA_FoodDecisionMaker
+  
+  2. AwesomeChatting App (Worked As : Main Director, Document)
+  ***URL*** https://github.com/bnbong/Awesome_ChattingApp
+
+  3. SETB-BestPractice (Worked As : Main Director, Main Coder, Document)
+  ***URL*** https://github.com/bnbong/SETB-BestPractice
+
+  4. LectureDatabase_hotelweb_django (Worked As : junior Backend Developer)
+  ***URL*** https://github.com/bnbong/LectureDatabase_hotelweb_django
+
+  5. MyBlog (Worked As : Main Director, Backend Developer, Frontend Developer)
+  ***URL(on going)*** https://github.com/bnbong/MY_BLOG
+ 
+### Main Projects
+
+  1. Application Record-Music backend (Worked As : Backend Developer)
+  ***URL(No source codes available, GiftMusic Team)*** https://github.com/Gift-Music
