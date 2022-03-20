@@ -2,6 +2,7 @@
 title: "About me"
 date: 2020-05-04 06:08:08 -0400
 ---
+
 hello!
 
 I'm JunHyeok Lee(bnbong) who is belong to team '김택윤남현기박종윤이준혁'.
@@ -25,6 +26,5 @@ In my personal repository, you can see my works.
 1. Card Game Five Poker(Using Python) : <https://github.com/bnbong/bnbong.github.io/tree/master/Cardgame%20Poker>
 
 2. FoodDecisionMaker(Using JAVA) : <https://github.com/bnbong/ERICA_FoodDecisionMaker>
-
 
 Thanks for reading OSS-dev introduction!
