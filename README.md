@@ -44,7 +44,9 @@ Projects
   ***URL*** https://github.com/bnbong/LectureDatabase_hotelweb_django
 
   5. MyBlog (Worked As : Main Director, Backend Developer, Frontend Developer)
-  ***URL(on going)*** https://github.com/bnbong/MY_BLOG
+  ***URL(on going)*** 
+   - Backend : https://github.com/bnbong/Myblog_backend
+   - Frontend : https://github.com/bnbong/Myblog_frontend
  
 ### Main Projects
 
