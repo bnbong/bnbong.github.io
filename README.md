@@ -44,11 +44,16 @@ Projects
   ***URL*** https://github.com/bnbong/LectureDatabase_hotelweb_django
 
   5. MyBlog (Worked As : Main Director, Backend Developer, Frontend Developer)
-  ***URL(on going)*** 
+  ***URL*** 
    - Backend : https://github.com/bnbong/Myblog_backend
    - Frontend : https://github.com/bnbong/Myblog_frontend
+   - Posts : https://github.com/bnbong/Myblog_posts
+   
  
 ### Main Projects
 
   1. Application Record-Music backend (Worked As : Backend Developer)
   ***URL(No source codes available, GiftMusic Team)*** https://github.com/Gift-Music
+  
+  2. Kakao Talk Weather Forecasting Bot (Worked As : Main Director, Backend Developer)
+  ***URL*** https://github.com/bnbong/KakaoTalk-channel-WeatherToday
