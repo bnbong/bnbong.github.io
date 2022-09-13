@@ -56,4 +56,4 @@ Projects
   ***URL(No source codes available, GiftMusic Team)*** https://github.com/Gift-Music
   
   2. Kakao Talk Weather Forecasting Bot (Worked As : Main Director, Backend Developer)
-  ***URL*** https://github.com/bnbong/KakaoTalk-channel-WeatherToday
+  ***URL(On Progress)*** https://github.com/bnbong/KakaoTalk-channel-WeatherToday
