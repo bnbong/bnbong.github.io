@@ -1,6 +1,6 @@
 한양대학교 ERICA에 재학하는 이준혁(bnbong)의 개인 프로젝트 레포지토리 입니다.
 
-Personal info : [Link](https://github.com/bnbong/bnbong)
+Personal info : [About Me](https://github.com/bnbong/bnbong)
 
 ```
 MIT License
