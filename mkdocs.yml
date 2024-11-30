@@ -1,0 +1,90 @@
+site_name: bnbong's tech blog
+site_description: 이준혁의 기술 관련 블로그
+site_url: https://bnbong.github.io
+repo_name: bnbong/bnbong.github.io
+repo_url: https://github.com/bnbong/bnbong.github.io
+theme:
+  name: material
+  font:
+    text: JetBrains Mono
+  # Light and Dark Theme Toggle
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: brown
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: brown
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.footer
+    - navigation.instant.progress
+    - navigation.instant.preview
+    - navigation.path
+    - navigation.top
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - search.highlight
+    - search.share
+    - search.suggest
+    - announce.top
+    - announce.dismiss
+  # logo: img/myavatar.jpeg
+  # favicon: img/myavatar.jpeg
+  language: ko
+plugins:
+  - blog:
+      # post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+      #       kwds:
+      #         case: lower
+      draft: true
+      draft_on_serve: false
+      blog_toc: true
+      post_date_format: full
+  - rss:
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+  - search
+  - social:
+      cards_layout_options:
+        font_family: Noto Sans KR
+  - tags:
+      tags_file: blog/tags.md
+
+nav:
+- index.md
+- Blog:
+  - blog/index.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bnbong
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/%EC%A4%80%ED%98%81-%EC%9D%B4-669733231/
+    - icon: fontawesome/solid/globe
+      link: https://blog.naver.com/bnbong
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/j_hyeok__lee/
+    - icon: fontawesome/solid/envelope
+      link: mailto:bbbong9@gmail.com
+  tags:
+    # <tag>: <identifier>
+    test: test
+extra_css:
+  - stylesheets/extra.css
+copyright: Copyright &copy; 2019-2024 bnbong
