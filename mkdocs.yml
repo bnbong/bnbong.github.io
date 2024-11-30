@@ -4,6 +4,7 @@ site_url: https://bnbong.github.io
 repo_name: bnbong/bnbong.github.io
 repo_url: https://github.com/bnbong/bnbong.github.io
 theme:
+  custom_dir: overrides
   name: material
   font:
     text: JetBrains Mono
@@ -26,6 +27,7 @@ theme:
   features:
     - navigation.instant
     - navigation.instant.prefetch
+    - navigation.indexes
     - navigation.footer
     - navigation.instant.progress
     - navigation.instant.preview
@@ -34,23 +36,23 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.expand
     - search.highlight
     - search.share
     - search.suggest
-    - announce.top
+    # - announce.top
     - announce.dismiss
-  # logo: img/myavatar.jpeg
-  # favicon: img/myavatar.jpeg
   language: ko
 plugins:
   - blog:
-      # post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-      #       kwds:
-      #         case: lower
+      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+            kwds:
+              case: lower
       draft: true
       draft_on_serve: false
       blog_toc: true
       post_date_format: full
+      post_url_format: "{date}/{slug}"
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
@@ -66,11 +68,20 @@ plugins:
       tags_file: blog/tags.md
 
 nav:
-- index.md
+- About Me: index.md
 - Blog:
   - blog/index.md
+  - blog/tags.md
+- Projects:
+  - projects/index.md
+  - 개인 프로젝트 :
+    - Bifrost : projects/bifrost.md
+  - 팀 프로젝트 :
+    - Project Pinned : projects/project-pinned.md
 
 extra:
+  status:
+    new: Recently added
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/bnbong
@@ -83,8 +94,38 @@ extra:
     - icon: fontawesome/solid/envelope
       link: mailto:bbbong9@gmail.com
   tags:
-    # <tag>: <identifier>
-    test: test
+    <tag>: <identifier>
+  blog:
+    dir: blog
+    author: bnbong
+    author_image: https://avatars.githubusercontent.com/bnbong
+    words_read_per_minute: 300
+    list_length: 25
+    extended_preview: true
+  analytics:
+    provider: google
+    id: G-G1E1JBX2WR
+
+markdown_extensions:
+  - toc:
+      title: On this page
+      permalink: true
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - meta
+  - def_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.caret
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
 extra_css:
   - stylesheets/extra.css
 copyright: Copyright &copy; 2019-2024 bnbong

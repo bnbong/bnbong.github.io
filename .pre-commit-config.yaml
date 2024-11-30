@@ -7,7 +7,8 @@ repos:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
     -   id: check-yaml
-    -   id: check-added-large-files
+        args:
+            -   --unsafe
 ci:
     autofix_commit_msg: '[pre-commit] Auto formatting from pre-commit hooks'
     autoupdate_commit_msg: '[pre-commit] pre-commit autoupdate'

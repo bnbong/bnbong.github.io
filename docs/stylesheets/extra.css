@@ -1,7 +1,7 @@
 :root {
     --md-primary-fg-color:        #E1B978;
-    --md-primary-fg-color--light: #E9C98F;
-    --md-primary-fg-color--dark:  #D6A65E;
+    --md-primary-fg-color--light: #f2e8d6;
+    --md-primary-fg-color--dark:  #b87b1e;
 }
 
 [data-md-color-scheme="slate"] {

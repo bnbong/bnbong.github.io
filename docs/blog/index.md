@@ -1,7 +1,6 @@
 ---
-tags:
-  - test
+title: 최근 업데이트
+description: 최근 업데이트된 글들을 확인할 수 있습니다.
 ---
-# initial index.md
 
-hello~~
+# ^^최근 업데이트^^
