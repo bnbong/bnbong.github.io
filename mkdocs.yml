@@ -25,8 +25,6 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
-    - navigation.instant
-    - navigation.instant.prefetch
     - navigation.indexes
     - navigation.footer
     - navigation.instant.progress
@@ -40,7 +38,6 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
-    # - announce.top
     - announce.dismiss
   language: ko
 plugins:
