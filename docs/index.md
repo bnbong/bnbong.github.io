@@ -116,7 +116,7 @@ hide:
                                 <div class="skills__data">
                                     <div class="skills__titles">
                                         <h3 class="skills__name">Spring</h3>
-                                        <span class="skills__number">65%</span>
+                                        <span class="skills__number">75%</span>
                                     </div>
                                     <div class="skills__bar">
                                         <span class="skills__percentage skills__spring"></span>
@@ -198,7 +198,7 @@ hide:
                                 <div class="skills__data">
                                     <div class="skills__titles">
                                         <h3 class="skills__name">Oracle Cloud</h3>
-                                        <span class="skills__number">70%</span>
+                                        <span class="skills__number">80%</span>
                                     </div>
                                     <div class="skills__bar">
                                         <span class="skills__percentage skills__oc"></span>
@@ -328,7 +328,7 @@ hide:
                                     <span class="qualification__subtitle">Information System Management - 정보체계관리(30010)</span>
                                     <div class="qualification__calendar">
                                         <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2021 - 2023
+                                        2021.04 - 2023.01
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +339,38 @@ hide:
                                     <span class="qualification__subtitle">GiftMusic - SNS start-up company</span>
                                     <div class="qualification__calendar">
                                         <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2023 - now
+                                        2023.02 - 2023.05
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="qualification__rounder"></span>
+                                    <span class="qualification__line"></span>
+                                </div>
+                            </div>
+                            <!--==================== QUALIFICATION 4 ====================-->
+                            <div class="qualification__data">
+                                <div></div>
+                                <div>
+                                    <span class="qualification__rounder"></span>
+                                    <span class="qualification__line"></span>
+                                </div>
+                                <div>
+                                    <h3 class="qualification__title">Backend Enginner & DevOps Engineer</h3>
+                                    <span class="qualification__subtitle">K-Buddy - start-up company</span>
+                                    <div class="qualification__calendar">
+                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
+                                        2023.09 - 2024.06
+                                    </div>
+                                </div>
+                            </div>
+                            <!--==================== QUALIFICATION 5 ====================-->
+                            <div class="qualification__data">
+                                <div>
+                                    <h3 class="qualification__title">IaaS Tech Plan intern</h3>
+                                    <span class="qualification__subtitle">Kakao Enterprise Corp. - Cloud Service Provider</span>
+                                    <div class="qualification__calendar">
+                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
+                                        2024.07 - 2024.08
                                     </div>
                                 </div>
                                 <div>

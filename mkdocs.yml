@@ -52,7 +52,8 @@ plugins:
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
-        as_creation: date
+        as_creation: date.created
+        as_update: date.updated
       comments_path: "#__comments"
   - search
   - social:
@@ -73,9 +74,25 @@ nav:
   - projects/index.md
   - 개인 프로젝트 :
     - Bifrost : projects/bifrost.md
+    - TooKindFriendChat : projects/tookindfriendchat.md
+    - JaramUniv_Sugang-API : projects/univapi.md
+    - rickTcal_DayLife : projects/ricktcal.md
+    - KakaoTalk-channel-WeatherToday : projects/kakaotalk-weatherforecast.md
   - 팀 프로젝트 :
-    - Project Pinned : projects/project-pinned.md
-
+    - Project-Pinned : projects/project-pinned.md
+    - Awesome Chatting App : projects/awesomechat.md
+    - Mugip : projects/mugip.md
+    - KBuddy : projects/kbuddy.md
+    - Jaram Groupware Hub : projects/jgw-hub.md
+    - Jaram Groupware Penalty Python : projects/jgw-penalty-python.md
+    - Jaram Groupware Attendance Python : projects/jgw-attendance-python.md
+    - Phishing QR detector : projects/qr-phishing-detector.md
+  - 오픈소스 프로젝트:
+    - Azure SDK for Python : projects/azure-sdk-python.md
+    - Azure SDK for Python Korean Docs : projects/azure-sdk-python-kor.md
+    - FastAPI FastKit : projects/fastapi-fastkit.md
+    - Blog Post Workflow : projects/blog-post-workflow.md
+    - FEMU Monitoring : projects/femu-monitoring.md
 extra:
   status:
     new: Recently added

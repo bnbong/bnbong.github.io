@@ -1,27 +1,40 @@
+---
+title: Project Pinned
+description: 지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
+  - bnbong
+tags:
+  - Django
+  - Next.js
+  - PostgreSQL
+  - Cloud
+  - Docker
+  - Web Application
+---
+
 # Project Pinned
 
-# 개요
+## 개요
 
 지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
 
 해당 프로젝트는 2023년 공개SW 개발자대회, 제 11회 문화데이터 활용 경진대회 공모전 출품용으로 진행한 프로젝트이다.
 
-## 저장소
+### 저장소
 
-https://github.com/bnbong/Project-Pinned
+<https://github.com/bnbong/Project-Pinned>
 
-## 팀원 Info
+### 팀원 Info
 
 1. 이준혁 (팀장, 백엔드, 프로젝트 설계 및 디자인, 스프린트 매니징, 아키텍처 설계)
 2. 박종윤 (백엔드, API 테스트)
 3. 최수용 (프론트엔드, UI/UX 디자인 및 구현)
 4. 허재원 (프론트엔드, UI/UX 디자인 및 구현)
 
-# 소개
+## 소개
 
 [핀드 - 내 추억 속의 랜드마크 시연 영상](https://youtu.be/u4GKCeECjJE)
 
-시연 영상
+> 시연 영상
 
 지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
 
@@ -33,11 +46,11 @@ https://github.com/bnbong/Project-Pinned
 
 공모전 수상까지 가진 못했지만 1달 정도 진행했던 규모있는 프로젝트로써, 프로젝트 회고 또한 진행했다.
 
-## 개발 회고
+### 개발 회고
 
 [[Web Application] Project-Pinned 개발 회고](https://blog.naver.com/bnbong/223217885371)
 
-# Stack
+## Stack
 
 - Framework: Backend - Django, Python (3.10.10) / Frontend - Next.js, tailwind.css
 - DB: PostgreSQL
@@ -47,17 +60,17 @@ https://github.com/bnbong/Project-Pinned
 - Hosting: AWS (현재는 인스턴스를 삭제한 상태)
 - Issue Manage: Jira
 
-# Architecture
+## Architecture
 
-## System
+### System
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/2dd0a9b0-1aca-4d61-9ed9-d2945bd19fe6/816c29a4-8922-4e15-8d82-1de0bd661d5d/Untitled.png)
+![Untitled](img/projectpinned1.png)
 
-## CI/CD
+### CI/CD
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/2dd0a9b0-1aca-4d61-9ed9-d2945bd19fe6/4e2ea288-a714-4608-a136-6c3420e7099a/Untitled.png)
+![Untitled](img/projectpinned2.png)
 
-# 비고
+## 비고
 
 버전 1.1까지 업데이트를 진행했다.
 

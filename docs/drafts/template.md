@@ -1,10 +1,11 @@
----
+<!-- ---
 title: 제목
 description: 설명
 authors:
   - bnbong
-date: 2024-02-10
-updated: 2024-02-10
+date:
+  created: 2024-02-10
+  updated: 2024-02-10
 categories:
   - test
 tags:
@@ -16,6 +17,6 @@ draft: true
 
 <!-- more -->
 
-# 본문 타이틀 1
+<!-- # 본문 타이틀 1
 
-본문 내용
+본문 내용 -->
