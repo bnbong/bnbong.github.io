@@ -53,9 +53,6 @@ plugins:
       match_path: blog/posts/.*
       date_from_meta:
         as_creation: date
-      categories:
-        - categories
-        - tags
       comments_path: "#__comments"
   - search
   - social:

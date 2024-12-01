@@ -1,5 +1,6 @@
 ---
 title: 제목
+description: 설명
 authors:
   - bnbong
 date: 2024-02-10
