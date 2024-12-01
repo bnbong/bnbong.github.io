@@ -1,5 +1,5 @@
 # Tags
 
-Following is a list of relevant tags:
+블로그 태그들:
 
 <!-- material/tags -->

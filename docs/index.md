@@ -11,7 +11,7 @@ hide:
         <!--==================== ICONS ====================-->
         <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
         <!--==================== CSS ====================-->
-        <link rel="stylesheet" href="stylesheets/extra.css">
+        <link rel="stylesheet" href="assets/stylesheets/portfolio.css">
     </head>
     <body>
         <main class="main">

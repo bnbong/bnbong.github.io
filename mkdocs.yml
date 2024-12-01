@@ -10,26 +10,29 @@ theme:
     text: JetBrains Mono
   # Light and Dark Theme Toggle
   palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: custom
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: custom
-      accent: brown
       toggle:
-        icon: material/weather-night
+        icon: material/brightness-7
         name: Switch to dark mode
+    # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: custom
-      accent: brown
       toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
+        icon: material/brightness-4
+        name: Switch to system preference
   features:
     - navigation.indexes
     - navigation.footer
-    - navigation.instant.progress
-    - navigation.instant.preview
-    - navigation.path
     - navigation.top
     - navigation.tracking
     - navigation.tabs
@@ -39,15 +42,17 @@ theme:
     - search.share
     - search.suggest
     - announce.dismiss
+    - toc.follow
   language: ko
 plugins:
   - blog:
+      blog_toc: true
       post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-            kwds:
-              case: lower
+        kwds:
+          case: lower
       draft: true
       draft_on_serve: false
-      blog_toc: true
+      draft_if_future_date: true
       post_date_format: full
       post_url_format: "{date}/{slug}"
   - rss:
@@ -57,12 +62,16 @@ plugins:
       categories:
         - categories
         - tags
+      comments_path: "#__comments"
   - search
   - social:
       cards_layout_options:
         font_family: Noto Sans KR
   - tags:
       tags_file: blog/tags.md
+
+not_in_nav: |
+  /drafts/**/*.md
 
 nav:
 - About Me: index.md
@@ -90,6 +99,9 @@ extra:
       link: https://www.instagram.com/j_hyeok__lee/
     - icon: fontawesome/solid/envelope
       link: mailto:bbbong9@gmail.com
+    - icon: material/rss
+      link: /feed_rss_updated.xml
+      name: Subscribe to our RSS Feed
   tags:
     <tag>: <identifier>
   blog:
@@ -99,13 +111,16 @@ extra:
     words_read_per_minute: 300
     list_length: 25
     extended_preview: true
+    archive_toc: true
+    pagination_per_page: 10
+    pagination_keep_content: true
   analytics:
     provider: google
     id: G-G1E1JBX2WR
 
 markdown_extensions:
   - toc:
-      title: On this page
+      title: 이 페이지의 요소들
       permalink: true
   - attr_list
   - md_in_html
@@ -122,6 +137,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+hooks:
+  - hooks/socialmedia.py
 
 extra_css:
   - stylesheets/extra.css

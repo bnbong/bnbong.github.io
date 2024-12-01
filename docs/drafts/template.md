@@ -8,6 +8,7 @@ categories:
   - test
 tags:
   - test
+comments: true
 draft: true
 ---
 미리보기 내용
