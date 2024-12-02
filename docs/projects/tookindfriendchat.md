@@ -49,5 +49,5 @@ tags:
 ## 비고
 
 - 채팅 응답은 OpenAI API 응답 속도에 영향을 받으므로, 채팅 전송에 실패하거나 응답이 늦어질 수 있습니다.
-- 채팅 응답은 Text 기반 AI 모델인 GPT 3.5 turbo를 사용하였습니다(Reference : https://platform.openai.com/docs/guides/gpt/function-calling).
+- 채팅 응답은 Text 기반 AI 모델인 GPT 3.5 turbo를 사용하였습니다(Reference : <https://platform.openai.com/docs/guides/gpt/function-calling>).
 - 채팅에 작성한 단어 수가 너무 많을 때(4096 tokens 이상) 채팅 전송이 실패할 수 있습니다.

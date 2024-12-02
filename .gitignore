@@ -7,4 +7,6 @@ env*
 .pytest_cache
 .DS_Store
 __pycache__/
+*.py[cod]
+*$py.class
 *.pyc

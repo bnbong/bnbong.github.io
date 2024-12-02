@@ -17,7 +17,7 @@ bnbong Server에 올라가있는 MSA 서비스들의 Proxy 연결을 할 목적�
 
 ### 저장소
 
-https://github.com/bnbong/BnbongServerGateway
+<https://github.com/bnbong/BnbongServerGateway>
 
 ## 소개
 

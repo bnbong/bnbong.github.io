@@ -28,7 +28,7 @@ tags:
 
 ## API 문서
 
-- (Version 2) https://jgw.gitbook.io/jgw-hub-v2/
+- (Version 2) <https://jgw.gitbook.io/jgw-hub-v2/>
 
 단, v2 API 문서의 경우 배포된 Gitbook 문서 페이지에 일부 response 필드가 누락되거나 잘못 표기된 경우가 있음. 소스 폴더 docs에 있는 openapi.json 혹은 openapi.yaml 파일을 다운 받아 Swagger 뷰어로 확인하는 것을 권장.
 
