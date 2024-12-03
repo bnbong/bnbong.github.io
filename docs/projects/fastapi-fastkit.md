@@ -19,7 +19,7 @@ tags:
 
 cli operation으로 FastAPI 프로젝트를 탬플릿으로 빠르게 생성하는 패키지
 
-FastAPI 개발자 tiangolo가 최근 개발한 fastapi-cli 프로젝트의 개발 의의를 이어받아 개발한 오픈소스 패키지 프로젝트
+FastAPI 개발자 tiangolo가 최근 개발한 fastapi-cli 프로젝트의 개발 의의를 이어받아 ==개발한== 오픈소스 패키지 프로젝트이다.
 
 :fontawesome-regular-copyright: copyright : bnbong
 

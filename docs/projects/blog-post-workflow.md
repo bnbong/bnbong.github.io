@@ -16,7 +16,7 @@ tags:
 
 Blog Post Workflow 가이드 기여
 
-NAVER Blog RSS feed를 적용하는 방법에 대한 가이드 기여, 공식 문서에 반영
+NAVER Blog RSS feed를 적용하는 방법에 대한 가이드 기여, 공식 문서에 반영됨.
 
 ## 기여 내용
 

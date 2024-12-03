@@ -15,7 +15,7 @@ tags:
 
 ![kakaotalk-weatherforecast](img/channel_thumbnail.jpg)
 
-지역 날씨를 알려주는 카카오톡 날씨 예보 봇 채널 프로젝트.
+지역 날씨를 알려주는 카카오톡 날씨 예보 봇 채널 프로젝트이다.
 
 ### 저장소
 

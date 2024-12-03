@@ -17,7 +17,7 @@ Azure SDK Python 공식 가이드 문서 한글화
 
 2023 Open Source Contribution Academy(OSSCA) 참여형 프로젝트 `Azure 클라우드 Python 오픈소스 SDK 도구 및 문서 팀` 활동
 
-원문 문서 중 Python 가이드라인 - 구현 부분을 한글화하여 문서화하였습니다.
+원문 문서 중 Python 가이드라인 - 구현 부분을 한글화하여 문서화를 수행함.
 
 ### 저장소
 

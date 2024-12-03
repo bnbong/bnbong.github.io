@@ -15,6 +15,8 @@ tags:
 
 ## 개요
 
+![Untitled](img/projectpinned.png)
+
 지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
 
 해당 프로젝트는 2023년 공개SW 개발자대회, 제 11회 문화데이터 활용 경진대회 공모전 출품용으로 진행한 프로젝트이다.
@@ -32,9 +34,7 @@ tags:
 
 ## 소개
 
-[핀드 - 내 추억 속의 랜드마크 시연 영상](https://youtu.be/u4GKCeECjJE)
-
-> 시연 영상
+[:fontawesome-brands-youtube:{ .youtube } 핀드 - 내 추억 속의 랜드마크 시연 영상](https://youtu.be/u4GKCeECjJE)
 
 지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
 
@@ -59,6 +59,16 @@ tags:
 - Container: Docker
 - Hosting: AWS (현재는 인스턴스를 삭제한 상태)
 - Issue Manage: Jira
+
+## 역할
+
+- 프로젝트 설계 및 디자인
+- 백엔드 개발
+- 스프린트 매니징
+- 이슈 관리
+- 테스트 코드 작성
+- 문서화
+- 클라우드 아키텍처 설계 및 구축
 
 ## Architecture
 

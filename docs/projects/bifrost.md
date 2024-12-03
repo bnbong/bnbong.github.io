@@ -44,69 +44,71 @@ Bnbong Server 에서 작동되는 각 Micro service Container 들의 Endpoint에
 
 현재는 Server 기능만 존재하다. 편의성을 위해 endpoint proxy를 연결하는 액션을 도와줄 Client 프로젝트가 추후 추가될 수 있다.
 
-### Spring Cloud Gateway를 사용하여 특정 Micro Service Endpoint에Proxy 연결하기
+??? warning "MSA Gateway 사용 가이드"
 
-#### 프록시할 특정 서비스의 Endpoint 추가하기
+    ### Spring Cloud Gateway를 사용하여 특정 Micro Service Endpoint에Proxy 연결하기
 
-```
-* 요청 URL
-POST https://api.bnbong.xyz/actuator/gateway/routes/<추가할_서비스명>
+    #### 프록시할 특정 서비스의 Endpoint 추가하기
 
-* Request Body
-{
-    "id": "<추가할_서비스명>",
-    "predicates": [{
-        "name": "Path",
-        "args": {
-            "pattern": "<추가할_endpoint>"
-        }
-    }],
-    "filters": [],
-    "uri": "<서비스 docker container ip>",
-    "order": 0
-}
+    ```
+    * 요청 URL
+    POST https://api.bnbong.xyz/actuator/gateway/routes/<추가할_서비스명>
 
-# 예시
-* 요청 URL
-POST https://api.bnbong.xyz/actuator/gateway/routes/test_jaram_sugang
+    * Request Body
+    {
+        "id": "<추가할_서비스명>",
+        "predicates": [{
+            "name": "Path",
+            "args": {
+                "pattern": "<추가할_endpoint>"
+            }
+        }],
+        "filters": [],
+        "uri": "<서비스 docker container ip>",
+        "order": 0
+    }
 
-* Request Body
-{
-    "id": "test_jaram_sugang",
-    "predicates": [{
-        "name": "Path",
-        "args": {
-            "pattern": "/api/ping/**"
-        }
-    }],
-    "filters": [],
-    "uri": "http://172.20.0.9:9090",  # docker container 이름을 사용해도 됨
-    "order": 0
-}
-```
+    # 예시
+    * 요청 URL
+    POST https://api.bnbong.xyz/actuator/gateway/routes/test_jaram_sugang
 
-#### 프록시할 특정 서비스의 Endpoint 제거하기
+    * Request Body
+    {
+        "id": "test_jaram_sugang",
+        "predicates": [{
+            "name": "Path",
+            "args": {
+                "pattern": "/api/ping/**"
+            }
+        }],
+        "filters": [],
+        "uri": "http://172.20.0.9:9090",  # docker container 이름을 사용해도 됨
+        "order": 0
+    }
+    ```
 
-```
-* 요청 URL
-DELETE https://api.bnbong.xyz/actuator/gateway/routes/<서비스명>
+    #### 프록시할 특정 서비스의 Endpoint 제거하기
 
-# 예시
-* 요청 URL
-DELETE https://api.bnbong.xyz/actuator/gateway/routes/test_jaram_sugang
-```
+    ```
+    * 요청 URL
+    DELETE https://api.bnbong.xyz/actuator/gateway/routes/<서비스명>
 
-#### Gateway Refresh (변경 사항 적용)
+    # 예시
+    * 요청 URL
+    DELETE https://api.bnbong.xyz/actuator/gateway/routes/test_jaram_sugang
+    ```
 
-```
-* 요청 URL
-POST https://api.bnbong.xyz/actuator/gateway/refresh
-```
+    #### Gateway Refresh (변경 사항 적용)
 
-### Spring Cloud Gateway에 적용된 Endpoint 확인하기
+    ```
+    * 요청 URL
+    POST https://api.bnbong.xyz/actuator/gateway/refresh
+    ```
 
-<https://api.bnbong.xyz/actuator/gateway/routes>
+    ### Spring Cloud Gateway에 적용된 Endpoint 확인하기
 
-### 참고
+    <https://api.bnbong.xyz/actuator/gateway/routes>
 
-[Actuator API :: Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/actuator-api.html#gateway-retrieving-information-about-a-particular-route)
+    ### 참고
+
+    [Actuator API :: Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/actuator-api.html#gateway-retrieving-information-about-a-particular-route)

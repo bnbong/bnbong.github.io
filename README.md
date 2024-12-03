@@ -29,5 +29,5 @@ https://squidfunk.github.io/mkdocs-material/conventions/
 ## MileStone
 
 - [ ] Portfolio, Blog, Project 컨텐츠 추가
-- [ ] RSS 피드 에러 해결 (no rendering)
+- [ ] project index.md 그리드 카드 사진 추가
 - [ ] Notion과 연동? (가능성 낮음)

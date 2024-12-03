@@ -335,7 +335,7 @@ hide:
                             <!--==================== QUALIFICATION 3 ====================-->
                             <div class="qualification__data">
                                 <div>
-                                    <h3 class="qualification__title">Backend Maintenance</h3>
+                                    <h3 class="qualification__title">Backend Enginner & Maintenance</h3>
                                     <span class="qualification__subtitle">GiftMusic - SNS start-up company</span>
                                     <div class="qualification__calendar">
                                         <iconify-icon icon="tabler:calendar"></iconify-icon>
