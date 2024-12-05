@@ -15,7 +15,10 @@ hide:
 
     <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
 
+
     ### 프로젝트 개요
+
+    ![Bifrost Project Image](img/bifrost_logo.png){ width="30%" }
 
     bnbong Server에 올라가있는 MSA 서비스들의 Proxy 연결을 할 목적으로 개발된 Gateway
 
@@ -35,6 +38,8 @@ hide:
     <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
 
     ### 프로젝트 개요
+
+    ![TooKindFriendChat Project Image](img/tookindfriendchat.png){ width="30%" }
 
     나에게 모든걸 맞춰주는 환상적인 친구와 채팅하는 앱
 
@@ -73,6 +78,9 @@ hide:
 
     ### 프로젝트 개요
 
+
+    ![rickTcal_DayLife Project Image](img/butter.jpeg){ width="30%" }
+
     [트릭컬 리바이브 창작물] 볼따구 라이프로 스트레스를 줄여주는 데스크톱 앱
 
     ### 역할
@@ -93,6 +101,8 @@ hide:
     <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
 
     ### 프로젝트 개요
+
+    ![KakaoTalk-channel-WeatherToday Project Image](img/channel_thumbnail.jpg){ width="30%" }
 
     지역 날씨를 알려주는 카카오톡 날씨 예보 봇 채널
 
@@ -123,6 +133,8 @@ hide:
 
     ### 프로젝트 개요
 
+    ![Project Pinned Project Image](img/projectpinned.png){ width="30%" }
+
     지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
 
     ### 역할
@@ -144,6 +156,8 @@ hide:
     <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
 
     ### 프로젝트 개요
+
+    ![Awesome_ChattingApp Project Image](img/awesomechatlogo.png){ width="30%" }
 
     익명성이 보장되는 누구나 빠르고 쉽게 다수의 사람들과 채팅을 할 수 있는 채팅앱
 
@@ -167,6 +181,8 @@ hide:
 
     ### 프로젝트 개요
 
+    ![Mugip Project Image](img/mugip.png){ width="30%" }
+
     음악 공유 SNS 플랫폼
 
     스타트업 GiftMusic 프로젝트.
@@ -188,6 +204,8 @@ hide:
     <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
 
     ### 프로젝트 개요
+
+    ![K-Buddy Project Image](img/kbuddy.png){ width="30%" }
 
     외국인의 진정한 로컬 경험을 위한 한국 길라잡이
 
