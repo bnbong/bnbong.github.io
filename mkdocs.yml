@@ -137,7 +137,6 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.snippets
   - pymdownx.critic
-  - pymdownx.caret
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
