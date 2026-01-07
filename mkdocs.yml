@@ -49,6 +49,9 @@ plugins:
       draft_if_future_date: true
       post_date_format: full
       post_url_format: "{date}/{slug}"
+      pagination_per_page: 5
+      pagination_keep_content: true
+      archive_toc: true
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
@@ -120,8 +123,6 @@ extra:
     list_length: 25
     extended_preview: true
     archive_toc: true
-    pagination_per_page: 10
-    pagination_keep_content: true
   analytics:
     provider: google
     id: G-G1E1JBX2WR
@@ -160,6 +161,7 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
+  - javascripts/extra.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 copyright: Copyright &copy; 2019-2025 bnbong
