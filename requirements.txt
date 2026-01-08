@@ -37,7 +37,7 @@ platformdirs==4.3.6
 pre_commit==4.0.1
 pycparser==2.22
 Pygments==2.18.0
-pymdown-extensions==10.12
+pymdown-extensions==10.16.1
 python-dateutil==2.9.0.post0
 PyYAML==6.0.2
 pyyaml_env_tag==0.1
