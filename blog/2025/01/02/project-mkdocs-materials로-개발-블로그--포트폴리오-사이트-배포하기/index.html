@@ -1,0 +1,2812 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="오픈소스를 활용하여 효율적으로 내 사이트 배포하는 방법">
+      
+      
+      
+        <link rel="canonical" href="https://bnbong.github.io/blog/2025/01/02/project-mkdocs-materials%EB%A1%9C-%EA%B0%9C%EB%B0%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8--%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/">
+      
+      
+        <link rel="prev" href="../../../../2024/12/30/computer-network-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B0%9C%EC%9A%94/">
+      
+      
+        <link rel="next" href="../../15/computer-network-arp-protocol/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 피드 생성완료" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS 피드 업데이트완료" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+    
+    
+      
+        <title>[Project] MKDocs-materials로 개발 블로그 & 포트폴리오 사이트 배포하기 - bnbong's tech blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1E1JBX2WR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G1E1JBX2WR');
+</script>
+
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="[Project] MKDocs-materials로 개발 블로그 & 포트폴리오 사이트 배포하기 - bnbong's tech blog" >
+      
+        <meta  property="og:description"  content="오픈소스를 활용하여 효율적으로 내 사이트 배포하는 방법" >
+      
+        <meta  property="og:image"  content="https://bnbong.github.io/assets/images/social/blog/posts/20250102-tech-blog/20250102.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://bnbong.github.io/blog/2025/01/02/project-mkdocs-materials%EB%A1%9C-%EA%B0%9C%EB%B0%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8--%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="[Project] MKDocs-materials로 개발 블로그 & 포트폴리오 사이트 배포하기 - bnbong's tech blog" >
+      
+        <meta  name="twitter:description"  content="오픈소스를 활용하여 효율적으로 내 사이트 배포하는 방법" >
+      
+        <meta  name="twitter:image"  content="https://bnbong.github.io/assets/images/social/blog/posts/20250102-tech-blog/20250102.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="brown">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mkdocs-materials" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../../../.." title="bnbong&#39;s tech blog" class="md-header__button md-logo" aria-label="bnbong's tech blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bnbong's tech blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [Project] MKDocs-materials로 개발 블로그 & 포트폴리오 사이트 배포하기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="brown"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="brown"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="공유" aria-label="공유" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bnbong/bnbong.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bnbong/bnbong.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  About Me
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../projects/" class="md-tabs__link">
+          
+  
+    
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="bnbong&#39;s tech blog" class="md-nav__button md-logo" aria-label="bnbong's tech blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    bnbong's tech blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bnbong/bnbong.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bnbong/bnbong.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    아카이브
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            아카이브
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2026/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2026
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    카테고리
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            카테고리
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/computer-science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/opensource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenSource
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../projects/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    개인 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            개인 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/bifrost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bifrost
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/tookindfriendchat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TooKindFriendChat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/univapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JaramUniv_Sugang-API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/ricktcal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rickTcal_DayLife
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/kakaotalk-weatherforecast/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KakaoTalk-channel-WeatherToday
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    팀 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            팀 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/project-pinned/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project-Pinned
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/awesomechat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Awesome Chatting App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/mugip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mugip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/kbuddy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KBuddy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-hub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Hub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-penalty-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Penalty Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-attendance-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Attendance Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/qr-phishing-detector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phishing QR detector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    오픈소스 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            오픈소스 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/azure-sdk-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure SDK for Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/azure-sdk-python-kor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure SDK for Python Korean Docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/fastapi-fastkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FastAPI FastKit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/blog-post-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog Post Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/femu-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FEMU Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="이 페이지의 요소들">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      이 페이지의 요소들
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mkdocs-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      MKDocs-materials 소개
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mkdocs-materials_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MKDocs-materials 셋업
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MKDocs-materials 셋업">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      설치
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#huge-time-saving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Huge Time-saving
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Huge Time-saving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      사이트 호스팅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      사이트 컴포넌트
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="사이트 컴포넌트">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 마크다운 렌더링 + 포멧팅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 페이지네이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rss" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. RSS 피드
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 사이트 분석
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 다크모드
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 검색
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 인터렉션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 댓글 및 태그
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      번외
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      마치며
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    메인으로 돌아가기
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <a href="https://bnbong.github.io/">
+                        <img src="https://avatars.githubusercontent.com/bnbong" alt="이준혁">
+                      </a>
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://bnbong.github.io/">이준혁</a>
+                        
+                      </strong>
+                      <br>
+                      개발하는 비엔봉
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    메타데이터
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-01-02 00:00:00+00:00" class="md-ellipsis">2025년 1월 2일 목요일</time>
+                      </div>
+                    </li>
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
+                          <time datetime="2025-01-03 00:00:00+00:00" class="md-ellipsis">2025년 1월 3일 금요일</time>
+                        </div>
+                      </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            카테고리
+                            
+                              <a href="../../../../category/opensource/">OpenSource</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              읽는시간 16분
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+  
+
+<nav class="md-tags" >
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#mkdocs" class="md-tag md-tag-icon">MKDocs</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#portfolio" class="md-tag md-tag-icon">Portfolio</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#markdown" class="md-tag md-tag-icon">Markdown</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#rss" class="md-tag md-tag-icon">RSS</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#blog" class="md-tag md-tag-icon">Blog</a>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>[Project] MKDocs-materials로 개발 블로그 & 포트폴리오 사이트 배포하기</h1>
+
+<p>개발자에겐 자투리 시간이 생길때마다 해야하는 중요한 행동들이 있다.</p>
+<p>우선 가장 중요한건 개발자 몸뚱아리의 생명을 늘려주는 클라이밍 같은 운동과 가벼운 조깅, 헬스이며 그 다음으로 중요한건 자기계발인데 이 시간을 본인의 취미활동을 하면서 보내는 것도 좋으나 개발자로써 몸값을 올리기 위해서라면 사이드 프로젝트를 소화하는 것이 좋다.</p>
+<p>그러기 위해서 개발자는 물론이고 개발자 지망생들도 쉽게 머리를 들이밀어 보는 것이 블로그 프로젝트이다. 블로그 프로젝트의 특징이라면 핵심 기능으로 포스트를 업로드하고 이를 웹페이지에 렌더해주는 정말 단순한 작업밖에 없기 때문에 프로젝트 수행 접근성이 뛰어나다는 점이 있다.</p>
+<p>그러나 블로그 프로젝트를 집중적으로 수행하다보면 생각보다 블로그 프로젝트에 신경써야하는 사이드 기능들이 많다는 것을 알 수 있다. 페이지네이션이나 댓글 기능, 검색 기능 등 다양한 사이드 기능들을 추가하다보면 신경쓸게 기하급수적으로 늘어나면서 잘못하다가는 블로그 프로젝트 자체를 폐기할 수도 있다.</p>
+<p>진성 개발자라면 시간을 계속 쏟아부어 이를 해결할 수 있다. 이런 문제들을 해결하면서 체급을 올리는 것도 마냥 나쁘다고만 할 수 없으나 우리의 시간은 많지 않다.</p>
+<p>이런 고민은 우리만 하는 것이 아니다. 이미 똑똑한 형님들이 이런 기능들을 이미 구현해주고 우리가 쉽게 사용하도록 오픈소스로 공개해놨다. 이걸 사용하면 우리는 더 많은 시간을 자기계발에 쏟을 수 있고 더 많은 시간을 사이드 프로젝트에 쏟을 수 있다.</p>
+<p>이번 포스팅은 그런 도구들 중 하나인 <a href="https://squidfunk.github.io/mkdocs-material/">MKDocs-materials</a>를 활용하여 개발 블로그 &amp; 포트폴리오 사이트를 배포하는 방법에 대해 서술한다.</p>
+<hr />
+<h2 id="mkdocs-materials">MKDocs-materials 소개<a class="headerlink" href="#mkdocs-materials" title="Permanent link">&para;</a></h2>
+<p>먼저 MKDocs-materials를 소개하기 전에 이녀석의 부모라고 할 수 있는 MKDocs에 대해 짧게 소개해보면 다음과 같다.</p>
+<div class="admonition info">
+<p class="admonition-title">MKDocs란?</p>
+<p>MKDocs는 마크다운 파일(.md)로 부터 정적사이트를 생성할 수 있는 도구이다.</p>
+<p><a href="https://en.wikipedia.org/wiki/MkDocs">https://en.wikipedia.org/wiki/MkDocs</a></p>
+</div>
+<p>위 설명을 보다 보면 정적사이트가 무엇인지 궁금해질 것이다. 개념을 짧게 설명하자면 <mark>정적사이트란 웹페이지를 렌더링하는 방식이 아닌 미리 렌더링된 웹페이지를 제공하는 방식을 말한다.</mark> 즉 웹페이지를 렌더링하는 방식이 아닌 미리 렌더링된 웹페이지를 제공하는 방식을 말한다.</p>
+<p>그러나 위처럼 말해도 잘 와닿지 않을 것인데, 좀 더 설명을 깊게 들어가자면 우리는 보통 2가지 종류의 웹사이트를 보게 된다.</p>
+<!-- more -->
+
+<p>네이버 같은 포털 사이트는 물론 여러 다양한 웹사이트들은 기본적인 뼈대를 구성하고 있는 HTML을 바탕으로 CSS나 Javascript같은 도구들을 끼얹어서 우리에게 예쁘게 보여진다.</p>
+<p>컴퓨터가 막 발명되었을 초기에는 HTML만 사용한 사이트가 많았다.</p>
+<figure>
+<p><img alt="oldnaver" src="../../../../20250102-tech-blog/oldnaver.png" /></p>
+<figcaption>
+<p>사진 출처 : <a href="https://blog.naver.com/rhdwlgjs/222648633998">https://blog.naver.com/rhdwlgjs/222648633998</a></p>
+</figcaption>
+</figure>
+<p>2000년대 초반에 인터넷을 사용해본 사람이라면 위 사진 처럼 퍼런색 하이퍼링크들로 떡칠되어 있고 간단한 input box들로 이루어진 레이아웃을 많이 봤을 것이다. 이 사이트는 기본적인 HTML로만 구성되어 있는 사이트이다.</p>
+<p>위 사이트는 거의 대부분 뼈대 역할을 하는 HTML만 사용되었기 때문에 별 다른 인터렉션이 보이지 않는다.</p>
+<p><img alt="nownaver" src="../../../../20250102-tech-blog/nownaver.png" /></p>
+<p>위 사진은 25년 1월 2일 오늘 찍은 네이버 포털 사진이다. 로고에 마우스 커서를 올리면 로고가 바뀌고 버튼을 클릭하면 효과가 뜨는 여러 인터렉션이 추가된 것을 볼 수 있다.</p>
+<p>이런 인터렉션은 CSS와 Javascript덕분인데, 이런 효과를 내기 위해선 HTML과 CSS, Javascript 파일이 우리에게 도달해야한다.</p>
+<p><mark>즉, 우리 컴퓨터는 네이버 같은 웹페이지를 호스팅해주는 서버로부터 HTML, CSS, Javascript 파일을 다운로드하여 웹 사이트를 예쁘게 렌더링하는 것이다.</mark></p>
+<p>다시 정적 웹사이트와 동적 웹사이트의 차이로 돌아와서, 서버가 우리한테 위 3개의 파일을 가져다 주기 위해서는 미리 서버가 고정되어 있는 3개의 파일을 가지고 있다가 우리 컴퓨터가 달라고 할 때 주는 방식<sup>1</sup> 이 있고, 반대로 우리가 달라고 할 때 위 3개의 파일을 직접 만들어서 가져다 주는 방식<sup>2</sup> 이 있다.</p>
+<p>전자(1번)가 바로 정적 웹사이트의 특징이고 후자(2번)가 동적 웹사이트의 특징이다.</p>
+<p></br></p>
+<p>이번 포스팅은 동적/정적 웹사이트의 특징을 설명하는 것이 아니라서 두 사이트의 특징 설명은 여기까지 하고 MKDocs와 MKDocs-materials 도구가 바로 이 정적 웹사이트를 만들어주는 도구라는 것이다.</p>
+<p>정확히는 MKDocs가 <strong>정적 웹사이트를 생성해주는 도구</strong>이고 MKDocs-materials는 구글 material design의 <strong>예쁜 테마를 제공해주는 도구</strong>이다.</p>
+<p>google material design이 나오고 나서 웹사이트 디자인이 모던하고 트랜디하게 바뀌었는데 MKDocs-materials이 이 디자인 테마를 제공해준다. 우리는 이 도구들을 사용하여 모던하고 예쁜 블로그 사이트를 만들 수 있다.</p>
+<h2 id="mkdocs-materials_1">MKDocs-materials 셋업<a class="headerlink" href="#mkdocs-materials_1" title="Permanent link">&para;</a></h2>
+<p>프로젝트 구성은 간단하다. 설치부터 꾸미는 방법까지 <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">공식 문서</a>에서 나름 잘 설명되어 있다.</p>
+<h3 id="_1">설치<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material
+</code></pre></div>
+<p>이번 포스팅에서는 설치 방법이나 배포 방법에 대해 깊게 다루지 않고 이 개발 블로그를 MKDocs-materials를 사용하여 배포    얼마나 효율적인 시간 절감을 이뤄줬는 지 팁과 함께 소개하려고 한다.</p>
+<p>나머지 설치 가이드는 공식 사이트를 참고하길 바란다:</p>
+<div class="link-preview-card">
+    <a href="https://squidfunk.github.io/mkdocs-material/getting-started/" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://squidfunk.github.io/mkdocs-material/assets/images/social/getting-started.png" alt="Installation - Material for MkDocs" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">Installation - Material for MkDocs</div>
+            <div class="link-preview-description">Write your documentation in Markdown and create a professional static site in minutes – searchable, customizable, in 60+ languages, for all devices</div>
+            <div class="link-preview-url">squidfunk.github.io</div>
+        </div>
+    </a>
+</div>
+
+<h2 id="huge-time-saving">Huge Time-saving<a class="headerlink" href="#huge-time-saving" title="Permanent link">&para;</a></h2>
+<p>MKDocs-materials는 빌트인 플러그인으로 다양한 기능을 제공해주는 특징이 있다.</p>
+<p><img alt="builtin-plugin" src="../../../../20250102-tech-blog/built-in-plugins.png" /></p>
+<p>블로그 플러그인을 프로젝트에 넣어주면 블로그 웹사이트를 꾸밀 수 있고 MKDocs-materials 스폰서(insiders)의 경우 project 플러그인으로 본인의 포트폴리오에 프로젝트에 대한 내용을 넣어줄 수 있다.</p>
+<p></br></p>
+<p>이 플러그인들을 잘 활용하면 우리가 손수 구현해야하는 기능들 하나 없이 정말 빠르게 우리 입맛의 사이트를 배포할 수 있다.</p>
+<p>내용이 방대하므로 우선 MKDocs-materials 핵심 파일인 <code>mkdocs.yml</code> 파일을 통째로 뜯어보자. 다음은 필자 블로그의 <code>mkdocs.yml</code> 파일 전체 내용이다:</p>
+<div class="highlight"><pre><span></span><code>site_name: bnbong&#39;s tech blog
+site_description: 이준혁의 기술 관련 블로그
+site_url: https://bnbong.github.io
+repo_name: bnbong/bnbong.github.io
+repo_url: https://github.com/bnbong/bnbong.github.io
+theme:
+  custom_dir: overrides
+  name: material
+  font:
+    text: JetBrains Mono
+  # Light and Dark Theme Toggle
+  palette:
+    - media: &quot;(prefers-color-scheme: light)&quot;
+      scheme: default
+      primary: custom
+      accent: brown
+      toggle:
+        icon: material/brightness-7  # current mode : light
+        name: Switch to dark mode
+    - media: &quot;(prefers-color-scheme: dark)&quot;
+      scheme: slate
+      primary: custom
+      accent: brown
+      toggle:
+        icon: material/brightness-4  # current mode : dark
+        name: Switch to light mode
+  features:
+    - navigation.indexes
+    - navigation.footer
+    - navigation.top
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - search.highlight
+    - search.share
+    - search.suggest
+    - announce.dismiss
+    - toc.follow
+  language: ko
+plugins:
+  - blog:
+      blog_toc: true
+      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+      draft: true
+      draft_on_serve: false
+      draft_if_future_date: true
+      post_date_format: full
+      post_url_format: &quot;{date}/{slug}&quot;
+  - rss:
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: date.created
+        as_update: date.updated
+      comments_path: &quot;#__comments&quot;
+  - search
+  - social:
+      cards_layout_options:
+        font_family: Noto Sans KR
+  - tags:
+      tags_file: blog/tags.md
+
+not_in_nav: |
+  /drafts/**/*.md
+
+nav:
+- About Me: index.md
+- Blog:
+  - blog/index.md
+  - blog/tags.md
+- Projects:
+  - projects/index.md
+  - 개인 프로젝트 :
+    - Bifrost : projects/bifrost.md
+    - TooKindFriendChat : projects/tookindfriendchat.md
+    - JaramUniv_Sugang-API : projects/univapi.md
+    - rickTcal_DayLife : projects/ricktcal.md
+    - KakaoTalk-channel-WeatherToday : projects/kakaotalk-weatherforecast.md
+  - 팀 프로젝트 :
+    - Project-Pinned : projects/project-pinned.md
+    - Awesome Chatting App : projects/awesomechat.md
+    - Mugip : projects/mugip.md
+    - KBuddy : projects/kbuddy.md
+    - Jaram Groupware Hub : projects/jgw-hub.md
+    - Jaram Groupware Penalty Python : projects/jgw-penalty-python.md
+    - Jaram Groupware Attendance Python : projects/jgw-attendance-python.md
+    - Phishing QR detector : projects/qr-phishing-detector.md
+  - 오픈소스 프로젝트:
+    - Azure SDK for Python : projects/azure-sdk-python.md
+    - Azure SDK for Python Korean Docs : projects/azure-sdk-python-kor.md
+    - FastAPI FastKit : projects/fastapi-fastkit.md
+    - Blog Post Workflow : projects/blog-post-workflow.md
+    - FEMU Monitoring : projects/femu-monitoring.md
+extra:
+  status:
+    new: Recently added
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bnbong
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/%EC%A4%80%ED%98%81-%EC%9D%B4-669733231/
+    - icon: fontawesome/solid/globe
+      link: https://blog.naver.com/bnbong
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/j_hyeok__lee/
+    - icon: fontawesome/solid/envelope
+      link: mailto:bbbong9@gmail.com
+    - icon: material/rss
+      link: /feed_rss_updated.xml
+      name: Subscribe to our RSS Feed
+  tags:
+    &lt;tag&gt;: &lt;identifier&gt;
+  blog:
+    dir: blog
+    author: bnbong
+    author_image: https://avatars.githubusercontent.com/bnbong
+    words_read_per_minute: 300
+    list_length: 25
+    extended_preview: true
+    archive_toc: true
+    pagination_per_page: 10
+    pagination_keep_content: true
+  analytics:
+    provider: google
+    id: G-G1E1JBX2WR
+
+markdown_extensions:
+  - toc:
+      title: 이 페이지의 요소들
+      permalink: true
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.blocks.caption
+  - meta
+  - def_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.caret
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+hooks:
+  - hooks/socialmedia.py
+
+extra_css:
+  - stylesheets/extra.css
+copyright: Copyright &amp;copy; 2019-2025 bnbong
+</code></pre></div>
+<p>필자 깃허브 저장소에도 위 파일을 볼 수 있다.</p>
+<div class="link-preview-card">
+    <a href="https://github.com/bnbong/bnbong.github.io/blob/master/mkdocs.yml" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/05ada0c75957f090162a07f515f4e2ca3a84e5ffb95ba78f9c8df448bb13f45e/bnbong/bnbong.github.io" alt="bnbong.github.io/mkdocs.yml at master · bnbong/bnbong.github.io" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">bnbong.github.io/mkdocs.yml at master · bnbong/bnbong.github.io</div>
+            <div class="link-preview-description"><Blog> bnbong's Personal tech blog site. Contribute to bnbong/bnbong.github.io development by creating an account on GitHub.</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<h3 id="_2">사이트 호스팅<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>사이트에 들어갈 내용들을 코딩하는 것도 좋으나 가장 중요한건 이렇게 개고생해서 만든 사이트를 남들에게 보여주는 작업이다.</p>
+<p>만들기만 해놓고 꽁꽁 숨겨놓으면 아무 의미가 없으니 이 사이트를 호스팅 해야하는데 본인이 구매해서 운용하고 있는 도메인이 있으면 모를까 그렇지 않다면 도메인을 따로 구해서 띄워줘야한다.</p>
+<p>요즘에는 저렴한 도메인이나 심지어 무료 도메인도 사용할 수 있는데, 이런 도메인들의 안정성 문제는 둘째 치고 DNS 세팅을 처음 해보는 사람은 여기서 해멜 수 있다.</p>
+<p>이 문제를 해결해주는 것은 <mark><strong>Github Pages</strong></mark> 였다. 정적 웹사이트를 호스팅하는 경우, Github는 Github Page라는 옵션으로 정적 웹사이트 호스팅을 <mark><strong>무료로</strong></mark> 할 수 있도록 제공해준다.</p>
+<p>가끔 <code>&lt;사용자이름&gt;.github.io</code>로 보이는 웹사이트들이 바로 이 Github Pages를 활용하여 호스팅하고 있는 사이트이다.</p>
+<p>페이지 빌드 또한 Github가 제공해주는 Github Actions를 통해 자동으로 빌드가 가능하며 두 서비스 모두 <strong>무료</strong> 이기 때문에 사이트 운영 비용을 0원으로 만들 수 있다.</p>
+<p>이건 단지 MKDocs-materials에 국한되어 있는 장점이라기 보다는 Github의 장점이라고 볼 수 있다. 정적 웹사이트 배포를 고려하는 사람이라면 이 옵션이 정말 혁신적인 옵션이 될 수 있다.</p>
+<p></br></p>
+<p>github page 도메인에 빌드한 사이트를 링크하려면 mkdocs.yml 설정 파일에 다음 항목들을 넣어주면 된다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 1 ~
+site_name: bnbong&#39;s tech blog  # 사이트 이름
+site_description: 이준혁의 기술 관련 블로그  # 사이트 설명
+site_url: https://bnbong.github.io  # 사이트 주소
+repo_name: bnbong/bnbong.github.io  # 저장소 이름
+repo_url: https://github.com/bnbong/bnbong.github.io  # 저장소 주소
+...
+</code></pre></div>
+<h3 id="_3">사이트 컴포넌트<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>이 부분이 바로 MKDocs-materials의 핵심이다.</strong></p>
+<p>정말 많은 부분에서 time-save를 할 수 있었으며 사이트 레이아웃 디자인 및 구현에 드는 시간을 줄이고 오로지 컨텐츠에 집중할 수 있었던 건 정말 혁신적이라고 생각한다.</p>
+<h4 id="1">1. 마크다운 렌더링 + 포멧팅<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p><img alt="md" src="../../../../20250102-tech-blog/md.png" /></p>
+<p>위 사진과 마찬가지로 이 포스팅도 마크다운 형식으로 작성하고 있다.</p>
+<p>아무래도 개발 문서를 작성하다보면 마크다운 파일을 한번 쯤은 접해서 작성해보는 경험이 있을 것이다.</p>
+<p>필자 또한 이런 마크다운 문서 작성에 익숙해졌기에 이번 블로그 프로젝트를 기획했을 때 마크다운 형식으로 블로그 포스팅을 작성할 수 있었으면 좋겠다고 생각했다.</p>
+<p>이 기능을 추가하려면 마크다운 문서를 랜더해주는 모듈을 따로 개발해야하고 스타일시트도 신경써줘야 하나 MKDocs-materials를 도입하여 이를 정말 간단하게 해결할 수 있었다.</p>
+<p><img alt="md-render" src="../../../../20250102-tech-blog/md-render.png" /></p>
+<p>랜더링된 문서 텍스트에 원하는 색상, 글꼴을 넣을 수 있고 stylesheet 추가로 헤더나 코드 블록에 대한 스타일도 쉽게 넣어줄 수 있다.</p>
+<p>현재 필자의 블로그 글꼴은 자주 사용하는 Jetbrains IDE의 기본 글꼴인 Jetbrains Mono를 사용하고 있다.</p>
+<p></br></p>
+<p>마크다운 랜더링 기능은 MKDocs 기본 기능인 것으로 보이고 마크다운 extension을 추가해서 좀 더 편리하게 작업이 가능한데, 설정을 추가해주려면 <code>mkdocs.yml</code> 파일에 라인들을 추가해주면 된다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 129 ~
+...
+markdown_extensions:
+  - toc:
+      title: 이 페이지의 요소들
+      permalink: true
+  - attr_list
+  - md_in_html
+...
+</code></pre></div>
+<p>위 코드의 특정 라인을 설명하자면 다음과 같다:</p>
+<ul>
+<li>
+<p><code>toc</code> : table of content(toc)이며, 노션 도구를 사용해본 경험이 있는 사용자라면 문서 우측에 페이지 헤더 요소들이 목차처럼 링크로 표시되어 있는 것을 본 적이 있을 것이다.</p>
+<p>바로 그 기능이며 이를 통해 문서 요소들을 표시하고 각 요소에 대한 링크를 생성해준다.</p>
+<figure>
+<p><img alt="toc" src="../../../../20250102-tech-blog/toc.png" /></p>
+<figcaption>
+<p>필자의 블로그 포스팅 우측에서 볼 수 있는 toc, 목차의 타이틀도 yml 파일 설정에서 넣어줄 수 있다.</p>
+</figcaption>
+</figure>
+</li>
+<li>
+<p><code>md_in_html</code> : 마크다운 문서에 있는 HTML 코드를 랜더링해준다.</p>
+<p>깃허브 마크다운에서도 HTML 코드를 넣으면 알아서 랜더링해준다. 필자의 블로그에서도 동일한 퍼포먼스가 가능하면 좋을 것 같아서 넣어줬다.</p>
+</li>
+</ul>
+<p>스타일시트를 넣어서 사이트 전체에 대한 스타일을 커스텀할 수 있는데, 커스텀 스타일시트를 적용하려면 마찬가지로 <code>mkdocs.yml</code> 파일에 라인들을 추가해주면 된다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 154 ~
+...
+extra_css:
+  - stylesheets/extra.css  # 스타일시트 경로
+...
+</code></pre></div>
+<p>네비게이션 바 및 하이라이트 텍스트에 필자가 넣은 색은 필자의 퍼스널 컬러를 넣어줬다.</p>
+<p>살면서 퍼스널 컬러 진단(?)을 받아본 적이 없었는데 넣어줄만한 색을 찾다가 갑자기 퍼스널컬러가 생각나서 부랴부랴 AI가 사진으로 결정해주는 퍼스널 컬러를 인터넷에서 찾아보고 넣어줬다.</p>
+<p></br></p>
+<p>또한 블로그 포스트 기능을 만들면서 고민할 수 있는 것이 있는데, 포스팅 컨텐츠에 접근하는 방법을 정하는 것이다.</p>
+<p>URL로 컨텐츠에 조회하도록 할 때 url의 각 게시물의 유니크한 아이디로 조회할지, 날짜로 나눌지, 타이틀로 나눌지, 타이틀로 한다면 한글/영어 구분을 할지 등등 여러 가지 방법이 가능하기에 골머리를 앓을 수 있다.</p>
+<p>이것 또한 MKDocs-materials에서 설정이 가능하며, 필자는 <code>{날짜}/{타이틀(특수문자 제거 및 소문자)}</code> 형식으로 설정해주었다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 41 ~
+...
+plugins:
+  - blog:
+      blog_toc: true
+      post_slugify: !!python/object/apply:pymdownx.slugs.slugify  # slug 생성 - 특수문자 제거
+        kwds:
+          case: lower  # slug 생성 방법 - 소문자
+      draft: true
+      draft_on_serve: false
+      draft_if_future_date: true
+      post_date_format: full
+      post_url_format: &quot;{date}/{slug}&quot;  # 기본 포스트 url 형식
+...
+</code></pre></div>
+<p>python 라이브러리인 <code>pymdownx</code>를 사용하기 때문에 블로그 프로젝트 가상환경에 <code>pymdownx</code> 라이브러리를 설치해줘야 한다.</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pymdown-extensions
+</code></pre></div>
+<p>그 후 yml파일에 설정들을 넣어주면 해당 블로그 포스트 제목에서 특수문자를 제거하고 소문자로 변환해서 알아서 포스트 주소를 생성해준다.</p>
+<figure>
+<p><img alt="slug" src="../../../../20250102-tech-blog/slug.png" /></p>
+<figcaption>
+<p>slugify된 블로그 포스트 주소</p>
+</figcaption>
+</figure>
+<p>블로그 포스트의 타이틀은 해당 마크다운 파일의 메타데이터의 <code>title</code> 값을 가져오기 때문에 블로그 포스팅을 작성할 때 <mark>상단에 메타데이터 값</mark> 들을 넣어주어야 한다.</p>
+<div class="highlight"><pre><span></span><code>---  // 메타데이터 시작
+title: &#39;[Github] README.md로 내 프로필 맛있게 꾸미기&#39;  // 이걸 바탕으로 slug 생성
+description: README.md를 꾸며 내 프로필을 작성하는 방법에 대해 서술합니다.
+authors:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>bnbong
+date:
+  created: 2024-01-12
+  updated: 2024-01-12
+categories:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>OpenSource
+tags:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Markdown
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Github
+comments: true
+---  // 메타데이터 끝
+
+내가 만든 소스코드를 배포하거나 또는 외부로 공유를 시킬 때 README 파일을 작성함으로써 이 코드가 무엇을 하는 코드이고 무엇을 위해 작성된 코드인지 서술할 수 있다.
+...
+</code></pre></div>
+<p>메타데이터 활용 시 <strong>주의할 점</strong> 은 다음과 같다:</p>
+<ul>
+<li>포스팅의 타이틀 헤더 H1 값을 읽기 때문에 메타데이터보다 더 상단에 위치해있는 H1 태그나 다른 위치에 선언되어 있는 H1 태그가 존재하면 타이틀 값을 잘못 읽어 오류가 발생할 수 있다. <mark>따라서 포스팅 본문에는 H1 태그를 넣지 않는 것이 좋다.</mark></li>
+<li><mark>줄바꿈을 자주 넣자.</mark> 줄바꿈 하나 없어서 원하는 대로 마크다운 랜더링이 안될 수 있다. 그런 경우에는 단순히 줄바꿈을 넣어서 해결되는 경우가 많으므로 참고하면 좋다.</li>
+<li>MKDocs-materials 공식 문서에서 메타데이터를 활용한 여러 부가기능들이 존재한다. 그러나 대부분의 기능들은 스폰서 기능인 <code>insiders</code> 기능이므로 무료 사용자는 공식 문서를 잘 읽고 어떤 기능이 사용 가능한지 확인해야한다.</li>
+</ul>
+<h4 id="2">2. 페이지네이션<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>블로그나 게시판을 처음 만들 때 고민하는 것 중 하나가 바로 페이지네이션이다.</p>
+<p>컨텐츠 표시 개수를 조절하고 적절한 수를 표시하는 로직을 구현할 때 적지 않은 시간을 소요할 수 있는데, MKDocs-materials에서는 blog 플러그인에 이 기능이 잘 구현되어 있다.</p>
+<p><img alt="pagenation" src="../../../../20250102-tech-blog/pagenation.png" /></p>
+<p>마찬가지로 적용하려면 <code>mkdocs.yml</code> 파일에 라인들을 추가해주면 된다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 115 ~
+...
+  blog:
+    dir: blog
+    author: bnbong
+    author_image: https://avatars.githubusercontent.com/bnbong
+    words_read_per_minute: 300
+    list_length: 25
+    extended_preview: true
+    archive_toc: true
+    pagination_per_page: 10
+    pagination_keep_content: true
+...
+</code></pre></div>
+<p>설정값을 10개의 게시물만 한 페이지에 표시되게 설정했기 때문에 위의 사진에서도 10개의 게시물들만 표시되는 것을 볼 수 있다.</p>
+<h4 id="3-rss">3. RSS 피드<a class="headerlink" href="#3-rss" title="Permanent link">&para;</a></h4>
+<p>yml 설정 파일에 플러그인을 추가하여 블로그 피드를 RSS 파일로 뽑아 볼 수 있다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 52 ~
+...
+  - rss:
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: date.created
+        as_update: date.updated
+      comments_path: &quot;#__comments&quot;
+...
+</code></pre></div>
+<p>RSS 피드로 뽑아낼 포스팅들의 위치도 설정이 가능하며 정렬 기준도 설정이 가능하다. 댓글 기능을 추가하였다면 댓글 내용도 RSS 피드에 추가시킬 수 있다.</p>
+<p><img alt="rss" src="../../../../20250102-tech-blog/rss.png" /></p>
+<p>만약 RSS 플러그인에 에러가 발생한다면 블로그 포스팅 마크다운 파일의 메타데이터 문제일 가능성이 크다. 천천히 살펴보고 에러가 날만한 곳을 찾아서 수정하면 된다.</p>
+<p></br></p>
+<p>RSS 기능을 추가한 이유는 필자의 깃허브 README 프로필에 블로그 포스팅 피드를 보여주는 기능이 RSS 피드를 읽어서 동작하기 때문이다.</p>
+<p><img alt="readme" src="../../../../20250102-tech-blog/readme.png" /></p>
+<p>이에 대한 자세한 내용은 필자의 다른 블로그 포스팅에 설명되어 있다:</p>
+<ul>
+<li><a href="https://bnbong.github.io/blog/2024/01/28/github-%EB%82%B4%EA%B0%80-%EC%9E%91%EC%84%B1%ED%95%9C-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B8%94%EB%A1%9C%EA%B7%B8-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC-readme%EC%97%90-%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C-%EC%97%B0%EB%8F%99%EC%8B%9C%ED%82%A4%EA%B8%B0/">[Github] 내가 작성한 네이버 블로그 포스트를 README에 자동으로 연동시키기</a><br></li>
+<li><a href="https://bnbong.github.io/blog/2024/01/12/github-readmemd%EB%A1%9C-%EB%82%B4-%ED%94%84%EB%A1%9C%ED%95%84-%EB%A7%9B%EC%9E%88%EA%B2%8C-%EA%BE%B8%EB%AF%B8%EA%B8%B0/">[Github] README.md로 내 프로필 맛있게 꾸미기</a></li>
+</ul>
+<p>여담으로 최근 개발용 블로그와 일상용 블로그를 쪼개서 두개의 블로그 RSS 파일에서 피드를 읽어오도록 구성했다ㅎ</p>
+<h4 id="4">4. 사이트 분석<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>사이트를 본격적으로 운영하기 시작했다면 신경쓰이는 점은 사이트 방문자 통계일 것이다.</p>
+<p>수익을 내는 사이트라면 더더욱 방문자 유입 경로나 컨텐츠 소모 패턴을 분석하고 이를 통해 컨텐츠 전략을 수립하는 것이 중요할 것이다.</p>
+<p>네이버에서는 블로그 기본 기능으로 방문자 통계를 확인하는 것이 가능하다:</p>
+<p><img alt="naverstats" src="../../../../20250102-tech-blog/naverstats.png" /></p>
+<p>그러나 블로그 프로젝트에서는 이 기능 또한 직접 구현해야하는 과제이다.</p>
+<p>통계치를 뽑아내는 것 조차 쉽지 않은데, 그 값을 바탕으로 대시보드를 만들어 띄우는 것은 정말 도전적인 일이다.</p>
+<p>MKDocs-materials는 구글 애널리틱스를 사용하여 이를 해결했다.</p>
+<p>빌트인 플러그인에 analytics를 추가하고 구글 애널리틱스 아이디를 설정에 넣으면 연동이 된다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 125 ~
+...
+  analytics:
+    provider: google
+    id: G-G1E1JBX2WR
+</code></pre></div>
+<p>보다 자세한 설정 방법은 공식 문서를 참고하면 좋다:</p>
+<div class="link-preview-card">
+    <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://squidfunk.github.io/mkdocs-material/assets/images/social/setup/setting-up-site-analytics.png" alt="Setting up site analytics - Material for MkDocs" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">Setting up site analytics - Material for MkDocs</div>
+            <div class="link-preview-description">Write your documentation in Markdown and create a professional static site in minutes – searchable, customizable, in 60+ languages, for all devices</div>
+            <div class="link-preview-url">squidfunk.github.io</div>
+        </div>
+    </a>
+</div>
+
+<p></br></p>
+<p>설정을 하고 나면 구글 애널리틱스 대시보드에 내 사이트에 대한 통계가 뜨게 된다.</p>
+<p><img alt="analytics" src="../../../../20250102-tech-blog/analytics.png" /></p>
+<p>사이트를 방문한 <strong>유저의 국가나 얼마나 오래 컨텐츠에 머물렀는지, 또한 광고를 달았다면 광고 수익은 얼마나 되는지까지</strong> 등등 광범위하게 표시된다.</p>
+<h4 id="5">5. 다크모드<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
+<p>21세기 컴퓨터쟁이들이라면 빼놓을 수 없는 기능인 다크모드.</p>
+<p>다크모드 구현은 그렇게까지 어렵다고 생각되지는 않지만 문제는 다크모드 스타일과 화이트모드 스타일을 구성하는 번거로움일 것이다.</p>
+<p>다크모드에서 흰색이었던 글씨를 화이트모드에서는 검은색으로 바꾸고 여러 색상을 좀 더 강조가 되는 색으로 설정해주는 것은 여간 귀찮은 작업이 아니다.</p>
+<p></br></p>
+<p>다행이도 이 가이드 또한 <a href="https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/">MKDocs-materials 공식 문서</a>와 참고 프로젝트들에 잘 설명되어 있다.</p>
+<p>마찬가지로 mkdocs.yml 파일 설정값만 건들여서 추가가 가능하다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 6 ~
+...
+theme:
+  custom_dir: overrides  # 커스텀 테마 레이아웃 경로
+  name: material
+  font:
+    text: JetBrains Mono
+  # Light and Dark Theme Toggle
+  palette:
+    - media: &quot;(prefers-color-scheme: light)&quot;
+      scheme: default
+      primary: custom  # 커스텀 색상 테마
+      accent: brown
+      toggle:
+        icon: material/brightness-7  # current mode : light
+        name: Switch to dark mode
+    - media: &quot;(prefers-color-scheme: dark)&quot;
+      scheme: slate
+      primary: custom  # 커스텀 색상 테마
+      accent: brown
+      toggle:
+        icon: material/brightness-4  # current mode : dark
+        name: Switch to light mode
+...
+</code></pre></div>
+<p>상단 설정의 <code>primary</code> 값에 MKDocs-materials 기본 빌트인 색상 값을 넣어줄 수 있고 스타일 시트에 따로 설정해둔 색상 값을 넣어줄 수 있다.</p>
+<p>필자는 후자, 즉 커스텀 색상값을 넣어주는 방식을 택했는데, 커스텀 스타일시트를 설정했다면 반드시 <code>extra_css</code> 항목에 커스텀 스타일시트 파일을 명시해줘야 한다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 154 ~
+...
+extra_css:
+  - stylesheets/extra.css  # 스타일시트 경로
+...
+</code></pre></div>
+<p>그 후 스타일 시트에 다크모드용 컬러 테마를 설정해주면 된다.</p>
+<div class="highlight"><pre><span></span><code><span class="c">/* stylesheets/extra.css line 67 ~ */</span>
+<span class="o">...</span>
+<span class="c">/* 다크 모드 대응 */</span>
+<span class="o">[</span><span class="nt">data-md-color-scheme</span><span class="o">=</span><span class="s2">&quot;slate&quot;</span><span class="o">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">--md-hue</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">;</span>
+
+<span class="w">    </span><span class="err">.md-typeset</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#eee</span><span class="p">;</span><span class="w">  </span><span class="c">/* 다크모드에서의 텍스트 색상 */</span>
+
+<span class="w">        </span><span class="err">a</span><span class="w"> </span><span class="err">{</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="nv">--md-primary-fg-color--light</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">...</span>
+</code></pre></div>
+<p>설정이 완료되면 다음 사진과 같이 다크모드 &lt;-&gt; 화이트모드 토글 버튼으로 정상적으로 컬러 테마가 바뀌는 것을 볼 수 있다.</p>
+<figure>
+<p><img alt="dark" src="../../../../20250102-tech-blog/dark.png" /></p>
+<figcaption>
+<p>다크모드</p>
+</figcaption>
+</figure>
+<figure>
+<p><img alt="white" src="../../../../20250102-tech-blog/white.png" /></p>
+<figcaption>
+<p>화이트모드</p>
+</figcaption>
+</figure>
+<p></br></p>
+<p>컬러 테마 뿐만 아니라 레이아웃까지 커스텀이 가능하다.</p>
+<p>mkdocs.yml 파일 theme 탭 상단에 custom_dir 값에 커스텀 레이아웃 파일 경로를 넣어주면 된다. 레이아웃은 HTML로 입맛대로 설정이 가능한데, MKDocs-materials에 기본 뼈대로 동작하는 빌트인 HTML 파일을 extends 해서 사용할 수 있다.</p>
+<figure>
+<p><img alt="override" src="../../../../20250102-tech-blog/override.png" /></p>
+<figcaption>
+<p>커스텀 레이아웃 파일 경로</p>
+</figcaption>
+</figure>
+<p>참고가 가능한 HTML 파일 뼈대 코드는 공식 Github에서 확인할 수 있다:</p>
+<div class="link-preview-card">
+    <a href="https://github.com/squidfunk/mkdocs-material/blob/master/material/templates/blog.html" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/f43d8c5e5571e1550ea7dce4fde45b0927500032ccc528845dc7a406575317e0/squidfunk/mkdocs-material" alt="mkdocs-material/material/templates/blog.html at master · squidfunk/mkdocs-material" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">mkdocs-material/material/templates/blog.html at master · squidfunk/mkdocs-material</div>
+            <div class="link-preview-description">Documentation that simply works. Contribute to squidfunk/mkdocs-material development by creating an account on GitHub.</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<h4 id="6">6. 검색<a class="headerlink" href="#6" title="Permanent link">&para;</a></h4>
+<p>포스팅 컨텐츠가 쌓이다 보면 검색 기능 도입을 고려할만 하다.</p>
+<p>그러나 검색 기능도 구현하려고 하면 나름 신경이 많이 쓰이는데 Elasticsearch 같은걸 도입하다보면 기능 도입을 떄려치고 싶어질 수 있다.</p>
+<p></br></p>
+<p>MKDocs-materials에서는 1초면 검색 기능 도입이 가능하다. mkdocs.yml 파일에 라인 <em>한 줄만</em> 추가해주면 된다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 58 ~
+...
+  - search
+</code></pre></div>
+<p>상단과 같이 플러그인을 추가하고 빌드하면 검색창이 뜨는 것을 볼 수 있다.</p>
+<p><img alt="search1" src="../../../../20250102-tech-blog/search1.png" /></p>
+<p>플러그인 설정을 좀 더 건들여서 검색어 추천 기능을 추가할 수 있다. 필자는 추가하지 않았다.</p>
+<p><img alt="search2" src="../../../../20250102-tech-blog/search2.png" /></p>
+<h4 id="7">7. 인터렉션<a class="headerlink" href="#7" title="Permanent link">&para;</a></h4>
+<p>모던한 사이트들은 사이트 인터렉션이 부드럽게 이어지는 것이 특징이다.</p>
+<p>컴포넌트들의 부드러운 인터렉션을 구현하는건 상당한 노력이 드는 작업인데, 이 기능 조차도 MKDocs-materials에서는 <mark>기본 제공</mark> 기능이다.</p>
+<p></br></p>
+<p>필자의 블로그에서도 여러 부드러운 인터렉션을 볼 수 있는데 그 중 하나는 블로그 포스트 컨텐츠 스크롤을 내릴 때 포스팅 타이틀의 floating 전환 기능이다.</p>
+<figure>
+<p><img alt="header1" src="../../../../20250102-tech-blog/header1.png" /></p>
+<figcaption>
+<p>스크롤 전</p>
+</figcaption>
+</figure>
+<p>스크롤 이전에는 위 사진과 같이 <strong>본문에</strong> 포스팅 타이틀이 존재하는 것을 볼 수 있다.</p>
+<figure>
+<p><img alt="header2" src="../../../../20250102-tech-blog/header2.png" /></p>
+<figcaption>
+<p>스크롤 후</p>
+</figcaption>
+</figure>
+<p>그러나 스크롤을 내려서 컨텐츠를 읽다 보면 상단 네비게이션 바 텍스트가 포스팅 타이틀로 자연스럽게 바뀌는 것을 볼 수 있다.</p>
+<p>이 기능은 설정 파일 features 항목에 추가해주면 된다.</p>
+<div class="highlight"><pre><span></span><code># mkdocs.yml line 27 ~
+...
+  features:
+    - navigation.indexes
+    - navigation.footer
+    - navigation.top
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky  # 바로 이거
+    - navigation.expand
+    - search.highlight
+    - search.share
+    - search.suggest
+    - announce.dismiss
+    - toc.follow
+...
+</code></pre></div>
+<p>타이틀이 sticky하게 따라오는 기능인 것이다. 이 외에도 부드러운 인터렉션을 보조하는 여러 기능 추가가 가능하니 공식 문서를 자세히 참고하면 좋다.</p>
+<h4 id="8">8. 댓글 및 태그<a class="headerlink" href="#8" title="Permanent link">&para;</a></h4>
+<p>블로그 방문객과의 소통을 위한 댓글 창구는 도입할 가능성이 큰 기능이다.</p>
+<p>그러나 이 댓글 기능도 맨땅에서 구현하려고 하면 생각을 많이 해야한다.</p>
+<p>오픈소스를 도입하면 이 기능을 쉽게 추가할 수 있는데, 보통 사이드 블로그 프로젝트에서 많이 도입하는 오픈소스는 <code>Disqus</code> 일 것이다.</p>
+<div class="link-preview-card">
+    <a href="https://disqus.com/" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://c.disquscdn.com/next/current/marketing/assets/img/brand/favicon-192x192.png" alt="#1 in audience engagement and community growth | Disqus" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">#1 in audience engagement and community growth | Disqus</div>
+            <div class="link-preview-description">More publishers trust us to engage, grow, and understand their audiences than any other. Build your on-site community with Disqus.</div>
+            <div class="link-preview-url">Disqus</div>
+        </div>
+    </a>
+</div>
+
+<p>물론 Disqus도 훌륭한 댓글 추가 기능을 제공한다. 그러나 Disqus 등록 작업이 살짝 귀찮다는 단점이 있다.</p>
+<p>지금은 많이 개선되었지만 과거에는 소셜 로그인을 강제하는 단점도 있었고 가끔 Disqus 글꼴 깨짐이나 색상 오류 때문에 가독성이 떨어지는 경우가 있었다.</p>
+<p></br></p>
+<p>MKDocs-materials에서는 공식 문서에서 <code>giscus</code> 라는 오픈소스로 댓글 기능을 추가하도록 안내되어 있다.</p>
+<div class="link-preview-card">
+    <a href="https://squidfunk.github.io/mkdocs-material/setup/adding-a-comment-system/" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://squidfunk.github.io/mkdocs-material/assets/images/social/setup/adding-a-comment-system.png" alt="Adding a comment system - Material for MkDocs" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">Adding a comment system - Material for MkDocs</div>
+            <div class="link-preview-description">Write your documentation in Markdown and create a professional static site in minutes – searchable, customizable, in 60+ languages, for all devices</div>
+            <div class="link-preview-url">squidfunk.github.io</div>
+        </div>
+    </a>
+</div>
+
+<div class="link-preview-card">
+    <a href="https://giscus.app/ko" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/4f866d5b634e7cd5422af77f8dbfb6d48dd288b7c5c18326544c1973210320ed/giscus/giscus" alt="giscus" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">giscus</div>
+            <div class="link-preview-description">A comments widget built on GitHub Discussions.</div>
+            <div class="link-preview-url">giscus.app</div>
+        </div>
+    </a>
+</div>
+
+<figure>
+<p><img alt="giscus" src="../../../../20250102-tech-blog/giscus.png" /></p>
+<figcaption>
+<p>giscus 공식 소개</p>
+</figcaption>
+</figure>
+<p>giscus의 장점은 블로그 프로젝트가 github에 연동되어 있다면 특정 블로그 포스트에 달린 댓글을 github discussion 탭에서 확인이 가능하다는 점이 존재한다.</p>
+<figure>
+<p><img alt="comment" src="../../../../20250102-tech-blog/comment.png" /></p>
+<figcaption>
+<p>포스팅에 댓글이 달린 모습</p>
+</figcaption>
+</figure>
+<figure>
+<p><img alt="comment2" src="../../../../20250102-tech-blog/comment2.png" /></p>
+<figcaption>
+<p>Github 저장소 Discussion 탭에서 포스팅에 달린 댓글 확인</p>
+</figcaption>
+</figure>
+<figure>
+<p><img alt="comment3" src="../../../../20250102-tech-blog/comment3.png" /></p>
+<figcaption>
+<p>댓글 확인</p>
+</figcaption>
+</figure>
+<p>giscus는 Disqus와는 다르게 댓글 작성자의 github 로그인을 강제한다는 점이다.</p>
+<p>경우에 따라서 이 점이 단점이 될 수 있으나, 필자는 이 블로그를 tech 블로그로 운영하기 때문에 개발자 시점에서의 소통이 중요하다고 생각되어 딱히 단점이라고 여기지 않아 Disqus 대신 giscus 도입이 매력적이라고 판단했다.</p>
+<p>Disqus도 동일하게 도입이 가능하니, 만약 Disqus가 좀 더 적절하다고 생각된다면 <a href="https://github.com/squidfunk/mkdocs-material/discussions/2138">참고문서</a>를 통해 도입해보길 바란다.</p>
+<h2 id="_4">번외<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>만약 MKDocs-materials의 좀 더 심화적인 기능을 사용하고 싶으면 MKDocs-materials의 스폰서 신청을 하면 된다:</p>
+<div class="link-preview-card">
+    <a href="https://squidfunk.github.io/mkdocs-material/insiders/" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://squidfunk.github.io/mkdocs-material/assets/images/social/insiders/index.png" alt="Index - Material for MkDocs" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">Index - Material for MkDocs</div>
+            <div class="link-preview-description">Write your documentation in Markdown and create a professional static site in minutes – searchable, customizable, in 60+ languages, for all devices</div>
+            <div class="link-preview-url">squidfunk.github.io</div>
+        </div>
+    </a>
+</div>
+
+<p>필자는 최대한 무료로 사이트를 배포하고 운영하고 싶었기에 따로 스폰서 신청을 하지 않았으나 사용자 중에서 스폰서 신청을 한 유저가 꽤 있는 듯 하다. 한번 살펴보고 결정하는 것도 좋을 듯 하다.</p>
+<p>필자가 정적 웹사이트 배포에 사용한 다른 환경 설정들을 살펴보고 싶다면 github 저장소를 참고하길 바란다.</p>
+<div class="link-preview-card">
+    <a href="https://github.com/bnbong/bnbong.github.io" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/05ada0c75957f090162a07f515f4e2ca3a84e5ffb95ba78f9c8df448bb13f45e/bnbong/bnbong.github.io" alt="GitHub - bnbong/bnbong.github.io: <Blog> bnbong's Personal tech blog site" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">GitHub - bnbong/bnbong.github.io: <Blog> bnbong's Personal tech blog site</div>
+            <div class="link-preview-description"><Blog> bnbong's Personal tech blog site. Contribute to bnbong/bnbong.github.io development by creating an account on GitHub.</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<p>필자는 insider 기능 중 하나인 project 기능 대신 blog 플러그인을 사용하여 프로젝트 포트폴리오 게시판 비스무리한 것을 추가했다.</p>
+<figure>
+<p><img alt="project" src="../../../../20250102-tech-blog/project.png" /></p>
+<figcaption>
+<p>포폴용 project 소개 게시판</p>
+<p><a href="https://bnbong.github.io/projects/">https://bnbong.github.io/projects/</a></p>
+</figcaption>
+</figure>
+<p></br></p>
+<p>커밋 전, 사이트 빌드를 확인하고 싶다면 터미널에 <code>mkdocs serve</code> 명령어를 입력하면 된다.</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<p>명령어를 입력하면 로컬 호스트에 사이트 개발 빌드가 띄워지는 것을 볼 수 있다.</p>
+<p><img alt="serve" src="../../../../20250102-tech-blog/serve.png" /></p>
+<figure>
+<p><img alt="dev" src="../../../../20250102-tech-blog/dev.png" /></p>
+<figcaption>
+<p>개발 버전 빌드 결과물</p>
+</figcaption>
+</figure>
+<p>레이아웃이나 컨텐츠 요소를 수정하면 자동으로 refresh 하여 반영되는 모습을 볼 수 있다.</p>
+<hr />
+<h2 id="_5">마치며<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>이 외에도 소개할만한 MKDocs-materials의 유용한 기능들이 많다. 이 포스팅 하나에서 다루기엔 양이 너무 방대하므로 자세한 내용들은 MKDocs-materials를 직접 사용하면서 찾아보는 것을 권장한다.</p>
+<p>필자의 작업물은 깃허브 저장소에 공개되어 있다. 많은 참고 부탁드립니당</p>
+<div class="link-preview-card">
+    <a href="https://github.com/bnbong/bnbong.github.io" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/05ada0c75957f090162a07f515f4e2ca3a84e5ffb95ba78f9c8df448bb13f45e/bnbong/bnbong.github.io" alt="GitHub - bnbong/bnbong.github.io: <Blog> bnbong's Personal tech blog site" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">GitHub - bnbong/bnbong.github.io: <Blog> bnbong's Personal tech blog site</div>
+            <div class="link-preview-description"><Blog> bnbong's Personal tech blog site. Contribute to bnbong/bnbong.github.io development by creating an account on GitHub.</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<p><a class="md-button" href="https://www.facebook.com/sharer/sharer.php?u=https://bnbong.github.io/blog/2025/01/02/project-mkdocs-materials%EB%A1%9C-%EA%B0%9C%EB%B0%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8--%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036 27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"/></svg></span></a>
+<a class="md-button" href="https://threads.net/intent/post?text=%5BProject%5D%20MKDocs-materials%EB%A1%9C%20%EA%B0%9C%EB%B0%9C%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%26%20%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%20%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0%0A%0Ahttps://bnbong.github.io/blog/2025/01/02/project-mkdocs-materials%EB%A1%9C-%EA%B0%9C%EB%B0%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8--%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a14 14 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32l-1.757-1.18c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388q.163.07.321.142c1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69q-.362 0-.739.021c-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221"/></svg></span></a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+  <h2 id="__comments">댓글</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+    data-repo="bnbong/bnbong.github.io"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyMDg1MzMyNTU="
+    data-category="Blog"
+    data-category-id="DIC_kwDODG33B84CkxR1"
+    data-mapping="title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../../../../2024/12/30/computer-network-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B0%9C%EC%9A%94/" class="md-footer__link md-footer__link--prev" aria-label="이전: [Computer Network] 컴퓨터 네트워크 개요">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                [Computer Network] 컴퓨터 네트워크 개요
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../15/computer-network-arp-protocol/" class="md-footer__link md-footer__link--next" aria-label="다음: [Computer Network] ARP protocol">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                [Computer Network] ARP protocol
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019-2025 bnbong
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/bnbong" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/%EC%A4%80%ED%98%81-%EC%9D%B4-669733231/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://blog.naver.com/bnbong" target="_blank" rel="noopener" title="blog.naver.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/j_hyeok__lee/" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:bbbong9@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="/feed_rss_updated.xml" target="_blank" rel="noopener" title="Subscribe to our RSS Feed" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.footer", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "search.highlight", "search.share", "search.suggest", "announce.dismiss", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "tags": {"\u003ctag\u003e": "\u003cidentifier\u003e"}, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

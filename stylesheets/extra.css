@@ -1,0 +1,473 @@
+:root {
+    --md-primary-fg-color: #E1B978;
+    --md-primary-fg-color--light: #f2e8d6;
+    --md-primary-fg-color--dark: #b87b1e;
+    --md-primary-code-bg-color: #fff;
+}
+
+/* 마크다운 콘텐츠 스타일링 */
+.md-typeset {
+    /* 기본 텍스트 스타일 */
+    color: #000;
+    line-height: 1.6;
+
+    /* 헤딩 스타일 */
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: var(--md-primary-fg-color);
+        font-weight: 600;
+    }
+
+    /* 링크 스타일 */
+    a {
+        color: var(--md-primary-fg-color);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: var(--md-primary-fg-color--dark);
+        text-decoration: underline;
+    }
+
+    /* 코드 블록 스타일 */
+    code {
+        background-color: var(--md-primary-code-bg-color);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+    }
+
+    /* 블록쿼트 스타일 */
+    blockquote {
+        border-left: 4px solid var(--md-primary-fg-color);
+        padding-left: 1.2em;
+        margin: 1em 0;
+    }
+
+    /* 리스트 스타일 */
+    ul,
+    ol {
+        padding-left: 1.5em;
+    }
+
+    /* 테이블 스타일 */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border: 1px solid var(--md-primary-fg-color--light);
+        padding: 0.5em;
+    }
+
+    th {
+        background-color: var(--md-primary-fg-color--light);
+    }
+}
+
+/* 다크 모드 대응 */
+[data-md-color-scheme="slate"] {
+    --md-hue: 210;
+
+    .md-typeset {
+        color: #eee;
+        /* 다크모드에서의 텍스트 색상 */
+
+        a {
+            color: var(--md-primary-fg-color--light);
+        }
+
+        table {
+            th {
+                background-color: var(--md-primary-fg-color--dark);
+                /* 더 어두운 배경색 사용 */
+                color: #ffffff;
+                /* 헤더 텍스트를 흰색으로 */
+            }
+
+            td {
+                border-color: var(--md-primary-fg-color--light);
+                /* 테두리 색상도 어둡게 */
+            }
+        }
+
+        /* 인라인 코드 스타일 */
+        code {
+            background-color: #263238;
+            /* Material Theme 배경색 */
+            color: #EEFFFF;
+            /* Material Theme 기본 텍스트 색상 */
+        }
+
+        /* 코드 블록 스타일 */
+        pre {
+            background-color: #263238 !important;
+            /* Material Theme 배경색 */
+
+            code {
+                background-color: transparent;
+                color: #EEFFFF;
+                /* 기본 텍스트 색상 */
+            }
+
+            /* Material Theme 코드 하이라이팅 색상 */
+            .keyword {
+                color: #C792EA;
+            }
+
+            /* 키워드 - 보라색 */
+            .string {
+                color: #C3E88D;
+            }
+
+            /* 문자열 - 연두색 */
+            .comment {
+                color: #546E7A;
+            }
+
+            /* 주석 - 회색 */
+            .function {
+                color: #82AAFF;
+            }
+
+            /* 함수 - 파란색 */
+            .number {
+                color: #F78C6C;
+            }
+
+            /* 숫자 - 주황색 */
+            .class {
+                color: #FFCB6B;
+            }
+
+            /* 클래스 - 노란색 */
+            .variable {
+                color: #EEFFFF;
+            }
+
+            /* 변수 - 흰색 */
+            .operator {
+                color: #89DDFF;
+            }
+
+            /* 연산자 - 하늘색 */
+            .property {
+                color: #B2CCD6;
+            }
+
+            /* 속성 - 연한 파란색 */
+            .constant {
+                color: #F78C6C;
+            }
+
+            /* 상수 - 주황색 */
+        }
+    }
+}
+
+/* ========================================
+   블로그 피드 카드 스타일
+   ======================================== */
+
+/* 블로그 게시물 카드 컨테이너 */
+article.md-post--excerpt {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+article.md-post--excerpt::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(180deg, var(--md-primary-fg-color), var(--md-primary-fg-color--dark));
+    border-radius: 16px 0 0 16px;
+}
+
+article.md-post--excerpt:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--md-primary-fg-color--light);
+}
+
+/* 게시물 제목 스타일 */
+article.md-post--excerpt h2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+}
+
+article.md-post--excerpt h2 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+article.md-post--excerpt h2 a:hover {
+    color: var(--md-primary-fg-color);
+}
+
+/* 메타 정보 영역 스타일링 */
+article.md-post--excerpt .md-post__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    color: #666;
+    font-size: 0.85rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+article.md-post--excerpt .md-meta__link {
+    color: var(--md-primary-fg-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+article.md-post--excerpt .md-meta__link:hover {
+    color: var(--md-primary-fg-color--dark);
+    text-decoration: underline;
+}
+
+/* 계속 읽기 버튼 스타일 */
+article.md-post--excerpt .md-post__action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+article.md-post--excerpt .md-post__action a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--md-primary-fg-color), var(--md-primary-fg-color--dark));
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(225, 185, 120, 0.3);
+}
+
+article.md-post--excerpt .md-post__action a:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(225, 185, 120, 0.4);
+}
+
+/* 블로그 본문 내용 */
+article.md-post--excerpt .md-post__content {
+    color: #444;
+    line-height: 1.7;
+}
+
+/* 메인 피드에서 프로필 사진 숨기기 */
+article.md-post--excerpt .md-author {
+    display: none;
+}
+
+/* ========================================
+   다크모드 블로그 카드 스타일
+   ======================================== */
+
+[data-md-color-scheme="slate"] article.md-post--excerpt {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-md-color-scheme="slate"] article.md-post--excerpt:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] article.md-post--excerpt .md-post__meta {
+    color: #aaa;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] article.md-post--excerpt .md-post__action {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] article.md-post--excerpt .md-post__content {
+    color: #ccc;
+}
+
+[data-md-color-scheme="slate"] .md-post__tag {
+    background: linear-gradient(135deg, rgba(225, 185, 120, 0.25), rgba(225, 185, 120, 0.1));
+    color: var(--md-primary-fg-color--light);
+    border-color: rgba(225, 185, 120, 0.3);
+}
+
+[data-md-color-scheme="slate"] .md-post__tag:hover {
+    background: var(--md-primary-fg-color);
+    color: #1a1a1a;
+}
+
+/* ========================================
+   상단 페이지 네비게이터 스타일
+   ======================================== */
+
+nav.pagination--top {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="slate"] nav.pagination--top {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ========================================
+   링크 프리뷰 카드 스타일
+   ======================================== */
+
+.link-preview-card {
+    margin: 1.5rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.link-preview-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: var(--md-primary-fg-color);
+}
+
+.link-preview-card a {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-preview-image {
+    flex-shrink: 0;
+    width: 200px;
+    height: 140px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.link-preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.link-preview-card:hover .link-preview-image img {
+    transform: scale(1.05);
+}
+
+.link-preview-content {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.link-preview-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.link-preview-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.link-preview-url {
+    font-size: 0.8rem;
+    color: var(--md-primary-fg-color);
+    font-weight: 500;
+}
+
+/* 반응형: 모바일에서 세로 레이아웃 */
+@media (max-width: 600px) {
+    .link-preview-card a {
+        flex-direction: column;
+    }
+
+    .link-preview-image {
+        width: 100%;
+        height: 180px;
+    }
+
+    .link-preview-content {
+        padding: 1rem;
+    }
+}
+
+/* ========================================
+   다크모드 링크 프리뷰 카드 스타일
+   ======================================== */
+
+[data-md-color-scheme="slate"] .link-preview-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-md-color-scheme="slate"] .link-preview-card:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .link-preview-image {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-md-color-scheme="slate"] .link-preview-title {
+    color: #eee;
+}
+
+[data-md-color-scheme="slate"] .link-preview-description {
+    color: #aaa;
+}
+
+[data-md-color-scheme="slate"] .link-preview-url {
+    color: var(--md-primary-fg-color--light);
+}

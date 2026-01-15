@@ -1,0 +1,2758 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FastAPI의 boilerplate 배치 기능이 포함된 오픈소스 프로젝트 개발기">
+      
+      
+      
+        <link rel="canonical" href="https://bnbong.github.io/blog/2026/01/08/project-fastapi-fastkit-%EA%B0%9C%EB%B0%9C%EA%B8%B0/">
+      
+      
+        <link rel="prev" href="../../../../2025/04/08/computer-science-%EB%B3%91%EB%A0%AC%EC%84%B1%EA%B3%BC-%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%98-%EC%B0%A8%EC%9D%B4/">
+      
+      
+        <link rel="next" href="../../15/python-%EB%B0%B1%EC%A4%80-1436%EB%B2%88---%EC%98%81%ED%99%94%EA%B0%90%EB%8F%85-%EC%88%8C/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 피드 생성완료" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS 피드 업데이트완료" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+    
+    
+      
+        <title>[Project] FastAPI-fastkit 개발기 - bnbong's tech blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1E1JBX2WR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G1E1JBX2WR');
+</script>
+
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="[Project] FastAPI-fastkit 개발기 - bnbong's tech blog" >
+      
+        <meta  property="og:description"  content="FastAPI의 boilerplate 배치 기능이 포함된 오픈소스 프로젝트 개발기" >
+      
+        <meta  property="og:image"  content="https://bnbong.github.io/assets/images/social/blog/posts/20260108-fastkit/20260108.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://bnbong.github.io/blog/2026/01/08/project-fastapi-fastkit-%EA%B0%9C%EB%B0%9C%EA%B8%B0/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="[Project] FastAPI-fastkit 개발기 - bnbong's tech blog" >
+      
+        <meta  name="twitter:description"  content="FastAPI의 boilerplate 배치 기능이 포함된 오픈소스 프로젝트 개발기" >
+      
+        <meta  name="twitter:image"  content="https://bnbong.github.io/assets/images/social/blog/posts/20260108-fastkit/20260108.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="brown">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../../../.." title="bnbong&#39;s tech blog" class="md-header__button md-logo" aria-label="bnbong's tech blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bnbong's tech blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [Project] FastAPI-fastkit 개발기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="brown"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="brown"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="공유" aria-label="공유" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bnbong/bnbong.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bnbong/bnbong.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  About Me
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../projects/" class="md-tabs__link">
+          
+  
+    
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="bnbong&#39;s tech blog" class="md-nav__button md-logo" aria-label="bnbong's tech blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    bnbong's tech blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bnbong/bnbong.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bnbong/bnbong.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    아카이브
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            아카이브
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2026/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2026
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    카테고리
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            카테고리
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/computer-science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/opensource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenSource
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../projects/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    개인 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            개인 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/bifrost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bifrost
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/tookindfriendchat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TooKindFriendChat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/univapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JaramUniv_Sugang-API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/ricktcal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rickTcal_DayLife
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/kakaotalk-weatherforecast/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KakaoTalk-channel-WeatherToday
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    팀 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            팀 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/project-pinned/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project-Pinned
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/awesomechat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Awesome Chatting App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/mugip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mugip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/kbuddy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KBuddy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-hub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Hub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-penalty-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Penalty Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-attendance-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Attendance Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/qr-phishing-detector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phishing QR detector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    오픈소스 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            오픈소스 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/azure-sdk-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure SDK for Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/azure-sdk-python-kor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure SDK for Python Korean Docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/fastapi-fastkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FastAPI FastKit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/blog-post-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog Post Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/femu-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FEMU Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="이 페이지의 요소들">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      이 페이지의 요소들
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      프로젝트 탄생 배경
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="프로젝트 탄생 배경">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fastapi-new-comer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. FastAPI new-comer의 진입 장벽 낮추기
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. FastAPI 커뮤니티 생태계 활성화
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      핵심 기능 개발
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="핵심 기능 개발">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      cli 기능
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="cli 기능">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI 그룹 구성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      명령어 구현
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      인자와 옵션 처리
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      대화형 프롬프트
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      가독성 향상
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="가독성 향상">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      기본 콘솔 설정
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      메시지 유형별 스타일링
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="메시지 유형별 스타일링">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      오류 메시지
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      성공 메시지
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fastkit-init-interactive" class="md-nav__link">
+    <span class="md-ellipsis">
+      fastkit init --interactive 모드 개발
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      테스트 검증
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      pdm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    <span class="md-ellipsis">
+      template 관련
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      로고
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      오픈소스 요소
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="오픈소스 요소">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      문서
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release note
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-compatible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python compatible 버전 체크
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pypi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pypi 업로더
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      이후 버전 개선점
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      개발 느낀점
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    메인으로 돌아가기
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <a href="https://bnbong.github.io/">
+                        <img src="https://avatars.githubusercontent.com/bnbong" alt="이준혁">
+                      </a>
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://bnbong.github.io/">이준혁</a>
+                        
+                      </strong>
+                      <br>
+                      개발하는 비엔봉
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    메타데이터
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-01-08 00:00:00+00:00" class="md-ellipsis">2026년 1월 8일 목요일</time>
+                      </div>
+                    </li>
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
+                          <time datetime="2026-01-08 00:00:00+00:00" class="md-ellipsis">2026년 1월 8일 목요일</time>
+                        </div>
+                      </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            카테고리
+                            
+                              <a href="../../../../category/project/">Project</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              읽는시간 15분
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+  
+
+<nav class="md-tags" >
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#fastapi" class="md-tag md-tag-icon">FastAPI</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#cli" class="md-tag md-tag-icon">CLI</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#backend" class="md-tag md-tag-icon">Backend</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#github-actions" class="md-tag md-tag-icon">Github Actions</a>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>[Project] FastAPI-fastkit 개발기</h1>
+
+<p>2025년 3월 1일, 내가 만든 오픈소스 프로젝트 FastAPI-fastkit의 버전 1.0.0 릴리즈를 진행했다. 이 포스팅을 작성하는 26년 1월 현재는 버전 1.2.0이 배포되어 있는 상태이고 pypi 패키지 다운로드 횟수 12k를 달성한 프로젝트가 되었다.</p>
+<figure>
+<p><img alt="now" src="../../../../20260108-fastkit/now.png" /></p>
+<figcaption>
+<p>프로젝트 저장소 링크 : <a href="https://github.com/bnbong/FastAPI-fastkit">https://github.com/bnbong/FastAPI-fastkit</a></p>
+</figcaption>
+</figure>
+<p>이 프로젝트는 FastAPI 프로젝트를 쉽게 시작할 수 있도록 돕는 프로젝트이다. 일종의 boilerplate 기능이 포함되어 있고 CLI 명령어로 쉽게 FastAPI 프로젝트를 확장, 추가, 관리 할 수 있도록 만들었다.</p>
+<h2 id="_1">프로젝트 탄생 배경<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>24년 여름 인턴을 끝내고 난 후, 나와 관심사가 맞는 인턴 동기 친구와 함께 클라우드 관련 오픈소스에 기여를 해보기로 마음을 먹었다.</p>
+<p>특히 OpenStack의 기여를 하고 싶어서 OpenStack의 여러 오픈소스 (ironic, nova, neutron 등)을 탐색하면서 공부를 해보았는데, 프로젝트 규모가 너무 크다보니 개개인이 공부해서 부족하거나 문제 있는 부분을 고쳐서 기여하는건 굉장히 굉장히 어려운 일이라는 것을 알게 되었다.</p>
+<p>그래서 우리는 방향성을 조금 수정해서 OpenStack에 국한하는 것이 아닌 내가 관심 있는 분야의 오픈소스에 기여를 해보는 것으로 방향을 잡았다.</p>
+<p><br></p>
+<p>그렇게 새로운 방향성으로 여러 오픈소스를 탐색하던 와중, 나는 내가 이전부터 지금까지 자주 애용하는 Backend 프레임워크인 FastAPI의 버전 업데이트 노트를 발견하게 되었다.</p>
+<div class="link-preview-card">
+    <a href="https://github.com/fastapi/fastapi/releases/tag/0.111.0" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/a11c57e8a3279ee86b10d51f0332348108483e7bc4d426f73815f8ebc7fc606a/fastapi/fastapi/releases/tag/0.111.0" alt="Release 0.111.0 · fastapi/fastapi" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">Release 0.111.0 · fastapi/fastapi</div>
+            <div class="link-preview-description">Features
+
+✨ Add FastAPI CLI, the new fastapi command. PR #11522 by @tiangolo.
+
+New docs: FastAPI CLI.
+
+
+
+Try it out with:
+$ pip install --upgrade f...</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<p>해당 업데이트 노트는 버전 0.111.0 노트인데, 이 노트에서 확인할 수 있던 특이사항 중 하나는 새로운 패키지인 'fastapi-cli' 가 추가되었다는 것이었다.</p>
+<p>버전 노트와 관련 커뮤니티 반응을 보건데, 이 라이브러리는 FastAPI 개발자 tiangolo가 독단으로 추가한 라이브러리로 보였다.</p>
+<!-- more -->
+
+<p><br></p>
+<p>갑작스럽게 추가된 새로운 패키지에 대해 여러 기여자들 및 FastAPI 사용자들이 패키지 필요성에 의문을 품었다.</p>
+<p>커뮤니티는 개발자 tiangolo가 독단으로 충분한 검증 없이 패키지 추가를 강행한 행동과 해당 패키지 필요성에 대한 충분한 설명의 부재로 많은 사람들이 아쉬움을 표했으며, 일부는 이 행동이 오픈소스 생태계 발전에 반하는 행동이라며 비판하기도 했다.</p>
+<p>추가된 fastapi-cli 패키지는 cli 기능 말고는 별 다른 핵심 기능이 없었다. 만들어진 cli 기능 마저도 이미 uvicorn 명령어를 fastapi라는 단어로 단순 wrapping한 수준이었다. 그나마 더 나아진 것은 output 가독성 정도만 좋아진 수준.</p>
+<p>업데이트에 대한 커뮤니티 반응의 핵심을 담은 코멘트가 있었는데, 링크는 다음과 같다 :</p>
+<div class="link-preview-card">
+    <a href="https://github.com/fastapi/fastapi/pull/11522#issuecomment-2264639417" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/fa1c84097605a4b4daf12000a057e28dec388a61c44ee05ad8f7aa9c5ffdaf3d/fastapi/fastapi/pull/11522" alt="✨ Add FastAPI CLI, the new `fastapi` command by tiangolo · Pull Request #11522 · fastapi/fastapi" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">✨ Add FastAPI CLI, the new `fastapi` command by tiangolo · Pull Request #11522 · fastapi/fastapi</div>
+            <div class="link-preview-description">✨ Add FastAPI CLI, the new fastapi command</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<p>이에 tiangolo는 직접 답글로 fastapi-cli 패키지는 FastAPI를 처음 접하는 사람들의 진입 장벽을 낮추기 위한 목적으로 추가되었다고 답했다(it's extra things to have in mind, and extra things for newcomers to learn from the beginning).</p>
+<p><br></p>
+<p>여러 사람들의 반응과는 달리 나는 tiangolo의 이런 철학이 인상깊었다. 의도는 좋았지만 구현 방향이 약간 잘못된 것이라고 생각하여 이 아이디어를 좀 더 타당하게 실현 가능하도록 돕고 싶었고, 이 프로젝트를 개발하기로 마음 먹었다.</p>
+<p>기존 fastapi-cli 에서 해결하지 못했던 문제는 다음과 같다:</p>
+<h3 id="1-fastapi-new-comer">1. FastAPI new-comer의 진입 장벽 낮추기<a class="headerlink" href="#1-fastapi-new-comer" title="Permanent link">&para;</a></h3>
+<p>정작 가장 핵심 적인 문제를 해결하지 못했다는 것을 여러 FastAPI 사용자 커뮤니티에서 발견할 수 있었다. 내 주변 사람들 중에서 FastAPI를 사용해본 사람에게 왜 FastAPI에 정착하지 않았던 이유에 대해서도 조사를 해보았다.</p>
+<p>공통적으로 FastAPI 프로젝트의 구조화에 대한 어려움을 표했다. node.js 프로젝트와 마찬가지로 FastAPI 프로젝트는 강제화된 모듈 구조가 존재하지 않는다. 이 점이 장점이자 단점으로 작용하는데, 어느정도 프레임워크에 대한 이해도가 전제되어 있으면 자신의 입맛대로 프로젝트 구조를 짤 수 있지만, 본인이 다른 FastAPI 프로젝트에 기여를 하거나 이해를 해야하는 경우에는 해당 프로젝트의 개발자의 의도를 '프로젝트 구조' 레벨 부터 파악해야한다는 난해함이 존재한다.</p>
+<p>Python Django가 비교적 낮은 성능에도 불구하고 여전히 백엔드 입문자들에게 인기가 있는 이유는 개발자가 프로젝트 구조에 대해 신경을 덜 써도 되기 때문이다. urls.py, views.py, model.py 등 django 프레임워크 핵심 모듈들을 이해하고 있다면 개발자는 이를 활용한 단순 구현에만 집중하면 된다.</p>
+<p>SpringBoot의 경우 dto, service, controller 등의 패턴이 best practice로 굳혀있어서 Springboot 프로젝트들은 거의 대부분 비슷한 패턴을 보이는 것을 알 수 있었다.</p>
+<p>이를 통해 입문자들에게는 아무래도 최소한의 강제성을 주는 것이 나쁘지 않다고 생각했다.</p>
+<h3 id="2-fastapi">2. FastAPI 커뮤니티 생태계 활성화<a class="headerlink" href="#2-fastapi" title="Permanent link">&para;</a></h3>
+<p>새로운 패키지 fastapi-cli는 FastAPI 사용자들에게 충분한 필요성을 느끼게 하지 못했다.</p>
+<p>개발자 의도는 좋았으나, 냉담한 반응으로 결국 FastAPI 설치 시 <code>FastAPI[standard]</code>, <code>FastAPI[full]</code> 로 나뉘어진 설치 방법에서 full 버전에만 optional로 추가되는 결과로 이어졌다.</p>
+<p>나는 개발자 tiangolo의 의도를 좀 더 사람들이 납득 할만하게 충족시키고 싶었고 더 나아가 이 프로젝트가 FastAPI 사용자 생태계를 좀 더 활성화 시켜서 더 많은 사람들이 FastAPI에 매력을 느껴 사용하도록 유도하는 촉매제로 작용하고 싶었다.</p>
+<h2 id="_2">핵심 기능 개발<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>이제 문제 상황을 파악했으니 남은 건 개발 속행이었다.</p>
+<p>최신 1.2.0 버전이 배포된 지금은 fastkit의 핵심적인 UX는 다음 링크에서 확인 가능하다 :</p>
+<div class="link-preview-card">
+    <a href="https://bnbong.github.io/FastAPI-fastkit/#usage" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-content">
+            <div class="link-preview-title">FastAPI-fastkit</div>
+            <div class="link-preview-description">Fast, easy-to-use starter kit for new users of Python and FastAPI</div>
+            <div class="link-preview-url">bnbong.github.io</div>
+        </div>
+    </a>
+</div>
+
+<p>나는 CLI로 FastAPI 프로젝트를 손쉽게 확장하고 관리하는 기능이 있었으면 좋겠다고 생각했다. 마치 Django의 django-admin 명령어와 SpringBoot의 initializer 처럼.</p>
+<p>여러 라이브러리와 패키지를 참고, 참조하여 구현해보았다 :</p>
+<h3 id="cli">cli 기능<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
+<p>핵심 cli operation 구현은 python-click 라이브러리를 활용하였다.</p>
+<h4 id="cli_1">CLI 그룹 구성<a class="headerlink" href="#cli_1" title="Permanent link">&para;</a></h4>
+<p>프로젝트의 메인 CLI 그룹은 <code>@click.group()</code> 데코레이터를 사용하여 <code>fastkit_cli</code> 함수를 중심으로 구성했다. 이 함수는 모든 CLI 명령의 진입점 역할을 하며 공통 컨텍스트를 설정한다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 버전 1.0.0 코드 참조</span>
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--debug/--no-debug&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">version_option</span><span class="p">(</span><span class="n">__version__</span><span class="p">,</span> <span class="n">prog_name</span><span class="o">=</span><span class="s2">&quot;fastapi-fastkit&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="k">def</span> <span class="nf">fastkit_cli</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;BaseCommand&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">FastkitConfig</span><span class="p">()</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">ensure_object</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+        <span class="n">print_warning</span><span class="p">(</span><span class="s2">&quot;running at debugging mode!!&quot;</span><span class="p">)</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">set_debug_mode</span><span class="p">()</span>
+
+    <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;settings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span>
+    <span class="n">setup_logging</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+<p>이 코드를 통해 <code>--debug</code> 플래그와 버전 정보를 표시하는 옵션을 구현했으며, 설정 객체를 컨텍스트에 저장하여 하위 명령에서 접근할 수 있게 했다.</p>
+<p>디버그 플래그를 CLI 명령어에 추가하게 되면 패키지 내부 로거에서 stack trace까지 수집되어 로그가 저장된다. 플래그를 명시하지 않으면 별 다른 로그가 수집되지 않는다.</p>
+<h4 id="_3">명령어 구현<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>각 명령어는 @fastkit_cli.command() 데코레이터를 사용하여 기본 그룹에 추가했다. 예를 들어, 프로젝트 정보를 보여주는 <code>echo</code> 명령은 다음과 같이 구현했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 버전 1.0.0 코드 참조</span>
+
+<span class="nd">@fastkit_cli</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fastkit_info</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    ⚡️ FastAPI fastkit - fastest [bold]FastAPI[/bold] initializer. ⚡️</span>
+
+<span class="s2">    Deploy FastAPI app foundation instantly at your local!</span>
+
+<span class="s2">    ---</span>
+<span class="s2">    - Project Maintainer : [link=mailto:bbbong9@gmail.com]bnbong(JunHyeok Lee)[/link]</span>
+<span class="s2">    - Current Version : </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span>
+<span class="s2">    - Github : [link]https://github.com/bnbong/FastAPI-fastkit[/link]</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;settings&quot;</span><span class="p">]</span>
+    <span class="n">description_panel</span> <span class="o">=</span> <span class="n">Panel</span><span class="p">(</span><span class="n">fastkit_info</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;About FastAPI-fastkit&quot;</span><span class="p">)</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="nb">print</span><span class="p">(</span><span class="n">description_panel</span><span class="p">))</span>
+</code></pre></div>
+<h4 id="_4">인자와 옵션 처리<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>Click을 사용하여 다양한 명령어 인자와 옵션을 처리하였다. 예를 들어, <code>startdemo</code> 명령은 템플릿 인자와 여러 프로젝트 메타데이터 옵션을 받는다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 버전 1.0.0 코드 참조</span>
+
+<span class="nd">@fastkit_cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">context_settings</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ignore_unknown_options&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s2">&quot;template&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;fastapi-default&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--project-name&quot;</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Enter the project name&quot;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The name of the new FastAPI project.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--author&quot;</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Enter the author name&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The name of the project author.&quot;</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--author-email&quot;</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Enter the author email&quot;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The email of the project author.&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+    <span class="n">callback</span><span class="o">=</span><span class="n">validate_email</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;--description&quot;</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Enter the project description&quot;</span><span class="p">,</span>
+    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The description of the new FastAPI project.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">pass_context</span>
+<span class="k">def</span> <span class="nf">startdemo</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+    <span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">project_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">author</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">author_email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># 함수 구현...</span>
+</code></pre></div>
+<p>위 코드에서 validate_email 콜백을 통해 이메일 형식을 검증하는 기능도 구현했다.</p>
+<h4 id="_5">대화형 프롬프트<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Click의 대화형 기능을 활용하여 사용자에게 추가 정보를 요청했다. <code>init</code> 명령어에서는 프로젝트 스택을 선택하는 프롬프트를 구현했다:</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="n">stack</span> <span class="o">=</span> <span class="n">click</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span>
+    <span class="s2">&quot;Select stack&quot;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">PROJECT_STACKS</span><span class="o">.</span><span class="n">keys</span><span class="p">())),</span>
+    <span class="n">show_choices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>또한 click.confirm()을 사용하여 중요한 작업 실행 전에 사용자 확인을 받았다:</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="n">confirm</span> <span class="o">=</span> <span class="n">click</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Do you want to proceed with project creation?&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">confirm</span><span class="p">:</span>
+    <span class="n">print_error</span><span class="p">(</span><span class="s2">&quot;Project creation aborted!&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+<span class="o">...</span>
+</code></pre></div>
+<h3 id="_6">가독성 향상<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>CLI 기능은 GUI 보다는 사용성이 떨어지는 면이 있지만 익숙해지면 편리하다고 생각한다. 거기에 초보자들을 위해 자신의 명령어 입력 결과가 직관적이고 예쁘게 보이면 금상첨화일 것이라고 생각해서 rich 라이브러리로 output을 꾸며보았다.</p>
+<p>rich 라이브러리는 <code>fastapi-cli</code> 에도 포함되어 있는 라이브러리이다.</p>
+<h4 id="_7">기본 콘솔 설정<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>프로젝트의 루트 모듈에서는 Rich의 Console 객체를 초기화하여 전체 애플리케이션에서 사용할 수 있게 했다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># src/fastapi_fastkit/__init__.py</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+
+<span class="k">if</span> <span class="s2">&quot;PYTEST_CURRENT_TEST&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">(</span><span class="n">no_color</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+</code></pre></div>
+<p>테스트 환경에서는 색상 출력을 비활성화하여 테스트 결과의 일관성을 유지했다.</p>
+<h4 id="_8">메시지 유형별 스타일링<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>사용자에게 전달하는 메시지 유형에 따라 다른 스타일을 적용하여 시각적으로 구분이 쉽게 했다. 각 메시지 유형은 고유한 색상과 아이콘으로 구분했다.</p>
+<h5 id="_9">오류 메시지<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># 버전 1.0.0 코드 참조</span>
+
+<span class="k">def</span> <span class="nf">print_error</span><span class="p">(</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span>
+    <span class="n">console</span><span class="p">:</span> <span class="n">Console</span> <span class="o">=</span> <span class="n">console</span><span class="p">,</span>
+    <span class="n">show_traceback</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">error_text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+    <span class="n">error_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;❌ &quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;bold red&quot;</span><span class="p">)</span>
+    <span class="n">error_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">Panel</span><span class="p">(</span><span class="n">error_text</span><span class="p">,</span> <span class="n">border_style</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">show_traceback</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG_MODE</span><span class="p">:</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;[bold yellow]Stack trace:[/bold yellow]&quot;</span><span class="p">)</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+</code></pre></div>
+<p>오류 메시지는 빨간색 테두리의 패널로 표시했으며, 디버그 모드에서는 스택 트레이스도 함께 보여주도록 구현했다.</p>
+<h5 id="_10">성공 메시지<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="c1"># 버전 1.0.0 코드 참조</span>
+
+<span class="k">def</span> <span class="nf">print_success</span><span class="p">(</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Success&quot;</span><span class="p">,</span> <span class="n">console</span><span class="p">:</span> <span class="n">Console</span> <span class="o">=</span> <span class="n">console</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">success_text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">()</span>
+    <span class="n">success_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;✨ &quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;bold yellow&quot;</span><span class="p">)</span>
+    <span class="n">success_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;bold green&quot;</span><span class="p">)</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">Panel</span><span class="p">(</span><span class="n">success_text</span><span class="p">,</span> <span class="n">border_style</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">))</span>
+</code></pre></div>
+<p>성공 메시지는 초록색 테두리와 함께 메시지 본문도 굵은 초록색으로 강조했다.</p>
+<p><br></p>
+<p>이런 식으로 rich 라이브러리를 활용하여 경고, 성공, 오류, 정보 메시지들의 출력을 꾸미고 click 라이브러리의 기능을 활용하여 기본 기능들을 개발했다.</p>
+<h3 id="fastkit-init-interactive"><code>fastkit init --interactive</code> 모드 개발<a class="headerlink" href="#fastkit-init-interactive" title="Permanent link">&para;</a></h3>
+<p>이 기능은 버전 1.2.0에 추가된 핵심 기능이다. 후술하겠지만 이 패키지의 버저닝 전략 중에 하나로, 완전히 breaking change 수준의(패키지 구조가 거의 완전히 갈아엎어질 정도) 업데이트가 아닌 CLI 관련 기능 추가로 인한 업데이트는 minor 버전이 업데이트 되도록 구성했다.</p>
+<p>1.1.5 버전에서 1.2.0 버전으로 바로 버전업이 된 요인이 바로 full, minimal, standard 프로젝트 형식으로만 배치할 수 있던 기존 <code>fastkit init</code> 기능에 <code>--interactive</code> 플래그 옵션을 달아 사용자가 직접 추가하고 싶은 외부 라이브러리를 탐색, 설정하여 프로젝트를 생성할 수 있도록 추가한 것이다.</p>
+<div class="link-preview-card">
+    <a href="https://bnbong.github.io/FastAPI-fastkit/#create-a-project-with-interactive-mode-new" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-content">
+            <div class="link-preview-title">FastAPI-fastkit</div>
+            <div class="link-preview-description">Fast, easy-to-use starter kit for new users of Python and FastAPI</div>
+            <div class="link-preview-url">bnbong.github.io</div>
+        </div>
+    </a>
+</div>
+
+<p>이 기능을 개발할 초반에는 패키지 내부에서 pypi API를 호출하여 대화형 프롬프트 세션에서 실시간으로 실제 pypi에 등록된 라이브러리들 정보를 불러와 고를 수 있도록 구현하고자 했다.</p>
+<p>그러나 공식 pypi API 문서에서는 특정 카테고리의 패키지들을 필터링해서 확인할 수 있는 endpoint가 없는 것으로 확인했고, best practice로 굳혀진 특정 stack이 아닌 다르게 개발 stack을 설정하게 되면 FastAPI 사용자 경험에 악영향이 끼칠 것을 우려하여 다음과 같이 best stack들을 나열해주고 고르게 하고 사용자 본인이 직접 추가하고 싶은 stack이 있다면 마지막에 optional로 입력받아 프로젝트에 추가할 수 있도록 구현했다.</p>
+<figure>
+<p><img alt="stack_selection" src="../../../../20260108-fastkit/stack_selection.png" /></p>
+<figcaption>
+<p>FastAPI와 가장 좋은 궁합을 보이는 stack들을 선택할 수 있도록 표시</p>
+</figcaption>
+</figure>
+<figure>
+<p><img alt="optional_stack" src="../../../../20260108-fastkit/optional_stack.png" /></p>
+<figcaption>
+<p>사용자가 직접 추가하고 싶은 라이브러리를 입력받는 프롬프트. pypi에서 확인 불가한 패키지는 찾을 수 없다는 에러와 함께 프로젝트 배치가 취소된다.</p>
+</figcaption>
+</figure>
+<h3 id="_11">테스트 검증<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>단순한 stdout 출력을 검증하는 것이 아닌, rich 라이브러리의 출력을 사용하는 부분 때문에 테스트 코드를 구현하는 데 애를 먹었다.</p>
+<p>rich의 출력은 다음과 같은데,</p>
+<div class="highlight"><pre><span></span><code>╭────────────────<span class="w"> </span>Success<span class="w"> </span>─────────────────╮
+│<span class="w"> </span>✨<span class="w"> </span>Dependencies<span class="w"> </span>installed<span class="w"> </span>successfully<span class="w">    </span>│
+╰──────────────────────────────────────────╯
+</code></pre></div>
+<p>이런 식으로 강조하고자 하는 string을 감싸주는 box가 출력이 되는 식이다.</p>
+<p>그런데, 같은 콘솔에서 출력된 string이라고 하더라도 testcase 내에서는 여기에 찍인 string을 제대로 assert 할 수 없었다.</p>
+<p>그래서 초기에는 string을 엄격하게 판단하는 테스트코드를 짜지 않고 성공, 실패 정도만 판단하는 테스트케이스를 짜다가 공식 문서를 참고하여 string을 뽑아 판단하는 방법을 찾아냈다.</p>
+<p>해답은 다음과 같다:</p>
+<div class="highlight"><pre><span></span><code><span class="n">output</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+</code></pre></div>
+<p>이런 식으로 콘솔 객체의 file 속성에서 getvalue() 메서드로 stdout string을 가져와서 assert 하도록 구현했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_success_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">console</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># given</span>
+    <span class="kn">from</span> <span class="nn">src.fastapi_fastkit.utils.main</span> <span class="kn">import</span> <span class="n">print_success</span>
+
+    <span class="n">test_message</span> <span class="o">=</span> <span class="s2">&quot;this is success test&quot;</span>
+
+    <span class="c1"># when</span>
+    <span class="n">print_success</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">test_message</span><span class="p">,</span> <span class="n">console</span><span class="o">=</span><span class="n">console</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+
+    <span class="c1"># then</span>
+    <span class="k">assert</span> <span class="s2">&quot;Success&quot;</span> <span class="ow">in</span> <span class="n">output</span> <span class="ow">and</span> <span class="n">test_message</span> <span class="ow">in</span> <span class="n">output</span>
+</code></pre></div>
+<h3 id="pdm">pdm<a class="headerlink" href="#pdm" title="Permanent link">&para;</a></h3>
+<p>이번 프로젝트에서 pdm을 처음 사용해봤는데, 사용성이 굉장히 좋았다.</p>
+<p>꽤 오랬동안 단순 pip을 사용했었고 직전 프로젝트까지 poetry를 사용했었는데, pdm을 사용하니 패키지 관리에 대한 불편함이 많이 줄어들었다.</p>
+<p>특히 패키지 관리 외에도 프로젝트 구조 관리 등에서 많은 이점을 주었다.</p>
+<p>pdm init 명령어를 통해 어느정도 구조 있는 python 프로젝트를 initialize 하는 점도 편했고 dev, prod 환경을 구분해서 deps를 설치하여 프로덕션 빌드에서는 필요 없는 패키지들을 명시적으로 구분이 가능하다는 점도 좋았다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FastAPI-fastkit&quot;</span>
+<span class="n">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Fast, easy-to-use starter kit for new users of Python and FastAPI&quot;</span>
+<span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;bnbong&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;bbbong9@gmail.com&quot;</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;click&gt;=8.1.7&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;rich&gt;=13.9.2&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;=3.12&quot;</span>
+<span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;README.md&quot;</span>
+<span class="n">license</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="p">}</span>
+
+<span class="k">[project.optional-dependencies]</span>
+<span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;pytest&gt;=8.3.3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;pytest-cov&gt;=5.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;black&gt;=24.10.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;pre-commit&gt;=4.0.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;mypy&gt;=1.12.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;isort&gt;=5.13.2&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>또 공식 문서에서 소개하는 pdm은 PEP를 매우 엄격하게 준수한다는 점이 정말로 사실인지는 모르겠지만 내가 standard를 준수한다는 느낌도 받아서 편안했다ㅋㅋ</p>
+<p><br></p>
+<p>나름 안정화 버전에 접어들었나본지 github actions 에서도 pdm 훅을 적용할 수 있었는데, 로컬에서 사용하던 pdm 명령어를 그대로 dev, prod 환경을 나눠서 같은 환경에서 워크플로우를 돌릴 수 있다는 점도 괜찮았다.</p>
+<p>추가로 이 프로젝트는 '패키지' 이기 때문에 python 버전 별 호환되는 버전을 체크하는 것도 중요했다. 이는 <code>matrix</code> 를 활용하여 <code>fail-fast: false</code> 옵션을 줘서 실패하는 python 버전이 있더라도 모든 python 버전에 대해 테스트를 진행하도록 구성했다. 즉, 여기서 실패하는 버전이 호환이 불가능한 버전이기에 패키지 문서에서도 호환 가능 Python 버전을 검증하여 표현할 수 있었다.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test-fastapi-fastkit-sources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3.13&quot;</span><span class="w">  </span><span class="c1"># max</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span><span class="w">  </span><span class="c1"># min</span>
+<span class="w">      </span><span class="nt">fail-fast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout code</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup PDM</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdm-project/setup-pdm@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdm install -G dev</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdm run pytest</span>
+</code></pre></div>
+<p>당연히 pdm은 패키지 빌드 기능도 지원한다. <code>pdm build</code> 명령어로 바로 빌드를 뽑을 수 있고, 나는 FastAPI-fastkit 레포 자체를 pypi에 등록하여 pypa/gh-action-pypi-publish 훅을 활용하여 빌드 및 업로드를 진행했다.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdm-project/setup-pdm@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdm install</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extract tag name</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tag</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;TAG_NAME=${GITHUB_REF#refs/tags/}&quot; &gt;&gt; $GITHUB_OUTPUT</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update version in __init__.py</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo &quot;__version__ = &#39;${{ steps.tag.outputs.TAG_NAME }}&#39;&quot; &gt; src/fastapi_fastkit/__init__.py</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build package</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdm build</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Publish package distributions to PyPI</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pypa/gh-action-pypi-publish@release/v1</span>
+</code></pre></div>
+<p>현재는 pdm뿐만 아니라 uv로도 패키지 개발 setup을 할 수 있도록 구성했다. 성능면에서는 uv가 pdm 보다 훨씬 빠르기에 추후 배포 워크플로우를 포함하여 개발 flow를 pdm이 아니라 uv를 활용하도록 마이그레이션하는 것을 고려중에 있다.</p>
+<h3 id="template">template 관련<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
+<p>FastAPI-fastkit의 가장 핵심 기능 중 하나인 boilderplate 기능과 직접적인 관련이 있는 template 폴더이다.</p>
+<p>src/fastapi_fastkit/fastapi_project_template 폴더에 종류별로 boilder template를 구성하고 CLI 명령어로 유저의 메타데이터를 주입하여 유저 워크스페이스에 프로젝트 구조 째로 배치하도록 구현했다.</p>
+<figure>
+<p><img alt="boilderplate" src="../../../../20260108-fastkit/boilderplate.png" /></p>
+<figcaption>
+<p>fastapi_project_template 폴더 구조(1.0.0 기준)</p>
+</figcaption>
+</figure>
+<p>template 폴더 내 base 파일들은 모두 확장자가 <code>-tpl</code> 로 끝나도록 했다. 이런 파일 구조는 django의 형식을 참고해서 구현했다.</p>
+<p><br></p>
+<p>CLI endpoint에서 boilderplate를 배치하도록 하는 명령어는 <code>fastkit startdemo &lt;배치할_template_이름&gt;</code> 이다. 배치가능한 template 종류는 <code>fastkit list-templates</code>로 확인할 수 있다.</p>
+<p>click endpoint가 명령어를 받으면 해당 template이 배치 가능한 존재하는 template 인지 확인하고, 존재하면 유저의 메타데이터를 주입하여 배치한다.</p>
+<p>이후 유저의 허가 action이 떨어지면 호출하는 <code>copy_and_convert_template</code> 함수가 해당하는 template 폴더에 있는 파일들의 <code>-tpl</code> 확장자를 제거하고 유저 워크스페이스에 배치한다.</p>
+<p>해당 기능이 들어있는 모듈은 <code>transducer.py</code> 에 정의했다 :</p>
+<div class="link-preview-card">
+    <a href="https://github.com/bnbong/FastAPI-fastkit/blob/main/src/fastapi_fastkit/backend/transducer.py" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://repository-images.githubusercontent.com/869300336/03c10be4-9491-4b28-b920-e75f2c522c35" alt="FastAPI-fastkit/src/fastapi_fastkit/backend/transducer.py at main · bnbong/FastAPI-fastkit" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">FastAPI-fastkit/src/fastapi_fastkit/backend/transducer.py at main · bnbong/FastAPI-fastkit</div>
+            <div class="link-preview-description"><Open Source> Fast, easy-to-use starter kit for new users of Python and FastAPI - bnbong/FastAPI-fastkit</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<h3 id="_12">로고<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><img alt="fastkit logo" src="../../../../20260108-fastkit/fastkit_general_logo.png" /></p>
+<p>로고는 대학 후배에게 외주아닌 외주를 주어서 만들었다.</p>
+<p>결과물을 보니 디자인 감각이 매말라버린 내가 로고를 만드는것 보단 역시 디자인대학 재학생에게 맡긴 것이 최고였다. 시간적으로든 감각적으로든 모든 면에서 이득이었다.</p>
+<p>서로 프젝에 시달린 와중에 클라이언트에게 스트레스를 받지 않고 오로지 재미로만 작업해서 서로의 만족도 또한 높았던 것이 좋았다ㅋㅋ</p>
+<h2 id="_13">오픈소스 요소<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">문서<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>오픈소스 프로젝트에 가장 기본 정보를 제공해주는 것이 바로 문서라고 생각한다.</p>
+<p>오픈소스 기여를 하고자 할 때 가장 먼저 일종의 랜딩 페이지 역할을 하는 README.md를 확인하고, CONTRIBUTING.md에서 기여 방법에 대한 가이드를 확인한다.</p>
+<p>코드 기여의 경우에는 CODE_OF_CONDUCT.md, SECURITY.md 등을 확인하는 등 오픈소스 문서를 제대로 정의 하는 것이 협업 프로젝트에 가장 핵심이라고 생각한다.</p>
+<p><br></p>
+<p>이번 프로젝트는 여러 오픈소스의 문서들을 참고해서 작성했는데, 완성한 오픈소스 문서들은 다음 링크에서 확인할 수 있다:</p>
+<p><a href="https://github.com/bnbong/FastAPI-fastkit/blob/main/README.md">README.md</a>, <a href="https://github.com/bnbong/FastAPI-fastkit/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>, <a href="https://github.com/bnbong/FastAPI-fastkit/blob/main/CODE_OF_CONDUCT.md">CODE_OF_CONDUCT.md</a>, <a href="https://github.com/bnbong/FastAPI-fastkit/blob/main/SECURITY.md">SECURITY.md</a>, <a href="https://github.com/bnbong/FastAPI-fastkit/blob/main/LICENSE">LICENSE</a></p>
+<p>각 문서의 역할에 충실하도록 구성을 했고, Fastkit 프로젝트에 대한 핵심 정보를 습득할 수 있도록 중요한 내용들을 위주로 작성했다.</p>
+<p><br></p>
+<p>라이선스는 LICENSE로 MIT 라이선스를 적용했다.</p>
+<p>MIT 라이선스는 상업적 사용이 가능하다는 점이 있는데, FastAPI를 활용하여 수익을 내고자 하는 사용자들이 내 프로젝트인 Fastkit을 활용해서 빠르게 서비스를 구현하도록 의도하고 싶어서 적용했다.</p>
+<p><br></p>
+<p>Issue와 PR에도 템플릿을 구성했고 PR의 태그를 바탕으로 릴리즈 노트에 자동으로 기여 및 변경 내용을 분류해주는 pr-labeler 시스템을 도입했다.</p>
+<figure>
+<p><img alt="pr_labeler" src="../../../../20260108-fastkit/pr_labeler.png" /></p>
+<figcaption>
+<p>closed 된 PR에 라벨을 붙으면 새로 작성될 release 노트에 위 사진과 같이 자동으로 변경 사항이 카테고리 별로 분류되어 추가된다.</p>
+</figcaption>
+</figure>
+<p><br></p>
+<p>내 프로젝트 기여자를 위한 문서 뿐만 아니라 내 프로젝트로 FastAPI를 시작하는 초보자를 위한 가이드도 작성했다. 내 프로젝트에서 제공하는 여러 template들로 각 유즈케이스에 맞는 프로젝트 구성 및 개발을 하는 가이드를 작성했다.</p>
+<p>기본 언어는 영어로 작성되었고 각종 언어로(한국어 포함) LLM 기반의 문서 번역을 수행하는 flow까지 구현하였으나 token call 개수 제한으로 자동화 워크플로우를 구축하진 못했다(역시 무료 plan에서는 제한이 크다..).</p>
+<h2 id="release">Release<a class="headerlink" href="#release" title="Permanent link">&para;</a></h2>
+<h3 id="release-note">Release note<a class="headerlink" href="#release-note" title="Permanent link">&para;</a></h3>
+<p>자동화된 릴리즈 노트 생성을 위해 <code>release-drafter</code> GitHub Action을 도입했다.</p>
+<p><strong>Release Drafter 활용</strong>:</p>
+<ul>
+<li>PR의 레이블을 기반으로 자동으로 릴리즈 노트를 분류</li>
+<li><code>feature</code>, <code>enhancement</code>, <code>bugfix</code>, <code>documentation</code> 등의 레이블에 따라 섹션별로 정리</li>
+<li>각 릴리즈마다 무엇이 추가되고 변경되었는지 한눈에 파악 가능</li>
+<li>수동으로 릴리즈 노트를 작성하는 시간과 노력을 대폭 절약</li>
+</ul>
+<p><strong>릴리즈 노트 구성</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">categories</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;🚀</span><span class="nv"> </span><span class="s">Features&#39;</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;feature&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;enhancement&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;🐛</span><span class="nv"> </span><span class="s">Bug</span><span class="nv"> </span><span class="s">Fixes&#39;</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;fix&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;bugfix&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;🔄</span><span class="nv"> </span><span class="s">New</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Modified</span><span class="nv"> </span><span class="s">FastAPI</span><span class="nv"> </span><span class="s">Templates&#39;</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;template&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;🧰</span><span class="nv"> </span><span class="s">Maintenance</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Documentation&#39;</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;chore&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;documentation&#39;</span>
+<span class="nt">change-template</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-</span><span class="nv"> </span><span class="s">$TITLE</span><span class="nv"> </span><span class="s">@$AUTHOR</span><span class="nv"> </span><span class="s">(#$NUMBER)&#39;</span>
+<span class="nt">change-title-escapes</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\&lt;*_&amp;&#39;</span>
+<span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">## Changes</span>
+
+<span class="w">  </span><span class="no">$CHANGES</span>
+</code></pre></div>
+<p>이를 통해 사용자들이 각 버전의 변경사항을 쉽게 이해할 수 있도록 했다.</p>
+<h3 id="python-compatible">Python compatible 버전 체크<a class="headerlink" href="#python-compatible" title="Permanent link">&para;</a></h3>
+<p><strong>Matrix Strategy를 통한 다중 버전 테스트</strong>:</p>
+<p>앞서 언급했던 Github Actions의 matrix 전략을 FastAPI와 Python 생태계의 다양한 버전 환경에서 프로젝트가 정상 동작하는지 보장하기 위해 활용했다.</p>
+<p><strong>테스트 범위</strong>:</p>
+<ul>
+<li>Python 3.9부터 3.14까지의 모든 메이저 버전 지원</li>
+<li>각 환경에서의 의존성 설치 및 기본 기능 테스트 수행 (with pytest)</li>
+</ul>
+<p>이를 통해 다양한 개발 환경의 사용자들이 안정적으로 fastkit을 사용할 수 있도록 보장했다.</p>
+<p>26년 현재 Python 3.8은 검증 대상에서 제외했다. 모체가 되는 프로젝트인 FastAPI에서도 tiangolo가 FastAPI 기반의 컨테이너 이미지 검증 대상 Python 버전 중에 3.8 버전을 모두 제외하였기에 나도 이를 채용했다.</p>
+<h3 id="pypi">Pypi 업로더<a class="headerlink" href="#pypi" title="Permanent link">&para;</a></h3>
+<p>Semantic Versioning을 따르는 Git 태그 기반의 자동 배포 파이프라인을 구축했다.</p>
+<p><strong>배포 워크플로우</strong>:</p>
+<ol>
+<li><strong>태그 생성 시 트리거</strong>: <code>v*.*.*</code> 패턴의 태그가 생성되면 자동으로 배포 프로세스 시작</li>
+<li><strong>자동 빌드</strong>: PDM을 활용하여 wheel과 source distribution 생성</li>
+<li><strong>테스트 실행</strong>: 모든 테스트 통과 확인 후 배포 진행</li>
+<li><strong>PyPI 업로드</strong>: GitHub Secrets에 저장된 PyPI API 토큰을 사용하여 자동 업로드</li>
+</ol>
+<p><strong>버전 관리 전략</strong>:</p>
+<ul>
+<li><code>v1.0.0</code>: 메이저 업데이트 (Breaking changes)</li>
+<li><code>v1.1.0</code>: 마이너 업데이트 (새로운 기능 추가)</li>
+<li><code>v1.1.1</code>: 패치 업데이트 (버그 수정)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;v*.*.*&#39;</span>
+</code></pre></div>
+<p>버전 태그가 붙여지면 <code>pypa/gh-action-pypi-publish@release/v1</code> 액션을 통해 PyPI에 배포된다.</p>
+<p>이를 통해 개발자가 태그만 생성하면 자동으로 PyPI에 새 버전이 배포되어, 사용자들이 <code>pip install fastapi-fastkit</code>으로 최신 버전을 즉시 사용할 수 있도록 했다.</p>
+<h2 id="_15">이후 버전 개선점<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p><strong>템플릿 확장 계획</strong>:</p>
+<p>현재는 기본적인 FastAPI 템플릿만 제공하고 있지만, 향후 다양한 아키텍처 패턴과 사용 사례를 지원하는 템플릿들을 추가할 예정이다.</p>
+<p>후속 버전 개발 마일스톤은 다음 링크에 정리해두었다 :</p>
+<div class="link-preview-card">
+    <a href="https://github.com/bnbong/FastAPI-fastkit/discussions/8" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/677fdcb4fbea05e43aeed808426d9ca2f5a4c79be2e21327de7bce96c9777494/bnbong/FastAPI-fastkit/discussions/8" alt="Development Milestones (version 1.0.3 ~) · bnbong/FastAPI-fastkit · Discussion #8" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">Development Milestones (version 1.0.3 ~) · bnbong/FastAPI-fastkit · Discussion #8</div>
+            <div class="link-preview-description">🚀 FastAPI-fastkit Development Roadmap - Post v1.0.3 Hello FastAPI-fastkit community! 👋 We're excited to share our development roadmap for the upcom...</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<p><br></p>
+<p><strong>홍보 및 커뮤니티 확장</strong>:</p>
+<p>시험대에 직접 제 발로 올라간다는 것에 대한 두려움이 있었지만, 오픈소스 프로젝트의 성공을 위해서는 적극적인 홍보가 필요하다는 것을 깨달았다.</p>
+<p><strong>홍보 계획</strong>:</p>
+<ul>
+<li>Python 커뮤니티 (Reddit, Discord 등)에서 적극적인 프로젝트 소개</li>
+<li>기술 블로그에 관련 글 지속적 업로드</li>
+<li>튜토리얼 가이드 개선</li>
+<li>다른 FastAPI 관련 프로젝트와의 협업</li>
+</ul>
+<p><br></p>
+<p><strong>유사 프로젝트 분석 및 차별화</strong>:</p>
+<p>개발 과정에서 유사한 프로젝트들을 발견했다.</p>
+<p>대표적으로 <a href="https://github.com/s3rius/FastAPI-template">https://github.com/s3rius/FastAPI-template</a> 프로젝트가 있는데, 이 프로젝트는 cookiecutter 라이브러리를 활용하였다.</p>
+<p>내 프로젝트 Fastkit과 비교하여 차별화 포인트를 간단하게 비교해보았는데,</p>
+<p><strong>차별화 포인트</strong>:</p>
+<ul>
+<li><strong>Rich CLI</strong>: 더 예쁜 터미널 출력과 사용자 친화적인 인터페이스</li>
+<li><strong>Metadata Injection</strong>: 프로젝트 생성 시 사용자 정보를 자동으로 주입</li>
+</ul>
+<p>말고는 없는 것 같다... Metadata 주입의 경우에는 cookiecutter 가 좀 더 유동적으로 주입을 할 수 있는 것 같아서 좀 더 고민해봐야할 것 같다.</p>
+<p>앞으로는 cookiecutter와의 호환성도 고려해볼 수 있을 것 같다. cookiecutter 생태계의 풍부한 템플릿들을 fastkit에서도 활용할 수 있다면 더욱 강력한 도구가 될 것이다. 2.X.X 버전에는 이 방식을 사용하여 개발이 되지 않을까 싶다.</p>
+<h2 id="_16">개발 느낀점<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>처음으로 오픈소스 프로젝트를 개발하고 운영해보았는데, 오픈소스 프로젝트 기여가 아닌 개발에는 기존보다 다른 부분으로 신경 쓸 부분이 많다는 것을 느꼈다.</p>
+<p><strong>오픈소스 프로젝트의 특별함</strong></p>
+<p>일반적인 개발 프로젝트와 달리 오픈소스는 불특정 다수의 개발자들이 사용하고 기여할 수 있는 환경이기 때문에, 코드 품질뿐만 아니라 문서화, 테스트, 배포 자동화 등 모든 측면에서 높은 수준을 유지해야 한다는 책임감을 느꼈다.</p>
+<p><strong>문서화의 중요성</strong></p>
+<p>코드를 작성하는 것보다 때로는 문서를 작성하는 것이 더 어려웠다. README, CONTRIBUTING 등 다양한 형태의 문서를 작성하면서, 사용자의 관점에서 생각하고 설명하는 능력의 중요성을 깨달았다.</p>
+<p>오픈소스 기여를 원하는 개발자들을 위한 가이드라인 작성도 까다로웠는데, 진입 장벽을 낮추면서도 프로젝트의 일관성을 유지할 수 있는 균형점을 찾는 것이 중요했다.</p>
+<p><strong>자동화의 필요성</strong></p>
+<p>CI/CD 파이프라인, 자동 테스트, 코드 포맷팅 등의 자동화가 오픈소스 프로젝트에서는 필수라는 것을 배웠다. 수동으로 관리하기에는 너무 많은 요소들이 있고, 기여자들이 늘어날수록 일관성을 유지하기 어려워진다.</p>
+<p>처음 프로젝트를 구상하던 단계에서는 프로젝트 규모가 그렇게까지 크지 않아서 작업을 빠르게 진행할 수 있을 줄 알았는데 신경 쓸 부분이 많다보니 생각보다 오랜 시간이 걸렸다.</p>
+<p><strong>커뮤니티 관리</strong></p>
+<p>기술적인 부분뿐만 아니라 커뮤니티를 관리하는 소프트 스킬도 중요하다는 것을 느꼈다.
+아직은 별 다른 기여가 올라와 있진 않지만 이슈에 답변하고, PR을 리뷰하며, 새로운 기여자들을 환영하는 과정들을 생각하면서 개발자로서뿐만 아니라 메인테이너로서의 역할은 다르다라는 것을 느꼈다.</p>
+<p>국내에서 자신이 만든 프로젝트나 유용한 프로젝트들을 공유하는 사이트로 <a href="https://news.hada.io/show">긱뉴스</a>를 사용하던데 조만간 조심스럽게 나도 홍보글을 업로드할 생각이다ㅎ..</p>
+<p><strong>지속적인 개선의 마인드</strong></p>
+<p>프로젝트를 "완성"했다고 생각하는 순간, 그 프로젝트는 정체되기 시작한다는 것을 깨달았다. 사용자 피드백을 받고, 새로운 기능을 추가하며, 기존 기능을 개선하는 지속적인 과정이 오픈소스 프로젝트의 핵심이라고 생각한다.</p>
+<p>이건 내가 진행했던 다른 프로젝트들을 완성 단계까지 올려 두면서 항상 생각해왔던 것이었다. 사이드 프로젝트들이 보통 최종 버전을 배포하고 나면 그 이후 유지보수나 업데이트를 소홀히 하는 경향이 있는데, 이번 프로젝트는 정말 오랜만에 애정과 많은 노력을 쏟은 프로젝트라서 그런지 좀 더 신경을 써보고자 한다.</p>
+<p><strong>개인적 성장</strong></p>
+<p>FastAPI-fastkit 프로젝트를 통해 단순히 코딩 실력뿐만 아니라 프로젝트 관리, 문서화, 커뮤니케이션 등 다양한 영역에서 성장할 수 있었다. 특히 사용자 중심적 사고와 장기적 관점에서의 프로젝트 설계 능력을 기를 수 있었다.</p>
+<p>앞으로도 더욱 오픈소스에 관심을 가지며 개발 커뮤니티에 기여하고, 동시에 개발자로서 계속 성장해나가고자 한다.</p>
+<p><a class="md-button" href="https://www.facebook.com/sharer/sharer.php?u=https://bnbong.github.io/blog/2026/01/08/project-fastapi-fastkit-%EA%B0%9C%EB%B0%9C%EA%B8%B0/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036 27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"/></svg></span></a>
+<a class="md-button" href="https://threads.net/intent/post?text=%5BProject%5D%20FastAPI-fastkit%20%EA%B0%9C%EB%B0%9C%EA%B8%B0%0A%0Ahttps://bnbong.github.io/blog/2026/01/08/project-fastapi-fastkit-%EA%B0%9C%EB%B0%9C%EA%B8%B0/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a14 14 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32l-1.757-1.18c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388q.163.07.321.142c1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69q-.362 0-.739.021c-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221"/></svg></span></a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+  <h2 id="__comments">댓글</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+    data-repo="bnbong/bnbong.github.io"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyMDg1MzMyNTU="
+    data-category="Blog"
+    data-category-id="DIC_kwDODG33B84CkxR1"
+    data-mapping="title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../../../../2025/04/08/computer-science-%EB%B3%91%EB%A0%AC%EC%84%B1%EA%B3%BC-%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%98-%EC%B0%A8%EC%9D%B4/" class="md-footer__link md-footer__link--prev" aria-label="이전: [Computer Science] 병렬성과 동시성의 차이">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                [Computer Science] 병렬성과 동시성의 차이
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../15/python-%EB%B0%B1%EC%A4%80-1436%EB%B2%88---%EC%98%81%ED%99%94%EA%B0%90%EB%8F%85-%EC%88%8C/" class="md-footer__link md-footer__link--next" aria-label="다음: [Python] 백준 1436번 - 영화감독 숌">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                [Python] 백준 1436번 - 영화감독 숌
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019-2025 bnbong
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/bnbong" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/%EC%A4%80%ED%98%81-%EC%9D%B4-669733231/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://blog.naver.com/bnbong" target="_blank" rel="noopener" title="blog.naver.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/j_hyeok__lee/" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:bbbong9@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="/feed_rss_updated.xml" target="_blank" rel="noopener" title="Subscribe to our RSS Feed" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.footer", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "search.highlight", "search.share", "search.suggest", "announce.dismiss", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "tags": {"\u003ctag\u003e": "\u003cidentifier\u003e"}, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2225 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="cspell 적용 방법">
+      
+      
+      
+        <link rel="canonical" href="https://bnbong.github.io/blog/2023/08/17/cspell-%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%B8%EC%95%8A%EB%90%98--%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%9C-%EC%95%88-%EB%8F%BC-%EC%A4%91%EC%97%90-%EB%AD%90%EA%B0%80-%EB%A7%9E%EB%8A%94-%EA%B1%B0%EC%98%88%EC%9A%A9/">
+      
+      
+        <link rel="prev" href="../../14/cloud-%EB%AC%B4%EB%A3%8C%EB%A1%9C-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD%EC%9D%84-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EB%AA%B8%EB%B6%80%EB%A6%BC-2%ED%8E%B8/">
+      
+      
+        <link rel="next" href="../../../09/21/project-project-pinned-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 피드 생성완료" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS 피드 업데이트완료" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+    
+    
+      
+        <title>[CSpell] 이 코드 외않되 / 이 코드 왜 안 돼 중에 뭐가 맞는 거예용? - bnbong's tech blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1E1JBX2WR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G1E1JBX2WR');
+</script>
+
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="[CSpell] 이 코드 외않되 / 이 코드 왜 안 돼 중에 뭐가 맞는 거예용? - bnbong's tech blog" >
+      
+        <meta  property="og:description"  content="cspell 적용 방법" >
+      
+        <meta  property="og:image"  content="https://bnbong.github.io/assets/images/social/blog/posts/20230817-cspell/20230817.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://bnbong.github.io/blog/2023/08/17/cspell-%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%B8%EC%95%8A%EB%90%98--%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%9C-%EC%95%88-%EB%8F%BC-%EC%A4%91%EC%97%90-%EB%AD%90%EA%B0%80-%EB%A7%9E%EB%8A%94-%EA%B1%B0%EC%98%88%EC%9A%A9/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="[CSpell] 이 코드 외않되 / 이 코드 왜 안 돼 중에 뭐가 맞는 거예용? - bnbong's tech blog" >
+      
+        <meta  name="twitter:description"  content="cspell 적용 방법" >
+      
+        <meta  name="twitter:image"  content="https://bnbong.github.io/assets/images/social/blog/posts/20230817-cspell/20230817.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="brown">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../../../.." title="bnbong&#39;s tech blog" class="md-header__button md-logo" aria-label="bnbong's tech blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bnbong's tech blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [CSpell] 이 코드 외않되 / 이 코드 왜 안 돼 중에 뭐가 맞는 거예용?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="brown"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="brown"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="공유" aria-label="공유" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bnbong/bnbong.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bnbong/bnbong.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  About Me
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../projects/" class="md-tabs__link">
+          
+  
+    
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="bnbong&#39;s tech blog" class="md-nav__button md-logo" aria-label="bnbong's tech blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    bnbong's tech blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bnbong/bnbong.github.io" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bnbong/bnbong.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    아카이브
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            아카이브
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2026/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2026
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    카테고리
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            카테고리
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/backend/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/computer-science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/opensource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenSource
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../projects/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    개인 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            개인 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/bifrost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bifrost
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/tookindfriendchat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TooKindFriendChat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/univapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JaramUniv_Sugang-API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/ricktcal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rickTcal_DayLife
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/kakaotalk-weatherforecast/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KakaoTalk-channel-WeatherToday
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    팀 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            팀 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/project-pinned/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project-Pinned
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/awesomechat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Awesome Chatting App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/mugip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mugip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/kbuddy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KBuddy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-hub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Hub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-penalty-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Penalty Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/jgw-attendance-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaram Groupware Attendance Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/qr-phishing-detector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phishing QR detector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    오픈소스 프로젝트
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            오픈소스 프로젝트
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/azure-sdk-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure SDK for Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/azure-sdk-python-kor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure SDK for Python Korean Docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/fastapi-fastkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FastAPI FastKit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/blog-post-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog Post Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../projects/femu-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FEMU Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="이 페이지의 요소들">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      이 페이지의 요소들
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      개요
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      설치되어 있는 Node Version 확인
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cspell" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSpell 설치
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Of Use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    메인으로 돌아가기
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <a href="https://bnbong.github.io/">
+                        <img src="https://avatars.githubusercontent.com/bnbong" alt="이준혁">
+                      </a>
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://bnbong.github.io/">이준혁</a>
+                        
+                      </strong>
+                      <br>
+                      개발하는 비엔봉
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    메타데이터
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2023-08-17 00:00:00+00:00" class="md-ellipsis">2023년 8월 17일 목요일</time>
+                      </div>
+                    </li>
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
+                          <time datetime="2023-08-17 00:00:00+00:00" class="md-ellipsis">2023년 8월 17일 목요일</time>
+                        </div>
+                      </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            카테고리
+                            
+                              <a href="../../../../category/opensource/">OpenSource</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              읽는시간 7분
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+  
+
+<nav class="md-tags" >
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#cspell" class="md-tag md-tag-icon">cspell</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#spellcheck" class="md-tag md-tag-icon">spellcheck</a>
+    
+  
+    
+    
+      
+      
+    
+    
+      <a href="../../../../tags/#open-source" class="md-tag md-tag-icon">open-source</a>
+    
+  
+</nav>
+
+
+  
+  
+
+
+  <h1>[CSpell] 이 코드 외않되 / 이 코드 왜 안 돼 중에 뭐가 맞는 거예용?</h1>
+
+<h2 id="_1">개요<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>친구와 채팅으로 대화를 할 때, 중요 문서를 작성을 할 때 등등 우리는 글을 쓰면서 가끔씩 내가 쓰는 단어가 제대로 된 맞춤법을 지킨건가? 싶을 때가 있다.</p>
+<p>이때 가장 좋은 확인 방법은 인터넷에 검색을 해보거나 사전에 검색을 해보거나 아니면 문법잘알 누군가에게 물어보는 것이 적절하다.</p>
+<p>그러나 이렇게 일일이 모르는 단어가 생길때마다 검색해보는 것은 여간 귀찮은 일이 아닐 수 없다.</p>
+<p>그래서 요즘 타이핑 도구들(한컴의 한글, 구글 Word 등)에서는 자동으로 맞춤법을 교정해주는 기능이 탑재되어 있고 문서 도구들이 나날이 발전해나가면서 그 기능 또한 점점 좋아지고 있다.</p>
+<p>프로그래밍 또한 수많은 타이핑이 들어가는 작업이다. 코딩을 할 때에도 변수 이름을 정하거나, 이 코드를 읽는 누군가가 내가 쓴 코드를 더 잘 이해할 수 있게 주석을 달아주는 등 기계가 아닌 사람이 읽을 수 있는 글을 쓰는 때가 많다. 프로젝트 규모가 커질수록 human-readable을 위한 글을 쓰는 시간과 그 규모가 덩달아 커진다.</p>
+<p>그러나 코딩을 하는 사람들은 개발자이지 국립국어원이나 국제 언어 문법 관련 직종에 종사하는 사람들이 아니기 때문에 종종 문법 관련 실수를 저지르곤 한다.</p>
+<p>그런데 그 많은 단어들의 오탈자를 하나하나 확인하는 것은 모래사장에 바늘찾기만큼 어려운 작업이다. 때문에 똑똑한 형님들이 다른 문서 작업 툴에 있는 문법 교정 도구처럼 코드에서도 문법 관련 오류를 찾아 report해주는 라이브러리를 만들었다.</p>
+<p>바로 이번 포스팅에서 소개할 'CSpell' 이라는 라이브러리이다.</p>
+<!-- more -->
+
+<hr />
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">CSpell이란</p>
+<p>Q. CSpell은 무엇 인가요?</p>
+<p>A. CSpell은 철자 검사 코드를 위한 명령줄 도구 및 라이브러리입니다.</p>
+</div>
+<p>CSpell 공식 홈페이지는 다음과 같다.</p>
+<div class="link-preview-card">
+    <a href="https://cspell.org/" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-content">
+            <div class="link-preview-title">CSpell</div>
+            <div class="link-preview-description">A spell checker for code!</div>
+            <div class="link-preview-url">cspell.org</div>
+        </div>
+    </a>
+</div>
+
+<p>앞서 언급 했듯이, CSpell은 라이브러리에 해당되는 도구이다.</p>
+<p>공식 문서에서 언급하는 CSpell의 기능은 다음과 같다.</p>
+<blockquote>
+<ol>
+<li>맞춤법 검사 코드 – 사전을 확인하기 전에 단어로 구문 분석하여 맞춤법 검사 코드를 입력할 수 있습니다.</li>
+<li>CamelCase, snake_case 및 복합어 명명 스타일을 지원합니다.</li>
+<li>자체 저장 – Hunspell이나 aspell과 같은 OS 라이브러리에 의존하지 않습니다. 온라인 서비스에도 의존하지 않습니다.</li>
+<li>빠른 속도 – 1000개의 코드 라인을 몇 초 안에 확인합니다.</li>
+<li>프로그래밍 언어별 사전 – 다음을 위한 전용 지원: 자바스크립트, TypeScript, Python, PHP, C#, C++, LaTex, Go, HTML, CSS 등.</li>
+<li>사용자 정의 가능 – 사용자 정의 사전 및 단어 목록을 지원합니다.</li>
+<li>지속적인 통합 지원 – Travis-CI에 대한 설명으로 쉽게 추가할 수 있습니다.</li>
+</ol>
+</blockquote>
+<p>다중 언어를 지원하는 라이브러리이기 때문에 프로젝트 제약이 거의 없는 편이다. 머신에 node가 깔려 있으면 CSpell을 설치할 수 있다.</p>
+<p>다음 명령어로 Node 설치 확인 및 CSpell 라이브러리를 설치할 수 있다.</p>
+<h3 id="node-version">설치되어 있는 Node Version 확인<a class="headerlink" href="#node-version" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>Node<span class="w"> </span>-v
+</code></pre></div>
+<h3 id="cspell">CSpell 설치<a class="headerlink" href="#cspell" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>cspell
+</code></pre></div>
+<p>만약 Node 설치가 되어 있지 않다면 (Node -v 명령어를 입력했을 때 Node 명령어를 찾을 수 없다는 등의 오류가 났다면) 머신에 Node를 설치해야한다.</p>
+<p>다음 명령어로 Node를 설치할 수 있다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Windows 환경</span>
+<span class="c1">#https://nodejs.org/ko/download 사이트에서 직접 윈도우 인스톨러를 받거나,</span>
+<span class="c1">#Powershell 등에 Chocolatey 패키지 관리자가 설치되어 있다면:</span>
+$<span class="w"> </span>choco<span class="w"> </span>install<span class="w"> </span>nodejs
+
+
+<span class="c1"># MacOS 환경 (homebrew)</span>
+$<span class="w"> </span>brew<span class="w"> </span>update
+$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>node
+
+<span class="c1"># MacOS &amp; Linux 환경 (NVM)</span>
+$<span class="w"> </span>curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+$<span class="w"> </span>nvm<span class="w"> </span>install<span class="w"> </span>node
+
+
+<span class="c1"># Linux 환경 (Debian / Ubuntu 계열)</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>nodejs<span class="w"> </span>npm
+
+<span class="c1"># Linux 환경 (CentOS / RHEL 계열)</span>
+$<span class="w"> </span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>nodejs<span class="w"> </span>npm
+
+<span class="c1"># Linux 환경 (Fedora 계열)</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>nodejs<span class="w"> </span>npm
+
+
+<span class="c1"># 정상 설치 확인 방법</span>
+$<span class="w"> </span>node<span class="w"> </span>-v<span class="w"> </span>혹은<span class="w"> </span>npm<span class="w"> </span>-v<span class="w"> </span>//<span class="w"> </span><span class="m">9</span>.6.7<span class="w"> </span>혹은<span class="w"> </span>v20.3.1<span class="w"> </span>같은<span class="w"> </span>출력이<span class="w"> </span>나오면<span class="w"> </span>성공적으로<span class="w"> </span>설치된<span class="w"> </span>것이다.
+</code></pre></div>
+<p>CSpell 설치를 완료하면 다음 명령어를 통해 코드 구문 오류를 확인할 수 있다.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cspell<span class="w"> </span><span class="s2">&quot;소스코드 경로&quot;</span>
+<span class="c1"># 또는</span>
+$<span class="w"> </span>cspell<span class="w"> </span>lint<span class="w"> </span><span class="s2">&quot;소스코드 경로&quot;</span>
+
+<span class="c1"># 전체 파일 문법 검사</span>
+$<span class="w"> </span>cspell<span class="w"> </span><span class="s2">&quot;**&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>특정 프로젝트의 경우, spelling checking을 해야하는 파일이 있고 그렇지 않은 파일이 있을 수 있다.</p>
+<p>그럴때마다 매번 특정 파일의 이름을 하나하나 쳐가면서 체크를 하면 굉장히 비효율적이고 또 팀 프로젝트나 누구나 기여를 할 수 있는 오픈소스 프로젝트의 경우에는 협업 능력이 매우 저하될 수 있다.</p>
+<p>또는 문법 상 틀린 단어라도 팀 변수 네이밍 규칙에 따라 그대로 사용하는 문법도 있을 수도 있다.</p>
+<p>그럴때 사용하는 것이 바로 CSpell Configuration이다.</p>
+<p>우선 'cspell'이라는 제목의 파일을, 확장자는 하단 목록을 참고하여 생성한다.</p>
+<p>다음은 CSpell 공식 문서에서 제공하는 CSpell이 읽을 수 있는 configuration 파일명 목록이다.</p>
+<div class="admonition note">
+<p>.cspell.json
+cspell.json
+.cSpell.json
+cSpell.json
+cspell.config.js
+cspell.config.cjs
+cspell.config.json
+cspell.config.yaml
+cspell.config.yml
+cspell.yaml
+cspell.yml
+package.json</p>
+</div>
+<p>위의 파일 명 중 하나를 선택하여 프로젝트 내부에 만들고 해당 파일 내부에 다음과 같은 형식으로 configuration을 설정할 수 있다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// in CSpell configuration file, ex) cspell.json</span>
+<span class="c1">// CSpell Settings</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Version of the setting file.  Always 0.2</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// language - current active spelling language</span>
+<span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// words - list of words to be always considered correct</span>
+<span class="w">    </span><span class="nt">&quot;words&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;mkdirp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;tsmerge&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;githubusercontent&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;streetsidesoftware&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;vsmarketplacebadge&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;visualstudio&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="c1">// flagWords - list of words to be always considered incorrect</span>
+<span class="w">    </span><span class="c1">// This is useful for offensive words and common spelling errors.</span>
+<span class="w">    </span><span class="c1">// For example &quot;hte&quot; should be &quot;the&quot;</span>
+<span class="w">    </span><span class="nt">&quot;flagWords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;hte&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="c1">// ignorePaths - this folder or files will be ignored when checking typos</span>
+<span class="w">    </span><span class="nt">&quot;ignorePaths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node_modules/**&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>공식 문서에서 더 자세한 Configuration 설정 방법을 확인할 수 있다.</p>
+<div class="link-preview-card">
+    <a href="https://cspell.org/docs/Configuration" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-content">
+            <div class="link-preview-title">Configuration | CSpell</div>
+            <div class="link-preview-description">Customizing CSpell</div>
+            <div class="link-preview-url">cspell.org</div>
+        </div>
+    </a>
+</div>
+
+<hr />
+<h2 id="example-of-use">Example Of Use<a class="headerlink" href="#example-of-use" title="Permanent link">&para;</a></h2>
+<p>나는 CSpell이라는 라이브러리를 오픈소스 컨트리뷰션 아카데미에서 처음 접했고,
+아카데미 멘토, 멘티분들과 차근차근 가이드라인을 따라 사용해보면서 Azure SDK for python 공식 Repository에 실제로 기여를 해보았다.</p>
+<p><img alt="contribution" src="../../../../20230817-cspell/contribution.png" /></p>
+<p>Azure SDK for python Repository의 경우, 굉장히 거대한 규모의 오픈소스 프로젝트이다.</p>
+<p>프로젝트를 로컬 작업 환경에 받아오는 것부터 상당히 오래걸리고 터미널도 다른 프로젝트에 비해 켜지는 시간이 긴편이다.</p>
+<p>때문에 sdk 내부 기능별로 정말 다양한 분량의 코드와 주석이 적혀있다. 그러나 세계적인 기업인 Microsoft의 개발자 분들이더라도 결국에는 사람인지라 타이핑을 하다가 오타를 하는 등의 실수가 있기 마련이다.</p>
+<p>이를 Microsoft에서도 인지를 하고 있는지 해당 Repository에 CSpell을 사용해서 오탈자 해결을 위한 이슈를 상단의 사진처럼 각 SDK 기능 별로 여러개 열어놓았다.</p>
+<p>Open되어 있는 CSpell 관련 Issue에는 중간에 What to do 탭을 통해 어떻게 CSpell checking을 위한 설정을 하고 typo checking을 하는지 소개하고 있다.</p>
+<p>내가 원하는 SDK 기능의 CSpell 관련 issue를 직접 찾아가서 저 이슈 탭을 보면서 작업을 해도 되지만 Azure SDK Korean 공식 github.io 문서에 CSpell 관련 Contribution을 하는 방법이 정의되어 있다.</p>
+<div class="link-preview-card">
+    <a href="https://azure.github.io/azure-sdk-korean/contribution_cspell" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-content">
+            <div class="link-preview-title">주요 컨트리뷰션 - CSpell | Azure SDKs</div>
+            <div class="link-preview-description"></div>
+            <div class="link-preview-url">azure.github.io</div>
+        </div>
+    </a>
+</div>
+
+<p>Issue의 What to do 탭을 기계번역한지라 읽을 때 어색함이 느껴질 수 있지만 큰 어려움 없이 가이드라인을 따라할 수 있다.</p>
+<p>윈도우 사용자라면 PowerShell이 기본으로 설치되어 있을 것이기 때문에 바로 가이드라인을 따라해도 좋지만,</p>
+<p>자신이 MacOS사용자라면 머신에 따로 <b>PowerShell</b>을 깔아주어야한다.</p>
+<p>Azure SDK for python프로젝트의 CSpell checking 스크립트는 PowerShell script로 짜여 있기 때문이다.</p>
+<div class="link-preview-card">
+    <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.2" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://learn.microsoft.com/media/logos/logo-powershell-social.png" alt="Install PowerShell on macOS - PowerShell" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">Install PowerShell on macOS - PowerShell</div>
+            <div class="link-preview-description">How to install PowerShell on macOS</div>
+            <div class="link-preview-url">learn.microsoft.com</div>
+        </div>
+    </a>
+</div>
+
+<p>상단의 가이드라인대로 MacOS에 PowerShell을 설치했다면</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pwsh
+</code></pre></div>
+<p>터미널에 상단의 명령어를 입력하여 PowerShell을 열 수 있다.</p>
+<p></br></p>
+<p>기본 설정을 마친 나는 PowerShell을 열고 Azure SDK Korean github.io 가이드라인을 쭉 따라하면서 내가 원하는 SDK 소스코드에 typo checking을 수행했다.</p>
+<p>내가 체크했던 SDK 기능은 Azure에서 제공하는 <mark>Azure Storage blob</mark> 기능의 소스코드였다.</p>
+<div class="admonition question">
+<p class="admonition-title">Azure Storage Blob(Blob Storage)는 뭔가요?</p>
+<p>Q. Azure Storage Blob(Blob Storage)는 뭔가요?</p>
+<p>A. Azure Blob Storage는 클라우드를 위한 Microsoft의 개체 스토리지 솔루션입니다. Blob Storage는 대량의 비정형 데이터를 저장하는 데 최적화되어 있습니다. 비정형 데이터는 텍스트 또는 이진 데이터와 같은 특정 데이터 모델이나 정의를 따르지 않는 데이터입니다.
+출처: <a href="https://learn.microsoft.com/ko-kr/azure/storage/blobs/storage-blobs-overview">Microsoft Learn 공식 문서</a></p>
+</div>
+<p>Azure Storage Blob은 요약하자면 AWS의 S3의 Azure 버전이라고 생각하면 쉽다. 러닝 서버에 저장하기에는 부담이 되는 크기를 가진 미디어파일, 바이너리 파일 등을 보관하기 위한 스토리지 서버이다.</p>
+<div class="link-preview-card">
+    <a href="https://azure.microsoft.com/ko-kr/products/storage/blobs" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-content">
+            <div class="link-preview-title">azure.microsoft.com</div>
+            <div class="link-preview-description"></div>
+            <div class="link-preview-url">azure.microsoft.com</div>
+        </div>
+    </a>
+</div>
+
+<p><img alt="practice1" src="../../../../20230817-cspell/practice1.png" /></p>
+<p>상단 사진의 vscode/cspell.json 파일의 84번째 줄 <mark>"sdk/storage/azure-storage-blob/**"</mark> 이 부분을 지우고 typo 체크를 진행했다.</p>
+<p>typo checking 결과를 이 포스팅에도 적어놓고 싶었으나 길이가 너무너무 길어서 패스...</p>
+<p>typo checking 결과는 다음 형식으로 출력된다.</p>
+<div class="highlight"><pre><span></span><code>...
+./sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py:173:70<span class="w"> </span>-<span class="w"> </span>Unknown<span class="w"> </span>word<span class="w"> </span><span class="o">(</span>myappendcontainersync<span class="o">)</span>
+./sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py:180:61<span class="w"> </span>-<span class="w"> </span>Unknown<span class="w"> </span>word<span class="w"> </span><span class="o">(</span>myappendblob<span class="o">)</span>
+./sdk/storage/azure-storage-blob/samples/blob_samples_proxy_configuration.py:50:61<span class="w"> </span>-<span class="w"> </span>Unknown<span class="w"> </span>word<span class="w"> </span><span class="o">(</span>configuation<span class="o">)</span>
+...
+</code></pre></div>
+<p>어찌됐든 typo checking을 해보니 Azure SDK Storage Blob 소스코드에 오타가 있는 것을 확인했다.</p>
+<p>포스팅을 작성하는 지금은 이미 내가 오타수정을 마쳐 PR을 달아놓은 상태이므로 git diff 명령어를 통해 오타가 존재하던 상태와 현재 상태를 비교했다.</p>
+<p><img alt="practice2" src="../../../../20230817-cspell/practice2.png" /></p>
+<p>상단의 사진에서 볼 수 있듯이, 대부분의 typo는 주석부분에 작성되어 있었으며, transferred로 적혀 있어야하는 단어가 transfered로 적혀있는 등 주석에 적혀있는 사소한 오타들을 발견했다.</p>
+<p>fork한 내 repository에 오타 수정을 하기 위한 branch를 새로파서 오타 수정을 진행했고 Azure SDK for python repository에 Pull Request를 보냈다.</p>
+<div class="link-preview-card">
+    <a href="https://github.com/Azure/azure-sdk-for-python/pull/31635" target="_blank" rel="noopener noreferrer">
+
+        <div class="link-preview-image">
+            <img src="https://opengraph.githubassets.com/2a55018957b6e35a9053adcc81babb927934c964b60cc6101d654b9cc3367d18/Azure/azure-sdk-for-python/pull/31635" alt="[Storage] Fixed cspell typos in storage-blob by bnbong · Pull Request #31635 · Azure/azure-sdk-for-python" loading="lazy">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">[Storage] Fixed cspell typos in storage-blob by bnbong · Pull Request #31635 · Azure/azure-sdk-for-python</div>
+            <div class="link-preview-description">Description
+Part of #22674
+fixing incorrectly written words at source codes:
+
+transfered -&gt; transferred
+snapthots -&gt; snapshots
+speficied -&gt...</div>
+            <div class="link-preview-url">GitHub</div>
+        </div>
+    </a>
+</div>
+
+<p><img alt="contributed" src="../../../../20230817-cspell/contributed.png" /></p>
+<p>총 4개의 단어에 오탈자가 있는 것을 확인하여 수정했고 PR을 보냈으며, 아직 Microsoft 관계자 분들이 리뷰를 진행하지 않은 상태이기에 Merge를 기다리고 있다.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>내가 소속되어 있던 OSSCA의 Azure SDK팀에서 실제 Microsoft에서 근무를 하고 계시는 멘토님께 CSpell 관련 기여를 여쭤보니,</p>
+<p>CSpell 관련 이슈는 웬만하면 주석의 오탈자를 수정하는 컨트리뷰션이 거의 대부분이기에 Merge가 빠르게 되는 편이라고 하셨다.</p>
+<p>한 5일 정도 기다리면 관계자가 코드리뷰를 진행할 것이라고 말씀하셨다 ㅎㅎ</p>
+<p></br></p>
+<p>이번 기회에 새로운 유용한 라이브러리를 알게되어 기쁘다. 앞으로 내가, 혹은 다른 누군가와 진행할 프로젝트의 질을 좀 더 높일 수 있는 무기를 또 하나 얻게 되었다.</p>
+<p><a class="md-button" href="https://www.facebook.com/sharer/sharer.php?u=https://bnbong.github.io/blog/2023/08/17/cspell-%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%B8%EC%95%8A%EB%90%98--%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%9C-%EC%95%88-%EB%8F%BC-%EC%A4%91%EC%97%90-%EB%AD%90%EA%B0%80-%EB%A7%9E%EB%8A%94-%EA%B1%B0%EC%98%88%EC%9A%A9/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036 27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"/></svg></span></a>
+<a class="md-button" href="https://threads.net/intent/post?text=%5BCSpell%5D%20%EC%9D%B4%20%EC%BD%94%EB%93%9C%20%EC%99%B8%EC%95%8A%EB%90%98%20/%20%EC%9D%B4%20%EC%BD%94%EB%93%9C%20%EC%99%9C%20%EC%95%88%20%EB%8F%BC%20%EC%A4%91%EC%97%90%20%EB%AD%90%EA%B0%80%20%EB%A7%9E%EB%8A%94%20%EA%B1%B0%EC%98%88%EC%9A%A9%3F%0A%0Ahttps://bnbong.github.io/blog/2023/08/17/cspell-%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%B8%EC%95%8A%EB%90%98--%EC%9D%B4-%EC%BD%94%EB%93%9C-%EC%99%9C-%EC%95%88-%EB%8F%BC-%EC%A4%91%EC%97%90-%EB%AD%90%EA%B0%80-%EB%A7%9E%EB%8A%94-%EA%B1%B0%EC%98%88%EC%9A%A9/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a14 14 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32l-1.757-1.18c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388q.163.07.321.142c1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69q-.362 0-.739.021c-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221"/></svg></span></a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+  <h2 id="__comments">댓글</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+    data-repo="bnbong/bnbong.github.io"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyMDg1MzMyNTU="
+    data-category="Blog"
+    data-category-id="DIC_kwDODG33B84CkxR1"
+    data-mapping="title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../../14/cloud-%EB%AC%B4%EB%A3%8C%EB%A1%9C-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD%EC%9D%84-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EB%AA%B8%EB%B6%80%EB%A6%BC-2%ED%8E%B8/" class="md-footer__link md-footer__link--prev" aria-label="이전: [Cloud] 무료로 클라우드 개발환경을 구성하기 위한 몸부림 (2편)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                [Cloud] 무료로 클라우드 개발환경을 구성하기 위한 몸부림 (2편)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../09/21/project-project-pinned-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0/" class="md-footer__link md-footer__link--next" aria-label="다음: [Project] Project-Pinned 프로젝트 회고">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                [Project] Project-Pinned 프로젝트 회고
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019-2025 bnbong
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/bnbong" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/%EC%A4%80%ED%98%81-%EC%9D%B4-669733231/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://blog.naver.com/bnbong" target="_blank" rel="noopener" title="blog.naver.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/j_hyeok__lee/" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:bbbong9@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="/feed_rss_updated.xml" target="_blank" rel="noopener" title="Subscribe to our RSS Feed" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20 5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.footer", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "search.highlight", "search.share", "search.suggest", "announce.dismiss", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "tags": {"\u003ctag\u003e": "\u003cidentifier\u003e"}, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../../../javascripts/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
