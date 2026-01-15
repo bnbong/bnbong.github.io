@@ -50,3 +50,4 @@ urllib3==2.5.0
 virtualenv==20.28.0
 watchdog==6.0.0
 webencodings==0.5.1
+beautifulsoup4==4.12.3

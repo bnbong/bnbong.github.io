@@ -156,6 +156,7 @@ markdown_extensions:
 
 hooks:
   - hooks/socialmedia.py
+  - hooks/link_preview.py
 
 extra_css:
   - stylesheets/extra.css

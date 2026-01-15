@@ -337,3 +337,137 @@ nav.pagination--top {
 [data-md-color-scheme="slate"] nav.pagination--top {
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
+
+/* ========================================
+   링크 프리뷰 카드 스타일
+   ======================================== */
+
+.link-preview-card {
+    margin: 1.5rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.link-preview-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: var(--md-primary-fg-color);
+}
+
+.link-preview-card a {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-preview-image {
+    flex-shrink: 0;
+    width: 200px;
+    height: 140px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.link-preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.link-preview-card:hover .link-preview-image img {
+    transform: scale(1.05);
+}
+
+.link-preview-content {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.link-preview-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.link-preview-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.link-preview-url {
+    font-size: 0.8rem;
+    color: var(--md-primary-fg-color);
+    font-weight: 500;
+}
+
+/* 반응형: 모바일에서 세로 레이아웃 */
+@media (max-width: 600px) {
+    .link-preview-card a {
+        flex-direction: column;
+    }
+
+    .link-preview-image {
+        width: 100%;
+        height: 180px;
+    }
+
+    .link-preview-content {
+        padding: 1rem;
+    }
+}
+
+/* ========================================
+   다크모드 링크 프리뷰 카드 스타일
+   ======================================== */
+
+[data-md-color-scheme="slate"] .link-preview-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-md-color-scheme="slate"] .link-preview-card:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .link-preview-image {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-md-color-scheme="slate"] .link-preview-title {
+    color: #eee;
+}
+
+[data-md-color-scheme="slate"] .link-preview-description {
+    color: #aaa;
+}
+
+[data-md-color-scheme="slate"] .link-preview-url {
+    color: var(--md-primary-fg-color--light);
+}
