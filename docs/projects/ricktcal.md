@@ -7,6 +7,9 @@ tags:
   - Python
   - PyQt
   - Desktop Application
+  - personal
+period: "2023"
+role: 개인 프로젝트
 ---
 
 # rickTcal_DayLife

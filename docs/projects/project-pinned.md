@@ -1,6 +1,7 @@
 ---
 title: Project Pinned
 description: 지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
+authors:
   - bnbong
 tags:
   - Django
@@ -9,6 +10,10 @@ tags:
   - Cloud
   - Docker
   - Web Application
+  - team
+  - backend
+period: "2023"
+role: 팀장 · 창업
 ---
 
 # Project Pinned

@@ -8,6 +8,10 @@ tags:
   - Java
   - Firebase
   - Mobile Application
+  - team
+  - backend
+period: "2022"
+role: 팀 프로젝트
 ---
 
 # Awesome Chatting App

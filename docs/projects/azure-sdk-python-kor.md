@@ -7,6 +7,9 @@ tags:
   - Python
   - Azure
   - Azure SDK
+  - oss
+period: "2023"
+role: 번역 기여
 ---
 
 # Azure SDK Python Korean

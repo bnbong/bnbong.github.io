@@ -1,13 +1,15 @@
 site_name: bnbong's tech blog
 site_description: 이준혁의 기술 관련 블로그
 site_url: https://bnbong.github.io
+site_author: bnbong
 repo_name: bnbong/bnbong.github.io
 repo_url: https://github.com/bnbong/bnbong.github.io
 theme:
   custom_dir: overrides
   name: material
   font:
-    text: JetBrains Mono
+    text: Noto Sans KR
+    code: JetBrains Mono
   # Light and Dark Theme Toggle
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -31,7 +33,6 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.expand
     - search.highlight
     - search.share
     - search.suggest
@@ -67,35 +68,15 @@ plugins:
 
 not_in_nav: |
   /drafts/**/*.md
+  /projects/*.md
 
 nav:
-- About Me: index.md
+- About: index.md
 - Blog:
   - blog/index.md
   - blog/tags.md
-- Projects:
-  - projects/index.md
-  - 개인 프로젝트 :
-    - Bifrost : projects/bifrost.md
-    - TooKindFriendChat : projects/tookindfriendchat.md
-    - JaramUniv_Sugang-API : projects/univapi.md
-    - rickTcal_DayLife : projects/ricktcal.md
-    - KakaoTalk-channel-WeatherToday : projects/kakaotalk-weatherforecast.md
-  - 팀 프로젝트 :
-    - Project-Pinned : projects/project-pinned.md
-    - Awesome Chatting App : projects/awesomechat.md
-    - Mugip : projects/mugip.md
-    - KBuddy : projects/kbuddy.md
-    - Jaram Groupware Hub : projects/jgw-hub.md
-    - Jaram Groupware Penalty Python : projects/jgw-penalty-python.md
-    - Jaram Groupware Attendance Python : projects/jgw-attendance-python.md
-    - Phishing QR detector : projects/qr-phishing-detector.md
-  - 오픈소스 프로젝트:
-    - Azure SDK for Python : projects/azure-sdk-python.md
-    - Azure SDK for Python Korean Docs : projects/azure-sdk-python-kor.md
-    - FastAPI FastKit : projects/fastapi-fastkit.md
-    - Blog Post Workflow : projects/blog-post-workflow.md
-    - FEMU Monitoring : projects/femu-monitoring.md
+- Projects: projects/index.md
+- Open Source: open-source/index.md
 extra:
   status:
     new: Recently added
@@ -157,12 +138,15 @@ markdown_extensions:
 hooks:
   - hooks/socialmedia.py
   - hooks/link_preview.py
+  - hooks/recent_posts.py
 
 extra_css:
+  - https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css
   - stylesheets/extra.css
+  - stylesheets/landing.css
 
 extra_javascript:
   - javascripts/extra.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
-copyright: Copyright &copy; 2019-2025 bnbong
+copyright: Copyright &copy; 2019-2026 bnbong

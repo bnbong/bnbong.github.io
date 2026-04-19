@@ -8,6 +8,10 @@ tags:
   - rss
   - github
   - github action
+  - oss
+  - devops
+period: "2024"
+role: 오픈소스 기여
 ---
 
 # Blog Post Workflow

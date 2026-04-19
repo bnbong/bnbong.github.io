@@ -9,6 +9,9 @@ tags:
   - Mobile Application
   - OpenAI
   - GPT
+  - personal
+period: "2022"
+role: 개인 프로젝트
 ---
 
 # TooKindFriendChat

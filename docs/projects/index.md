@@ -1,421 +1,225 @@
 ---
-title: 진행한 프로젝트들
-description: 이준혁이 진행한 프로젝트들을 확인할 수 있습니다.
+title: Projects
+description: bnbong이 진행한 프로젝트 — featured 우선 · 카테고리 기반 archive
 hide:
   - toc
 ---
 
-# 개인 프로젝트
+<!--
+  Archive 유지 가이드:
+  - featured 플래그는 각 프로젝트 md의 frontmatter에 `featured: true`로 표시합니다.
+  - 카테고리(backend / cloud / devops / ai / system / oss / team / personal / coursework / game)도
+    frontmatter `tags`에 소문자 키워드로 함께 포함되어 있습니다.
+  - 새 프로젝트 상세 md를 추가한 경우, 아래 Archive 섹션의 해당 카테고리 목록에
+    한 줄씩 추가해 주세요. 저는 수작업 링크 리스트를 유지하고 있습니다.
+
+  현재 docs/projects/ 하위 상세 md 목록 (index/femu 제외 순서 무관):
+    wegis, fall-in,
+    bifrost, tookindfriendchat, univapi, ricktcal, kakaotalk-weatherforecast,
+    project-pinned, awesomechat, mugip, kbuddy,
+    jgw-hub, jgw-penalty-python, jgw-attendance-python, qr-phishing-detector,
+    azure-sdk-python, azure-sdk-python-kor, fastapi-fastkit, blog-post-workflow,
+    femu-monitoring
+-->
+
+# Projects
+
+지금까지 진행한 프로젝트를 **Featured → Archive** 순으로 정리했습니다.
+
+## Featured
 
 <div class="grid cards" markdown>
 
--   :octicons-repo-template-24: &nbsp; __[Bifrost](bifrost.md)__
+-   :material-shield-search:{ .lg .middle } **Wegis**
 
     ---
 
-    <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
+    <span class="period-badge">2025.09 – 2025.10</span>
 
+    멀티모달 AI 기반 QR/URL 피싱 탐지 시스템. MobileBERT + 1D-CNN, FastAPI 추론 서버.
 
-    ### 프로젝트 개요
+    <span class="badge-inline">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+    <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
+    <img src="https://img.shields.io/badge/OCI-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="OCI">
+    </span>
 
-    ![Bifrost Project Image](img/bifrost_logo.png){ width="30%" }
+    운영비 **월 26,000원 → 0원**, 추론 지연 **p95 −43.6%**.
 
-    bnbong Server에 올라가있는 MSA 서비스들의 Proxy 연결을 할 목적으로 개발된 Gateway
+    [:fontawesome-brands-github: Wegis](https://github.com/bnbong/Wegis) · [자세히 보기 →](wegis.md)
 
-    ### 역할
-
-    - 프로젝트 설계 및 디자인
-    - 백엔드 개발
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/BnbongServerGateway)
-
--   :octicons-repo-template-24: &nbsp; __[TooKindFriendChat](tookindfriendchat.md)__
+-   :material-package-variant:{ .lg .middle } **FastAPI-fastkit**
 
     ---
 
-    <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
+    <span class="period-badge">2024.08 – 진행중</span>
 
-    ### 프로젝트 개요
+    FastAPI 프로젝트 부트스트랩 CLI + 템플릿 OSS. PyPI 배포, 다중 템플릿 관리.
 
-    ![TooKindFriendChat Project Image](img/tookindfriendchat.png){ width="30%" }
+    <span class="badge-inline">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+    <img src="https://img.shields.io/badge/click-000000?style=for-the-badge&logo=python&logoColor=white" alt="click">
+    <img src="https://img.shields.io/badge/rich-000000?style=for-the-badge&logo=python&logoColor=white" alt="rich">
+    </span>
 
-    나에게 모든걸 맞춰주는 환상적인 친구와 채팅하는 앱
+    [:fontawesome-brands-github: FastAPI-fastkit](https://github.com/bnbong/FastAPI-fastkit) · [자세히 보기 →](fastapi-fastkit.md)
 
-    ### 역할
-
-    - 프로젝트 설계 및 디자인
-    - 프론트엔드 개발
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/TooKindFriendChat)
-
--   :octicons-repo-template-24: &nbsp; __[JaramUniv_Sugang-API](univapi.md)__
+-   :material-earth:{ .lg .middle } **K-Buddy**
 
     ---
 
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
+    <span class="period-badge">2023.09 – 2024.06</span>
 
-    ### 프로젝트 개요
+    방한 외국인 대상 로컬 경험 플랫폼 창업팀. Oracle Cloud 컨테이너 MSA 인프라 설계.
 
-    [자람 스터디 과제 프로젝트] 자람 대학교 수강신청 API
+    <span class="badge-inline">
+    <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
+    <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot">
+    <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+    <img src="https://img.shields.io/badge/OCI-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="OCI">
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+    </span>
 
-    ### 역할
+    [:fontawesome-brands-github: KBuddy-Server](https://github.com/KBuddy-devs/KBuddy-Server) · [자세히 보기 →](kbuddy.md)
 
-    - API 서버 개발
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/JaramUniv_Sugang-API)
-
--   :octicons-repo-template-24: &nbsp; __[rickTcal_DayLife](ricktcal.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-
-    ### 프로젝트 개요
-
-
-    ![rickTcal_DayLife Project Image](img/butter.jpeg){ width="30%" }
-
-    [트릭컬 리바이브 창작물] 볼따구 라이프로 스트레스를 줄여주는 데스크톱 앱
-
-    ### 역할
-
-    - 데스크톱 앱 개발
-    - 프로젝트 설계 및 디자인
-    - 이슈 관리
-    - 문서화
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/rickTcal_DayLife)
-
--   :octicons-repo-template-24: &nbsp; __[KakaoTalk-channel-WeatherToday](kakaotalk-weatherforecast.md)__
+-   :material-cards-playing-outline:{ .lg .middle } **헤쳐 모여! (Fall In!)**
 
     ---
 
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
+    <span class="period-badge">2026.01 – 진행중</span>
 
-    ### 프로젝트 개요
+    6 Nimmt! 룰을 공군 ORI 세계관으로 재해석한 1인 전략 카드 게임.
 
-    ![KakaoTalk-channel-WeatherToday Project Image](img/channel_thumbnail.jpg){ width="30%" }
+    <span class="badge-inline">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/Pygame%20CE-000000?style=for-the-badge&logo=python&logoColor=white" alt="Pygame CE">
+    <img src="https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" alt="pytest">
+    <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions">
+    </span>
 
-    지역 날씨를 알려주는 카카오톡 날씨 예보 봇 채널
+    [:fontawesome-brands-github: Fall-In](https://github.com/bnbong/Fall-In) · [자세히 보기 →](fall-in.md)
 
-    ### 역할
+-   :material-harddisk:{ .lg .middle } **FEMU Monitoring & Hot/Cold**
 
-    - 백엔드 개발
-    - 데이터 수집&전송 모듈 개발
-    - 봇 채널 구성
-    - 이슈 관리
-    - 문서화
-    - 배포 파이프라인 구성
+    ---
 
-    ### 코드 저장소
+    <span class="period-badge">2024.09 – 2024.12</span>
 
-    [:fontawesome-brands-github:](https://github.com/bnbong/KakaoTalk-channel-WeatherToday)
+    가상 SSD 에뮬레이터 FEMU 계측 모듈 + Hot/Cold Data Separation.
+    Zipfian 1.2 기준 **WAF ~35% 감소**, **IOPS ~20% 개선**.
+
+    <span class="badge-inline">
+    <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C">
+    <img src="https://img.shields.io/badge/FEMU-555555?style=for-the-badge" alt="FEMU">
+    <img src="https://img.shields.io/badge/QEMU-FF6600?style=for-the-badge&logo=qemu&logoColor=white" alt="QEMU">
+    <img src="https://img.shields.io/badge/SSD-222222?style=for-the-badge" alt="SSD">
+    </span>
+
+    [:fontawesome-brands-github: FEMU](https://github.com/bnbong/FEMU) · [자세히 보기 →](femu-monitoring.md)
 
 </div>
 
-# 팀 프로젝트
-
-<div class="grid cards" markdown>
-
--   :octicons-repo-template-24: &nbsp; __[Project Pinned](project-pinned.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-
-    ### 프로젝트 개요
-
-    ![Project Pinned Project Image](img/projectpinned.png){ width="30%" }
-
-    지역 랜드마크와 관련된 내 추억을 공유하는 지도 기반 웹 SNS 서비스
-
-    ### 역할
-
-    - 팀장
-    - 백엔드
-    - 프로젝트 설계 및 디자인
-    - 스프린트 매니징
-    - 아키텍처 설계
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/Project-Pinned)
-
--   :octicons-repo-template-24: &nbsp; __[Awesome_ChattingApp](awesomechat.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
-
-    ### 프로젝트 개요
-
-    ![Awesome_ChattingApp Project Image](img/awesomechatlogo.png){ width="30%" }
-
-    익명성이 보장되는 누구나 빠르고 쉽게 다수의 사람들과 채팅을 할 수 있는 채팅앱
-
-    ### 역할
-
-    - 프로젝트 설계 및 디자인
-    - 스프린트 매니징
-    - 이슈 관리
-    - 테스트 코드 작성
-    - 문서화
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/Awesome_ChattingApp)
-
--   :octicons-repo-template-24: &nbsp; __[Mugip](mugip.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-
-    ### 프로젝트 개요
-
-    ![Mugip Project Image](img/mugip.png){ width="30%" }
-
-    음악 공유 SNS 플랫폼
-
-    스타트업 GiftMusic 프로젝트.
-
-    ### 역할
-
-    - 백엔드 개발
-    - 테스트 코드 작성
-
-    ### 코드 저장소 (비공개 private repo)
-
-    [:fontawesome-solid-ban:](https://github.com/Gift-Music/mugip-backend)
-
--   :octicons-repo-template-24: &nbsp; __[K-Buddy](kbuddy.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-    <img src="https://img.shields.io/badge/java-%23ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
-
-    ### 프로젝트 개요
-
-    ![K-Buddy Project Image](img/kbuddy.png){ width="30%" }
-
-    외국인의 진정한 로컬 경험을 위한 한국 길라잡이
-
-    창업팀 K-Buddy 프로젝트
-
-    ### 역할
-
-    - 백엔드 개발
-    - 테스트 코드 작성
-    - 문서화
-    - 배포 자동화
-    - 이슈 관리 & 보안
-    - DB 설계 및 구성
-    - 클라우드 인프라 설계 및 구성
-    - 모니터링 시스템 구축
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/KBuddy-devs/KBuddy-Server)
-    [:fontawesome-brands-github:](https://github.com/KBuddy-devs/KBudddy-MockAPI)
-
-
--   :octicons-repo-template-24: &nbsp; __[Jaram Groupware Hub](jgw-hub.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-
-    ### 프로젝트 개요
-
-    자람 그룹웨어 허브
-
-    SW 전공 학회 자람 스터디 프로젝트
-
-    ### 역할
-
-    - 백엔드 개발
-    - 문서화
-    - 테스트 코드 작성
-    - 배포 자동화
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/msng-devs/JGW-hub)
-
--   :octicons-repo-template-24: &nbsp; __[Jaram Groupware Penalty](jgw-penalty-python.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-
-    ### 프로젝트 개요
-
-    자람 그룹웨어 페널티 시스템
-
-    SW 전공 학회 자람 스터디 프로젝트
-
-    ### 역할
-
-    - 백엔드 개발
-    - 문서화
-    - 테스트 코드 작성
-    - 배포 자동화
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/msng-devs/JGW-Penalty-Python)
-
--   :octicons-repo-template-24: &nbsp; __[Jaram Groupware Attendance](jgw-attendance-python.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-
-    ### 프로젝트 개요
-
-    자람 그룹웨어 출결 시스템
-
-    SW 전공 학회 자람 스터디 프로젝트
-
-    ### 역할
-
-    - 백엔드 개발
-    - 문서화
-    - 테스트 코드 작성
-    - 배포 자동화
-    - 이슈 관리
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/msng-devs/JGW-Attendance-Python)
-
--   :octicons-repo-template-24: &nbsp; __[QR Phishing Detector](qr-phishing-detector.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
-
-    ### 프로젝트 개요
-
-    QR 코드를 통한 피싱 사이트 감지 AI 모듈
-
-    캡스톤디자인 프로젝트
-
-    ### 역할
-
-    - 모듈 개발
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/capston-qrcode/S.Q.R.O-phishing_detector)
-    [:fontawesome-brands-github:](https://github.com/capston-qrcode/url-parser-bnbong)
+## Archive
+
+모든 프로젝트 상세 문서는 링크에서 바로 확인할 수 있습니다. 한 프로젝트가 여러
+카테고리에 등장할 수 있습니다 (예: `fastapi-fastkit`는 OSS이자 Personal).
+
+### Backend
+
+<div class="project-archive-list" markdown>
+
+- [Wegis](wegis.md) · 2025.09 – 2025.10 <span class="tag-badge">Featured</span>
+- [FastAPI-fastkit](fastapi-fastkit.md) · 2024.08 – 진행중 <span class="tag-badge">Featured</span>
+- [K-Buddy](kbuddy.md) · 2023.09 – 2024.06 <span class="tag-badge">Featured</span>
+- [Project Pinned](project-pinned.md) · 2023
+- [JaramUniv Sugang API](univapi.md) · 2023
+- [JaramGroupware Hub](jgw-hub.md) · 2023
+- [JaramGroupware Penalty](jgw-penalty-python.md) · 2023
+- [JaramGroupware Attendance](jgw-attendance-python.md) · 2023
+- [Awesome Chatting App](awesomechat.md) · 2022
+- [Bifrost MSA Gateway](bifrost.md) · 2022
+- [Mugip](mugip.md) · 2020.09 – 2021.04
+- [KakaoTalk-channel-WeatherToday](kakaotalk-weatherforecast.md) · 2023
+- [Azure SDK for Python](azure-sdk-python.md) · 2023
 
 </div>
 
-# 오픈소스 프로젝트
+### Cloud · DevOps
 
-<div class="grid cards" markdown>
+<div class="project-archive-list" markdown>
 
--   :octicons-repo-template-24: &nbsp; __[Azure SDK Python](azure-sdk-python.md)__
+- [K-Buddy](kbuddy.md) · 2023.09 – 2024.06 <span class="tag-badge">Featured</span>
+- [Blog Post Workflow](blog-post-workflow.md) · 2024
 
-    ---
+</div>
 
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
+### AI · System
 
-    ### 프로젝트 개요
+<div class="project-archive-list" markdown>
 
-    Azure SDK for Python 코드 기여
+- [Wegis](wegis.md) · 2025.09 – 2025.10 <span class="tag-badge">Featured</span>
+- [FEMU Monitoring & Hot/Cold](femu-monitoring.md) · 2024.09 – 2024.12 <span class="tag-badge">Featured</span>
+- [Phishing QR detector](qr-phishing-detector.md) · 2024
 
-    ### 역할
+</div>
 
-    - 코드 기여
+### OSS
 
-    ### 코드 저장소
+<div class="project-archive-list" markdown>
 
-    [:fontawesome-brands-github:](https://github.com/bnbong/azure-sdk-for-python)
+- [FastAPI-fastkit](fastapi-fastkit.md) · 2024.08 – 진행중 <span class="tag-badge">Featured</span>
+- [Azure SDK for Python](azure-sdk-python.md) · 2023
+- [Azure SDK for Python — Korean Docs](azure-sdk-python-kor.md) · 2023
+- [Blog Post Workflow](blog-post-workflow.md) · 2024
 
--   :octicons-repo-template-24: &nbsp; __[Azure SDK Python Korean](azure-sdk-python-kor.md)__
+</div>
 
-    ---
+### Team
 
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
+<div class="project-archive-list" markdown>
 
-    ### 프로젝트 개요
+- [K-Buddy](kbuddy.md) · 2023.09 – 2024.06 <span class="tag-badge">Featured</span>
+- [Project Pinned](project-pinned.md) · 2023
+- [JaramGroupware Hub](jgw-hub.md) · 2023
+- [JaramGroupware Penalty](jgw-penalty-python.md) · 2023
+- [JaramGroupware Attendance](jgw-attendance-python.md) · 2023
+- [Phishing QR detector](qr-phishing-detector.md) · 2024
+- [Awesome Chatting App](awesomechat.md) · 2022
+- [Mugip](mugip.md) · 2020.09 – 2021.04
 
-    Azure SDK Python 공식 가이드 문서 한글화
+</div>
 
-    ### 역할
+### Personal
 
-    - 번역 기여
+<div class="project-archive-list" markdown>
 
-    ### 코드 저장소
+- [Wegis](wegis.md) · 2025.09 – 2025.10 <span class="tag-badge">Featured</span>
+- [FastAPI-fastkit](fastapi-fastkit.md) · 2024.08 – 진행중 <span class="tag-badge">Featured</span>
+- [FEMU Monitoring & Hot/Cold](femu-monitoring.md) · 2024.09 – 2024.12 <span class="tag-badge">Featured</span>
+- [헤쳐 모여! (Fall In!)](fall-in.md) · 2026.01 – 진행중 <span class="tag-badge">Featured</span>
+- [Bifrost MSA Gateway](bifrost.md) · 2022
+- [TooKindFriendChat](tookindfriendchat.md) · 2022
+- [JaramUniv Sugang API](univapi.md) · 2023
+- [rickTcal_DayLife](ricktcal.md) · 2023
+- [KakaoTalk-channel-WeatherToday](kakaotalk-weatherforecast.md) · 2023
 
-    [:fontawesome-brands-github:](https://github.com/bnbong/azure-sdk-korean)
+</div>
 
--   :octicons-repo-template-24: &nbsp; __[FastAPI FastKit](fastapi-fastkit.md)__
+### Coursework
 
-    ---
+<div class="project-archive-list" markdown>
 
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54"/>
+- [FEMU Monitoring & Hot/Cold](femu-monitoring.md) · 2024.09 – 2024.12 <span class="tag-badge">Featured</span>
+- [Phishing QR detector](qr-phishing-detector.md) · 2024
 
-    ### 프로젝트 개요
+</div>
 
-    FastAPI 프레임워크에 입문하는 사람들의 진입장벽을 낮추기 위해 개발한 오픈소스 패키지 프로젝트
+### Game
 
-    ### 역할
+<div class="project-archive-list" markdown>
 
-    - 프로젝트 설계
-    - 패키지 개발
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/fastapi-fastkit)
-
--   :octicons-repo-template-24: &nbsp; __[Blog Post Workflow](blog-post-workflow.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/github%20actions-%232671E5.svg?style=flat-square&logo=githubactions&logoColor=white"/>
-
-    ### 프로젝트 개요
-
-    Blog Post Workflow 가이드 기여
-
-    ### 역할
-
-    - 가이드 기여
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/gautamkrishnar/blog-post-workflow)
-
--   :octicons-repo-template-24: &nbsp; __[FEMU Monitoring](femu-monitoring.md)__
-
-    ---
-
-    <img src="https://img.shields.io/badge/c-%2300599C.svg?style=flat-square&logo=c&logoColor=white"/>
-
-    ### 프로젝트 개요
-
-    가상 SSD emulator FEMU의 WAF, Throughput, Latency 등을 모니터링하는 모듈을 추가한 프로젝트
-
-    Hanyang Univ. ERICA Software Dept. lecture `시스템프로그래밍` 과제 프로젝트
-
-    ### 역할
-
-    - 모듈 추가 및 주어진 워크로드 성능 모니터링 & 분석
-
-    ### 코드 저장소
-
-    [:fontawesome-brands-github:](https://github.com/bnbong/FEMU)
+- [헤쳐 모여! (Fall In!)](fall-in.md) · 2026.01 – 진행중 <span class="tag-badge">Featured</span>
 
 </div>

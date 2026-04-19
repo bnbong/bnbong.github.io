@@ -8,6 +8,10 @@ tags:
   - Django
   - Django REST framework
   - API Server
+  - team
+  - backend
+period: "2023"
+role: 팀 · 학회
 ---
 
 # JaramGroupware Penalty API

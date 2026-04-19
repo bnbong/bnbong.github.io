@@ -10,6 +10,13 @@ tags:
   - FastAPI
   - Cloud
   - Docker
+  - team
+  - backend
+  - cloud
+  - devops
+featured: true
+period: 2023.09 - 2024.06
+role: 팀 · 창업팀 BE & DevOps
 ---
 
 # K-Buddy

@@ -7,6 +7,10 @@ tags:
   - Java
   - Spring Cloud Gateway
   - MSA
+  - personal
+  - backend
+period: "2022"
+role: 개인 프로젝트
 ---
 
 # Bifrost - MSA Gateway

@@ -9,6 +9,10 @@ tags:
   - FastAPI
   - MongoDB
   - PostgreSQL
+  - team
+  - backend
+period: 2020.09 - 2021.04
+role: 팀 · GiftMusic
 ---
 
 # Mugip

@@ -7,6 +7,10 @@ tags:
   - Python
   - Azure
   - Azure SDK
+  - oss
+  - backend
+period: "2023"
+role: 오픈소스 기여
 ---
 
 # Azure SDK Python

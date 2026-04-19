@@ -8,6 +8,10 @@ tags:
   - Spring Boot
   - MariaDB
   - API Server
+  - personal
+  - backend
+period: "2023"
+role: 개인 프로젝트 · 학회 과제
 ---
 
 # 수강신청 API

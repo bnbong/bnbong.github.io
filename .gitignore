@@ -1,5 +1,6 @@
 venv/
 .cache
+site/
 env*
 .env
 .vscode

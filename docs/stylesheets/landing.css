@@ -1,0 +1,470 @@
+/* ========================================
+   Landing / Hero
+   ======================================== */
+
+.hero-section {
+    max-width: 720px;
+    margin: 2.5rem auto 3rem;
+    text-align: center;
+}
+
+.hero-section .hero-avatar,
+.hero-section img.hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.25rem;
+    display: block;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border: 3px solid var(--md-primary-fg-color--light);
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin: 0.25rem 0 0.35rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+}
+
+.hero-section .hero-subline {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--md-primary-fg-color--dark);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hero-section .hero-tagline {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin: 0 auto 1.75rem;
+    max-width: 560px;
+}
+
+[data-md-color-scheme="slate"] .hero-section .hero-tagline {
+    color: #bbb;
+}
+
+/* ========================================
+   CTA row + buttons
+   ======================================== */
+
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 0.75rem;
+    margin: 0 auto 0.5rem;
+}
+
+.cta-row .cta-button,
+.md-typeset .cta-row a.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--md-primary-fg-color);
+    color: var(--md-primary-fg-color--dark);
+    background-color: transparent;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-row .cta-button:hover,
+.md-typeset .cta-row a.cta-button:hover {
+    background-color: var(--md-primary-fg-color);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225, 185, 120, 0.35);
+    text-decoration: none;
+}
+
+.cta-row .cta-button--primary,
+.md-typeset .cta-row a.cta-button--primary {
+    background-color: var(--md-primary-fg-color);
+    color: #ffffff;
+}
+
+.cta-row .cta-button--primary:hover,
+.md-typeset .cta-row a.cta-button--primary:hover {
+    background-color: var(--md-primary-fg-color--dark);
+}
+
+.cta-row .cta-button--ghost,
+.md-typeset .cta-row a.cta-button--ghost {
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #444;
+}
+
+[data-md-color-scheme="slate"] .cta-row .cta-button--ghost,
+[data-md-color-scheme="slate"] .md-typeset .cta-row a.cta-button--ghost {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ccc;
+}
+
+/* ========================================
+   Chip row
+   ======================================== */
+
+.chip-row,
+.md-typeset .chip-row {
+    margin: 0.75rem 0 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.chip-row>p,
+.md-typeset .chip-row>p {
+    margin: 0;
+    display: contents;
+}
+
+/* ========================================
+   Shields.io badge rows
+   ======================================== */
+
+.badge-row,
+.md-typeset .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.5rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0.65rem 0 1.4rem;
+}
+
+/* Center section headings that precede a badge row */
+.md-typeset h2:has(~ .badge-row),
+.md-typeset h3:has(+ .badge-row) {
+    text-align: center;
+}
+
+.badge-row img,
+.md-typeset .badge-row img {
+    height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+/* Inline badges inside grid/featured cards */
+.badge-inline,
+.md-typeset .badge-inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+    margin: 0.25rem 0 0.5rem;
+    line-height: 1;
+}
+
+.badge-inline img,
+.md-typeset .badge-inline img {
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+/* ========================================
+   Two-column layout (Education / Work)
+   ======================================== */
+
+.md-typeset .two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 2.5rem;
+    margin: 1rem 0 1.5rem;
+    align-items: start;
+}
+
+.md-typeset .two-col__item>h2:first-child,
+.md-typeset .two-col__item>h2 {
+    margin-top: 0;
+}
+
+.md-typeset .two-col__item>*:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+    .md-typeset .two-col {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+.md-typeset .chip,
+.chip {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    background-color: rgba(225, 185, 120, 0.15);
+    border: 1px solid rgba(225, 185, 120, 0.45);
+    border-radius: 12px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #8a5a18;
+    font-weight: 500;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .chip,
+[data-md-color-scheme="slate"] .chip {
+    background-color: rgba(225, 185, 120, 0.18);
+    border-color: rgba(225, 185, 120, 0.35);
+    color: var(--md-primary-fg-color--light);
+}
+
+/* Chip as link */
+.md-typeset a.chip,
+.md-typeset a.chip--link,
+a.chip,
+a.chip--link {
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.md-typeset a.chip:hover,
+a.chip:hover {
+    background-color: var(--md-primary-fg-color);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a.chip:hover,
+[data-md-color-scheme="slate"] a.chip:hover {
+    background-color: var(--md-primary-fg-color);
+    color: #1a1a1a;
+}
+
+/* ========================================
+   Timeline (Education / Work)
+   ======================================== */
+
+.md-typeset .dl-timeline {
+    position: relative;
+    margin: 1rem 0 1.75rem;
+    padding-left: 1.4rem;
+}
+
+.md-typeset .dl-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.35rem;
+    top: 0.55rem;
+    bottom: 0.55rem;
+    width: 2px;
+    background: linear-gradient(180deg,
+            var(--md-primary-fg-color),
+            var(--md-primary-fg-color--light));
+    border-radius: 2px;
+}
+
+.md-typeset .dl-timeline ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.md-typeset .dl-timeline>ul>li {
+    position: relative;
+    padding: 0 0 1rem 0.9rem;
+    margin: 0;
+}
+
+.md-typeset .dl-timeline>ul>li::before {
+    content: "";
+    position: absolute;
+    left: -0.65rem;
+    top: 0.55rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--md-primary-fg-color);
+    box-shadow: 0 0 0 3px rgba(225, 185, 120, 0.25);
+}
+
+.md-typeset .dl-timeline>ul>li>ul {
+    padding-left: 1.2rem;
+    margin-top: 0.4rem;
+}
+
+.md-typeset .dl-timeline>ul>li>ul>li {
+    list-style: disc;
+    margin-bottom: 0.2rem;
+    color: #555;
+    font-size: 0.92rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .dl-timeline>ul>li>ul>li {
+    color: #bbb;
+}
+
+.timeline-period {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.82rem;
+    color: #888;
+    font-weight: 500;
+}
+
+[data-md-color-scheme="slate"] .timeline-period {
+    color: #aaa;
+}
+
+/* ========================================
+   Featured / Project Cards (grid cards override)
+   ======================================== */
+
+.md-typeset .grid.cards>ol>li,
+.md-typeset .grid.cards>ul>li {
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.md-typeset .grid.cards>ol>li:hover,
+.md-typeset .grid.cards>ul>li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--md-primary-fg-color--light);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards>ol>li,
+[data-md-color-scheme="slate"] .md-typeset .grid.cards>ul>li {
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards>ol>li:hover,
+[data-md-color-scheme="slate"] .md-typeset .grid.cards>ul>li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--md-primary-fg-color);
+}
+
+.period-badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 8px;
+    background-color: rgba(225, 185, 120, 0.2);
+    color: #8a5a18;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.25rem;
+}
+
+[data-md-color-scheme="slate"] .period-badge {
+    background-color: rgba(225, 185, 120, 0.22);
+    color: var(--md-primary-fg-color--light);
+}
+
+.tag-badge {
+    display: inline-block;
+    padding: 0.05rem 0.45rem;
+    border-radius: 8px;
+    background-color: var(--md-primary-fg-color);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+}
+
+/* ========================================
+   Archive list
+   ======================================== */
+
+.md-typeset .project-archive-list ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0 1.25rem;
+}
+
+.md-typeset .project-archive-list li {
+    padding: 0.4rem 0.65rem;
+    border-radius: 8px;
+    margin-bottom: 0.15rem;
+    transition: background-color 0.15s ease;
+    border-left: 2px solid transparent;
+}
+
+.md-typeset .project-archive-list li:hover {
+    background-color: rgba(225, 185, 120, 0.08);
+    border-left-color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .project-archive-list li:hover {
+    background-color: rgba(225, 185, 120, 0.12);
+}
+
+.md-typeset .project-archive-list li a {
+    font-weight: 500;
+}
+
+/* ========================================
+   Contact row specific
+   ======================================== */
+
+.chip-row--contact {
+    justify-content: flex-start;
+}
+
+/* ========================================
+   Mobile breakpoints
+   ======================================== */
+
+@media (max-width: 600px) {
+    .hero-section {
+        margin: 1.5rem auto 2rem;
+    }
+
+    .hero-section h1 {
+        font-size: 1.85rem;
+    }
+
+    .hero-section .hero-subline {
+        font-size: 0.75rem;
+    }
+
+    .hero-section .hero-tagline {
+        font-size: 0.95rem;
+    }
+
+    .cta-row {
+        gap: 0.45rem;
+    }
+
+    .cta-row .cta-button,
+    .md-typeset .cta-row a.cta-button {
+        padding: 0.42rem 0.75rem;
+        font-size: 0.82rem;
+    }
+
+    .hero-section .hero-avatar,
+    .hero-section img.hero-avatar {
+        width: 96px;
+        height: 96px;
+    }
+
+    .md-typeset .grid.cards {
+        grid-template-columns: 1fr !important;
+    }
+
+    .md-typeset .dl-timeline {
+        padding-left: 1.1rem;
+    }
+}

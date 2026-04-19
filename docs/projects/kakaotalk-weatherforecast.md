@@ -7,6 +7,10 @@ tags:
   - Python
   - FastAPI
   - PostgreSQL
+  - personal
+  - backend
+period: "2023"
+role: 개인 프로젝트
 ---
 
 # KakaoTalk-channel-WeatherToday

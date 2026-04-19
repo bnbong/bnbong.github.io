@@ -1,388 +1,186 @@
 ---
+title: bnbong
+description: 이준혁 · 클라우드 인프라 재설계와 백엔드 성능 최적화 경험을 가진 개발자
 hide:
   - navigation
   - toc
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--==================== ICONS ====================-->
-        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-        <!--==================== CSS ====================-->
-        <link rel="stylesheet" href="assets/stylesheets/portfolio.css">
-    </head>
-    <body>
-        <main class="main">
-            <div align="center" class="card">
-                <div class="card-body">
-                    <img src="assets/img/aboutme.jpg" alt="" class="about__img">
-                    <h1 class="home__title">Hi, I'am JunHyeok Lee</h1>
-                    <h3 class="home__subtitle">Backend developer</h3>
-                    <p class="home__description">Hello world! This is JunHyeok Lee, bnbong! <br>
-                        I am a developer trying to solve problems, and make a better world.</p>
-                    <div class="card-body">
-                        <a href="https://www.instagram.com/j_hyeok__lee/?hl=ko" class="home__social-icon">
-                            <iconify-icon icon="mdi:instagram"></iconify-icon>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=100007712465866" class="home__social-icon">
-                            <iconify-icon icon="uil:facebook"></iconify-icon>
-                        </a>
-                        <a href="https://github.com/bnbong" class="home__social-icon">
-                            <iconify-icon icon="mingcute:github-line"></iconify-icon>
-                        </a>
-                        <a href="https://blog.naver.com/bnbong" class="home__social-icon">
-                            <iconify-icon icon="simple-icons:naver"></iconify-icon>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!--==================== ABOUT ====================-->
-            <section class="about section" id="about">
-                <h2 class="section__title">About Me</h2>
-                <span class="section__subtitle">My introduction</span>
-                <div class="about__container container">
-                    <div class="about__data">
-                        <p class="about__description">Web backend developer, learning a variety of skills and creating convenient services
-                            that make our live better, working at SNS start-up company as backend engineer, delivering quality work.</p>
-                        <div class="about__info">
-                            <div>
-                                <span class="about__info-title">03+</span>
-                                <span class="about__info-name">Years <br> experience</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title">10+</span>
-                                <span class="about__info-name">Completed <br> project</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title">04+</span>
-                                <span class="about__info-name">Contributed <br> Opensources</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--==================== TODO : add portfolio projects card here ====================-->
-            <div align="center">
-                <a download="" href="assets/pdf/JunHyeokLeeResume.pdf" class="button button--flex">
-                    Download CV<iconify-icon icon="material-symbols:download" class="button__icon"></iconify-icon>
-                </a>
-            </div>
-            <!--==================== SKILLS ====================-->
-            <section class="skills section" id="skills">
-                <h2 class="section__title">Skills</h2>
-                <span class="section__subtitle">My technical level</span>
-                <div class="skills__container container">
-                    <div>
-                        <!--==================== SKILLS 1 ====================-->
-                        <div class="skills__content skills__open">
-                            <div class="skills__header">
-                                <iconify-icon icon="uil:server" class="skills__icon"></iconify-icon>
-                                <div>
-                                    <h1 class="skills__title">Backend developer</h1>
-                                    <span class="skills__subtitle">Strengths in Python-based backend frameworks.</span>
-                                </div>
-                                <iconify-icon icon="uil:angle-down" class="skills__arrow"></iconify-icon>
-                            </div>
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">FastAPI</h3>
-                                        <span class="skills__number">90%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__fastapi"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Django</h3>
-                                        <span class="skills__number">85%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__django"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Flask</h3>
-                                        <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__flask"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Spring</h3>
-                                        <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__spring"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--==================== SKILLS 2 ====================-->
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <iconify-icon icon="icomoon-free:mobile" class="skills__icon"></iconify-icon>
-                                <div>
-                                    <h1 class="skills__title">Application developer</h1>
-                                    <span class="skills__subtitle">Have experiences with Android-based tools.</span>
-                                </div>
-                                <iconify-icon icon="uil:angle-down" class="skills__arrow"></iconify-icon>
-                            </div>
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Android Studio with Java</h3>
-                                        <span class="skills__number">70%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__androidjava"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Android Studio with Kotlin</h3>
-                                        <span class="skills__number">60%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__androidkotlin"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Flutter</h3>
-                                        <span class="skills__number">60%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__flutter"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <!--==================== SKILLS 3 ====================-->
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <iconify-icon icon="ri:cloud-line" class="skills__icon"></iconify-icon>
-                                <div>
-                                    <h1 class="skills__title">Cloud & DevOps Engineer</h1>
-                                    <span class="skills__subtitle">Have experiences with IaaS.</span>
-                                </div>
-                                <iconify-icon icon="uil:angle-down" class="skills__arrow"></iconify-icon>
-                            </div>
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">AWS</h3>
-                                        <span class="skills__number">80%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__aws"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Azure</h3>
-                                        <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__azure"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">Oracle Cloud</h3>
-                                        <span class="skills__number">80%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__oc"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">CI/CD</h3>
-                                        <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__cicd"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--==================== QUALIFICATION ====================-->
-            <section class="qualification section">
-                <h2 class="section__title">Qualification</h2>
-                <span class="section__subtitle">My personal journey</span>
-                <div class="qualification__container container">
-                    <div class="qualification__tabs">
-                        <div class="qualification__button button--flex qualification__active" data-target='#education'>
-                            <iconify-icon icon="fluent:hat-graduation-12-regular" class="qualification__icon"></iconify-icon>
-                            Education
-                        </div>
-                        <div class="qualification__button button--flex" data-target='#work'>
-                            <iconify-icon icon="uil:briefcase" class="qualification__icon"></iconify-icon>
-                            Work
-                        </div>
-                    </div>
-                    <div class="qualification__sections">
-                        <!--==================== QUALIFICATION CONTENT 1 ====================-->
-                        <div class="qualification__content qualification__active" data-content id="education">
-                            <!--==================== QUALIFICATION 1 ====================-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">High School Graduate</h3>
-                                    <span class="qualification__subtitle">Imae High School - Seongnam</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2016 - 2019
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            <!--==================== QUALIFICATION 2 ====================-->
-                            <div class="qualification__data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                                <div>
-                                    <h3 class="qualification__title">Entrance College</h3>
-                                    <span class="qualification__subtitle">Hanyang Univ. ERICA - Software Dept.</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2019 - now
-                                    </div>
-                                </div>
-                            </div>
-                            <!--==================== QUALIFICATION 3 ====================-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">Aquire Certificate</h3>
-                                    <span class="qualification__subtitle">Information Processing Technician - 정보처리기능사</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2020 - 2020
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            <!--==================== QUALIFICATION 4 ====================-->
-                            <div class="qualification__data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                                <div>
-                                    <h3 class="qualification__title">Aquire Certificate</h3>
-                                    <span class="qualification__subtitle">Information Processing Industry Engineer - 정보처리산업기사</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2023 - 2023
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--==================== QUALIFICATION CONTENT 2 ====================-->
-                        <div class="qualification__content" data-content id="work">
-                            <!--==================== QUALIFICATION 1 ====================-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">Backend Enginner</h3>
-                                    <span class="qualification__subtitle">GiftMusic - SNS start-up company</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2020.09 - 2021.04
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            <!--==================== QUALIFICATION 2 ====================-->
-                            <div class="qualification__data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                                <div>
-                                    <h3 class="qualification__title">Serve in ROK Air Force</h3>
-                                    <span class="qualification__subtitle">Information System Management - 정보체계관리(30010)</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2021.04 - 2023.01
-                                    </div>
-                                </div>
-                            </div>
-                            <!--==================== QUALIFICATION 3 ====================-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">Backend Enginner & Maintenance</h3>
-                                    <span class="qualification__subtitle">GiftMusic - SNS start-up company</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2023.02 - 2023.05
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            <!--==================== QUALIFICATION 4 ====================-->
-                            <div class="qualification__data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                                <div>
-                                    <h3 class="qualification__title">Backend Enginner & DevOps Engineer</h3>
-                                    <span class="qualification__subtitle">K-Buddy - start-up company</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2023.09 - 2024.06
-                                    </div>
-                                </div>
-                            </div>
-                            <!--==================== QUALIFICATION 5 ====================-->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">IaaS Tech Plan intern</h3>
-                                    <span class="qualification__subtitle">Kakao Enterprise Corp. - Cloud Service Provider</span>
-                                    <div class="qualification__calendar">
-                                        <iconify-icon icon="tabler:calendar"></iconify-icon>
-                                        2024.07 - 2024.08
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        <!--==================== MAIN JS ====================-->
-        <script defer src="javascripts/extra.js"></script>
-    </body>
-</html>
+<div class="hero-section" markdown>
+
+![JunHyeok Lee](assets/img/aboutme.jpg){ .hero-avatar }
+
+# 이준혁 / JunHyeok Lee
+
+**Backend & Cloud**
+{ .hero-subline }
+
+윤택한 삶으로의 변화를 이끄는 데 기여하는 개발자
+{ .hero-tagline }
+
+<div class="cta-row" markdown>
+
+[:fontawesome-brands-github: GitHub](https://github.com/bnbong){ .cta-button .cta-button--primary }
+[:fontawesome-solid-envelope: Email](mailto:bbbong9@gmail.com){ .cta-button }
+[:material-notebook-edit-outline: Blog](blog/index.md){ .cta-button }
+[:material-folder-multiple: Projects](projects/index.md){ .cta-button }
+[:material-file-pdf-box: Resume PDF](assets/pdf/JunHyeokLeeResume.pdf){ .cta-button .cta-button--ghost }
+
+</div>
+
+</div>
+
+## 기술 스택
+
+### Backend
+
+<div class="badge-row">
+<img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java">
+<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django">
+<img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask">
+<img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot">
+<img src="https://img.shields.io/badge/Go-29BEB0?style=for-the-badge&logo=go&logoColor=white" alt="Go">
+</div>
+
+### Cloud & DevOps
+
+<div class="badge-row">
+<img src="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS">
+<img src="https://img.shields.io/badge/Oracle%20Cloud-F80000?style=for-the-badge&logo=oracle&logoColor=black" alt="Oracle Cloud">
+<img src="https://img.shields.io/badge/Azure-0072C6?style=for-the-badge&logo=microsoftazure&logoColor=white" alt="Azure">
+<img src="https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" alt="Google Cloud">
+<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+<img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx">
+<img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare">
+</div>
+
+### Data & Cache
+
+<div class="badge-row">
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+<img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+<img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="MariaDB">
+<img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
+<img src="https://img.shields.io/badge/Redis-DD0031?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
+<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+<img src="https://img.shields.io/badge/Elasticsearch-005571?style=for-the-badge&logo=elasticsearch&logoColor=white" alt="Elasticsearch">
+</div>
+
+### CI/CD · Test · Observability
+
+<div class="badge-row">
+<img src="https://img.shields.io/badge/GitHub%20Actions-282A2E?style=for-the-badge&logo=githubactions&logoColor=367cfe" alt="GitHub Actions">
+<img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" alt="Jenkins">
+<img src="https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" alt="pytest">
+<img src="https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit5">
+<img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black" alt="Swagger">
+<img src="https://img.shields.io/badge/Fluentd-599CD0?style=for-the-badge&logo=fluentd&logoColor=white" alt="Fluentd">
+<img src="https://img.shields.io/badge/Kibana-005571?style=for-the-badge&logo=kibana&logoColor=white" alt="Kibana">
+</div>
+
+<div class="two-col" markdown>
+
+<div class="two-col__item" markdown>
+
+## Education
+
+<div class="dl-timeline" markdown>
+
+- **한양대학교 ERICA 컴퓨터학부** <span class="timeline-period">2019.03 – 2026.08 졸업예정</span>
+    - 학점 3.76 / 4.5
+    - 클라우드SW 중급 마이크로전공 이수
+    - 졸업 프로젝트: "CNN + BERT Multimodal Qshing Detection"
+- **정보처리산업기사** <span class="timeline-period">2023.06.14 취득</span>
+- **프로그래밍기능사** <span class="timeline-period">2020.12.31 취득</span>
+
+</div>
+
+</div>
+
+<div class="two-col__item" markdown>
+
+## Work
+
+<div class="dl-timeline" markdown>
+
+- **카카오엔터프라이즈** · IaaS 기술기획 인턴 <span class="timeline-period">2024.07 – 2024.08</span>
+    - IaaS 제품 기술기획 및 사내 문서화
+- **K-Buddy 창업팀** · Backend & DevOps <span class="timeline-period">2023.09 – 2024.06</span>
+    - 백엔드 개발, 오라클 클라우드 인프라 설계·구축, 컨테이너 기반 MSA 운영
+- **대한민국 공군** · 병사 / 정보체계관리 <span class="timeline-period">2021.04 – 2023.01</span>
+    - 825기, 31전대 복무
+- **GiftMusic 창업팀** · Backend <span class="timeline-period">2020.09 – 2021.04</span>
+    - 지도 기반 음악 공유 SNS 백엔드 개발 (Mugip)
+
+</div>
+
+</div>
+
+</div>
+
+## Featured Projects
+
+<div class="grid cards" markdown>
+
+-   :material-shield-search:{ .lg .middle } **Wegis**
+
+    ---
+
+    멀티모달 AI 기반 QR/URL 피싱 탐지 시스템. MobileBERT + 1D-CNN, FastAPI 추론 서버, 추론 성능 개선 작업 진행 - **p95 −43.6%**.
+
+    [자세히 보기 →](projects/wegis.md)
+
+-   :material-package-variant:{ .lg .middle } **FastAPI-fastkit**
+
+    ---
+
+    FastAPI 프로젝트 부트스트랩 CLI + 템플릿 OSS. 현재 운영·유지 중이며
+    PyPI 배포와 다중 템플릿 관리 구조를 설계했습니다. 2026년 기준 **16k+** 다운로드
+
+    [자세히 보기 →](projects/fastapi-fastkit.md)
+
+-   :material-harddisk:{ .lg .middle } **FEMU Monitoring & Hot/Cold**
+
+    ---
+
+    가상 SSD 에뮬레이터 FEMU에 WAF/IOPS/Latency 계측 모듈을 추가하고 Hot/Cold
+    데이터 분리를 구현. Zipfian 1.2 기준 **WAF ~35% 감소**, **IOPS ~20% 개선**.
+
+    [자세히 보기 →](projects/femu-monitoring.md)
+
+</div>
+
+## Recent Posts
+
+<!--
+  아래 RECENT_POSTS 블록은 hooks/recent_posts.py가 빌드 시점에 자동 생성합니다.
+  docs/blog/posts/**/*.md의 frontmatter(title, date.created, categories, tags)를
+  읽어 최신 3개를 grid cards로 렌더링합니다. 수동 편집 불필요.
+-->
+
+<!-- RECENT_POSTS:START -->
+
+<div class="grid cards" markdown>
+
+-   :material-calendar-text:{ .lg .middle } **최신 글을 불러오는 중…**
+
+    ---
+
+    빌드 시점에 hooks/recent_posts.py가 이 블록을 교체합니다.
+
+    [블로그 전체 보기 →](blog/index.md)
+
+</div>
+
+<!-- RECENT_POSTS:END -->
+
+## Contact
+
+<div class="chip-row chip-row--contact" markdown>
+[:fontawesome-solid-envelope: bbbong9@gmail.com](mailto:bbbong9@gmail.com){ .chip .chip--link }
+[:fontawesome-brands-github: github.com/bnbong](https://github.com/bnbong){ .chip .chip--link }
+[:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/%EC%A4%80%ED%98%81-%EC%9D%B4-669733231/){ .chip .chip--link }
+[:material-notebook-edit-outline: Blog](blog/index.md){ .chip .chip--link }
+</div>

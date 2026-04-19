@@ -9,6 +9,12 @@ tags:
   - click
   - rich
   - package
+  - oss
+  - personal
+  - backend
+featured: true
+period: 2024.08 - 진행중
+role: 개인 OSS 운영
 ---
 
 # FastAPI FastKit

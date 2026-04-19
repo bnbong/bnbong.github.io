@@ -3,21 +3,47 @@
     --md-primary-fg-color--light: #f2e8d6;
     --md-primary-fg-color--dark: #b87b1e;
     --md-primary-code-bg-color: #fff;
+
+    --md-text-font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+        "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    --md-code-font: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+body,
+.md-typeset {
+    font-family: var(--md-text-font);
+}
+
+.md-typeset code,
+.md-typeset pre,
+.md-typeset kbd,
+.md-typeset samp {
+    font-family: var(--md-code-font);
 }
 
 /* 마크다운 콘텐츠 스타일링 */
 .md-typeset {
     /* 기본 텍스트 스타일 */
-    color: #000;
-    line-height: 1.6;
+    color: #1a1a1a;
+    line-height: 1.75;
+
+    p {
+        margin: 1.1em 0;
+    }
 
     /* 헤딩 스타일 */
     h1,
-    h2,
     h3,
     h4 {
-        color: var(--md-primary-fg-color);
+        color: #1a1a1a;
         font-weight: 600;
+    }
+
+    h2 {
+        color: #1a1a1a;
+        font-weight: 600;
+        border-bottom: 2px solid var(--md-primary-fg-color);
+        padding-bottom: 0.35em;
     }
 
     /* 링크 스타일 */
@@ -75,6 +101,17 @@
     .md-typeset {
         color: #eee;
         /* 다크모드에서의 텍스트 색상 */
+
+        h1,
+        h3,
+        h4 {
+            color: #eee;
+        }
+
+        h2 {
+            color: #eee;
+            border-bottom-color: var(--md-primary-fg-color--light);
+        }
 
         a {
             color: var(--md-primary-fg-color--light);
