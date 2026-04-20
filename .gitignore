@@ -1,6 +1,11 @@
 venv/
 .cache
 site/
+.blogflow/sessions/
+.blogflow/ideas/
+tools/blogflow/build/
+tools/blogflow/dist/
+tools/blogflow/*.egg-info/
 env*
 .env
 .vscode

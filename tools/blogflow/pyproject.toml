@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blogflow"
+dynamic = ["version"]
+description = "Local editorial workflow CLI for bnbong's MkDocs blog — orchestrates Claude and Codex with approval gates"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "bnbong", email = "bbbong9@gmail.com" }]
+license = { text = "MIT" }
+dependencies = [
+    "click>=8.1",
+    "Jinja2>=3.1",
+    "PyYAML>=6.0",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "blogflow.__version__" }
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+blogflow = "blogflow.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["blogflow*"]
+
+[tool.setuptools.package-data]
+"blogflow" = ["prompts_tpl/*.j2", "schemas_data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

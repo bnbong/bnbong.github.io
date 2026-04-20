@@ -1,0 +1,30 @@
+You are helping {{ author }} plan a technical blog post in Korean. Return a JSON object that matches the schema supplied via `--json-schema` — no prose, no markdown fences.
+
+## Topic
+{{ session.topic }}
+
+{% if session.target_post_path -%}
+Target file: `{{ session.target_post_path }}`
+{% endif %}
+
+## Author context
+- Blog language: Korean (technical, professional tone)
+- Default category: {{ default_category }}
+- Recent post titles:
+{%- for t in recent_titles %}
+  - {{ t }}
+{%- endfor %}
+
+## What to produce
+1. `goal` — one sentence on what a reader should be able to DO after reading.
+2. `learning_brief` — 3-6 sentence plain-language primer of the key concepts.
+3. `source_pack` — authoritative references (RFC, official docs, primary papers). Omit any source you are not confident exists.
+4. `scope` — explicit in-scope / out-of-scope bullets.
+5. `questions` — 3–7 specific questions the author must answer before drafting. Each has `id` (kebab-case), `text`, optional `why`. These uncover personal experience, code samples, and opinions the model cannot supply.
+6. `outline` — ordered list of section headings in Korean.
+7. `claim_categories` — labels for types of claims this post will make (e.g. `spec`, `benchmark`, `personal-experience`, `opinion`). Used later for risk tagging.
+
+## Guardrails
+- Prefer uncertainty over confident hallucination.
+- Every technical claim in later stages will be tagged `[SUPPORTED:<source>]` or `[ASSUMED]`; design the outline so supported claims dominate.
+- Korean output for goal/learning_brief/outline/questions text; English keys and ids.
