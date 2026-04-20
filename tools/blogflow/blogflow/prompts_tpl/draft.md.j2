@@ -1,0 +1,54 @@
+You are drafting a Korean technical blog post for {{ author }}. Return a JSON object matching the schema supplied via `--json-schema`.
+
+## Topic
+{{ session.topic }}
+
+## Brief (from prior stage)
+- Goal: {{ brief.goal }}
+- Learning brief: {{ brief.learning_brief }}
+- Scope: {{ brief.scope or '(not specified)' }}
+
+### Source pack
+{%- for s in brief.source_pack or [] %}
+- {{ s.get('label', '') }}{% if s.get('url') %} — {{ s.get('url') }}{% endif %}{% if s.get('note') %} ({{ s.get('note') }}){% endif %}
+{%- else %}
+- (none)
+{%- endfor %}
+
+### Outline
+{%- for h in brief.outline or [] %}
+{{ loop.index }}. {{ h }}
+{%- endfor %}
+
+### Claim categories
+{{ brief.claim_categories | default([]) | join(', ') or '(unspecified)' }}
+
+## Author answers
+{%- for q in brief.questions or [] %}
+- **{{ q.id }}**: {{ q.text }}
+  Answer: {{ answers.get(q.id, '(no answer — treat as unknown)') }}
+{%- endfor %}
+
+{% if prior_review is defined and prior_review %}
+## Reviewer feedback (address ONLY the blocking items)
+The previous draft came back with `GATE: {{ session.review_gate | upper }}`. The reviewer's output has two sections: `Required fixes (blocking)` and `Suggestions (non-blocking)`. **Apply only the Required-fixes items.** Ignore the Suggestions section — the author will handle those manually. Do not soften wording globally; only rewrite the sentences the reviewer quoted.
+
+```
+{{ prior_review }}
+```
+{% endif %}
+
+## What to produce
+- `title_candidates` — 3 Korean title options.
+- `description_candidates` — 3 one-sentence descriptions (<= 160 chars).
+- `body_markdown` — the full post body in Korean markdown. Use `##` for top-level sections (no H1 — mkdocs renders title separately). Code fences with language tags. Tables where appropriate.
+- `claim_summary` — for each non-trivial technical claim: `claim`, `status` (SUPPORTED|ASSUMED|UNCERTAIN), `source` (label from source_pack or "personal-experience").
+- `references` — label + url list, deduped.
+- `known_risks` — bullet list of things reviewers should double-check.
+
+## Guardrails (hard requirements)
+- Prefer uncertainty over confident hallucination. If a fact is unclear, mark `[ASSUMED]` inline AND in `claim_summary`.
+- Every technical claim MUST end with `[SUPPORTED:<label>]` or `[ASSUMED]` inline in the markdown.
+- Do not invent RFC numbers, version numbers, benchmark figures, or historical dates. If you cannot verify, write prose that names the uncertainty.
+- Keep personal-experience claims first-person and concrete (avoid "많은 사람들이…").
+- Korean prose. English proper nouns, code, and commands.

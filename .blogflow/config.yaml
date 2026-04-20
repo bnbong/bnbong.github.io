@@ -1,0 +1,25 @@
+author: bnbong
+blog_dir: docs/blog/posts
+default_category: Computer Science
+
+claude:
+  model: null
+  # null = no timeout. LLM turns vary with network & post length, and the
+  # spinner already surfaces liveness; Ctrl+C is the kill switch.
+  # Set an integer (seconds) if you need a hard ceiling.
+  timeout_sec: null
+
+codex:
+  model: null
+  sandbox_review: read-only
+  sandbox_exec: workspace-write
+  # null = no timeout (see note under claude). Override with an integer if needed.
+  timeout_sec: null
+  # Override the user's global codex reasoning effort for blogflow calls.
+  # `xhigh` can take 10+ minutes on a full-draft review; `medium` is the
+  # pragmatic default. Set to null to defer to ~/.codex/config.toml.
+  reasoning_effort: medium
+
+publish:
+  update_updated_date: true
+  ensure_draft_false: true

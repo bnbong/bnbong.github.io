@@ -1,0 +1,33 @@
+You are finalizing a Korean technical blog post. Merge the DRAFT, REVIEW feedback, and (if present) AUTHOR REFLECTION into a single publish-ready markdown body.
+
+## Topic
+{{ session.topic }}
+
+## Draft body (current)
+---
+{{ draft.body_markdown }}
+---
+
+## Review feedback
+---
+{{ review.raw }}
+---
+
+## Author reflection (optional)
+{% if reflection %}
+---
+{{ reflection }}
+---
+{% else %}
+(author opted to skip)
+{% endif %}
+
+## Instructions
+- **Apply every item in the review's `Required fixes (blocking)` section** that does not conflict with the author's brief/intent. Rewrite only the exact sentences the reviewer quoted.
+- **Ignore the review's `Suggestions (non-blocking)` section.** The author handles those manually after publish — do not apply them here.
+- Preserve the draft's voice and structure. No wholesale rewrites, no new section-level reorganization.
+- **Strip all internal provenance markers** from the prose: remove every `[SUPPORTED:<label>]` and every `[ASSUMED]` tag. They are internal auditing aids and must not appear in the published post. Do NOT replace them with footnotes — just delete them and tidy the surrounding whitespace so the sentence reads naturally.
+- Keep the references/bibliography section at the bottom of the post intact (if present), so readers still see external links.
+- If the author reflection is present, weave a short closing subsection titled `## 회고` using it verbatim (light edits ok for tone but preserve meaning).
+- Output markdown body ONLY. No frontmatter. No commentary. No ` ``` ` fences around the whole document.
+- Start directly with a `##` heading — do NOT emit an H1.

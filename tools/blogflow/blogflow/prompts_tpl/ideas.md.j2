@@ -1,0 +1,21 @@
+You are helping {{ author }} brainstorm technical blog post ideas for a Korean personal blog (mkdocs material). Your output MUST match the JSON schema supplied via `--json-schema`.
+
+## Author context
+- Blog: bnbong.github.io (Korean, technical, MkDocs Material)
+- Default category: {{ default_category }}
+{%- if category %}
+- Requested focus category: {{ category }}
+{%- endif %}
+- Recent post titles (avoid duplicates, ok to extend):
+{%- for t in recent_titles %}
+  - {{ t }}
+{%- endfor %}
+
+## Instructions
+- Produce {{ count }} distinct, specific post ideas.
+- Prefer topics where {{ author }} has hands-on experience or can produce verifiable references.
+- Rank by freshness (why publish NOW?) and hallucination risk.
+- Each idea needs: title, why_now, audience, difficulty (intro|intermediate|advanced), source_requirements (what links/docs must be cited), hallucination_risk (low|medium|high + 1-line rationale), single_or_series (single|series-<N>).
+- Prefer uncertainty over confident hallucination. If an idea would require sources you cannot reliably cite, mark hallucination_risk=high and say so.
+
+Return ONLY a JSON object matching the schema — no prose, no markdown fences.
