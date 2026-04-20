@@ -153,7 +153,9 @@ def test_review_template_includes_gate_instruction(repo_root: Path):
     assert "GATE: BLOCK" in text
 
 
-def test_finalize_template_applies_only_required_fixes_and_strips_markers(repo_root: Path):
+def test_finalize_template_applies_only_required_fixes_and_strips_markers(
+    repo_root: Path,
+):
     """The finalize template must (a) apply Required-fixes only (mirror the
     draft revise-loop rule so suggestions don't get silently applied) and
     (b) instruct Claude to strip `[SUPPORTED:…]` / `[ASSUMED]` markers so they

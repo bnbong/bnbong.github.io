@@ -123,7 +123,9 @@ def _review_is_trivially_approved(review_raw: str) -> bool:
     # Look for the "Required fixes" heading followed by a "None" line within a
     # handful of lines. The reviewer template emits "> None — draft is …" but
     # freeform reviews may phrase it differently.
-    m = re.search(r"required\s+fixes[^\n]*\n+([\s\S]{0,200})", review_raw, re.IGNORECASE)
+    m = re.search(
+        r"required\s+fixes[^\n]*\n+([\s\S]{0,200})", review_raw, re.IGNORECASE
+    )
     if not m:
         return False
     snippet = m.group(1).lower()

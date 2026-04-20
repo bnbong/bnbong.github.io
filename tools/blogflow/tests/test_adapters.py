@@ -73,7 +73,11 @@ def test_claude_adapter_reads_structured_output_field(tmp_path: Path):
     """When --json-schema is used, the validated payload lives in
     `structured_output`, not `result` (which is empty). The adapter must
     pick up the right field or downstream stages see an empty brief."""
-    schema = {"type": "object", "required": ["goal"], "properties": {"goal": {"type": "string"}}}
+    schema = {
+        "type": "object",
+        "required": ["goal"],
+        "properties": {"goal": {"type": "string"}},
+    }
     envelope = {
         "type": "result",
         "result": "",
@@ -110,8 +114,12 @@ def test_codex_adapter_disables_timeout_when_none(tmp_path: Path):
         base_mod.subprocess, "run", return_value=_fake_completed("text")
     ) as mock_run:
         adapter = CodexAdapter(timeout_sec=None)
-        adapter.run("prompt", log_dir=tmp_path / "logs", stage="review",
-                    extra={"mode": "review"})
+        adapter.run(
+            "prompt",
+            log_dir=tmp_path / "logs",
+            stage="review",
+            extra={"mode": "review"},
+        )
     assert mock_run.call_args.kwargs["timeout"] is None
 
 
@@ -197,8 +205,12 @@ def test_codex_adapter_sets_reasoning_effort(tmp_path: Path):
         base_mod.subprocess, "run", return_value=_fake_completed("text\nGATE: APPROVED")
     ) as mock_run:
         adapter = CodexAdapter(timeout_sec=5, reasoning_effort="medium")
-        adapter.run("prompt", log_dir=tmp_path / "logs", stage="review",
-                    extra={"mode": "review"})
+        adapter.run(
+            "prompt",
+            log_dir=tmp_path / "logs",
+            stage="review",
+            extra={"mode": "review"},
+        )
     called_cmd = mock_run.call_args.args[0]
     assert "-c" in called_cmd
     assert "model_reasoning_effort=medium" in called_cmd

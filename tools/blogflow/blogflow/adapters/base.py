@@ -83,9 +83,11 @@ def invoke(
             cmd=cmd,
             exit_code=-1,
             duration_ms=duration,
-            stdout=exc.stdout.decode()
-            if isinstance(exc.stdout, bytes)
-            else (exc.stdout or ""),
+            stdout=(
+                exc.stdout.decode()
+                if isinstance(exc.stdout, bytes)
+                else (exc.stdout or "")
+            ),
             stderr=f"TIMEOUT after {effective_timeout}s",
         )
         raise
@@ -142,9 +144,7 @@ class _Spinner:
             elapsed = int(time.monotonic() - start)
             mins, secs = divmod(elapsed, 60)
             try:
-                sys.stderr.write(
-                    f"\r{next(frames)} {self._label}  {mins}:{secs:02d}"
-                )
+                sys.stderr.write(f"\r{next(frames)} {self._label}  {mins}:{secs:02d}")
                 sys.stderr.flush()
             except Exception:
                 return

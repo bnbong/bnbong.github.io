@@ -35,10 +35,7 @@ def publish_cmd(session_id: str | None, post_path_override: str | None) -> None:
     if post_path_override is not None:
         # Validate first so a bad path doesn't mutate the session silently.
         publish_mod.validate_post_path(ctx.repo_root, post_path_override)
-        if (
-            session.target_post_path
-            and session.target_post_path != post_path_override
-        ):
+        if session.target_post_path and session.target_post_path != post_path_override:
             click.echo(
                 f"overriding target_post_path: "
                 f"{session.target_post_path} → {post_path_override}"

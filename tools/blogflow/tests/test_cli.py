@@ -568,7 +568,9 @@ def test_finalize_deterministic_flag_skips_claude(repo_root: Path):
             called["n"] += 1
             raise AssertionError("claude adapter must not run when --deterministic")
 
-        with patch("blogflow.adapters.claude.ClaudeAdapter.run", new=_should_not_be_called):
+        with patch(
+            "blogflow.adapters.claude.ClaudeAdapter.run", new=_should_not_be_called
+        ):
             res = runner.invoke(cli, ["finalize", "--deterministic"])
         assert res.exit_code == 0, res.output
         assert called["n"] == 0
