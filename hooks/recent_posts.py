@@ -74,13 +74,15 @@ def _collect_posts(docs_dir):
         if created is None or created > today:
             continue
         rel = md_path.relative_to(docs_dir).as_posix()
-        posts.append({
-            "title": str(meta.get("title", md_path.stem)),
-            "date": created,
-            "categories": meta.get("categories") or [],
-            "tags": meta.get("tags") or [],
-            "path": rel,
-        })
+        posts.append(
+            {
+                "title": str(meta.get("title", md_path.stem)),
+                "date": created,
+                "categories": meta.get("categories") or [],
+                "tags": meta.get("tags") or [],
+                "path": rel,
+            }
+        )
     posts.sort(key=lambda p: p["date"], reverse=True)
     return posts
 
