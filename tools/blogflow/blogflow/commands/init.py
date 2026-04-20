@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import click
 
-from ..publish import validate_post_path
+from ..publish import DEFAULT_BLOG_DIR, validate_post_path
 from ..state import Session, new_session_id, slugify
 from . import _context as ctx_mod
 
@@ -28,7 +28,8 @@ def init_cmd(topic: str, post_path: str | None, from_idea: str | None) -> None:
     ctx = ctx_mod.build_context()
 
     if post_path:
-        validate_post_path(ctx.repo_root, post_path)
+        blog_dir = str(ctx.config.get("blog_dir") or DEFAULT_BLOG_DIR)
+        validate_post_path(ctx.repo_root, post_path, blog_dir)
 
     sid = new_session_id(topic, existing=set(ctx.store.list_sessions()))
     session = Session(

@@ -67,14 +67,28 @@ class Frontmatter:
     raw: dict[str, Any]
     body: str
 
-    def ensure_published(self, *, today: date, ensure_draft_false: bool) -> None:
+    def ensure_published(
+        self,
+        *,
+        today: date,
+        ensure_draft_false: bool,
+        update_updated_date: bool = True,
+    ) -> None:
         if "date" not in self.raw or not isinstance(self.raw["date"], dict):
+            # Brand-new frontmatter: set both created and updated regardless
+            # of update_updated_date, since the file didn't have an `updated`
+            # field to preserve.
             self.raw["date"] = {
                 "created": today.isoformat(),
                 "updated": today.isoformat(),
             }
         else:
             self.raw["date"].setdefault("created", today.isoformat())
-            self.raw["date"]["updated"] = today.isoformat()
+            if update_updated_date:
+                self.raw["date"]["updated"] = today.isoformat()
+            else:
+                # Preserve whatever `updated` the author set manually, but
+                # still seed one if it's missing so the post is valid.
+                self.raw["date"].setdefault("updated", today.isoformat())
         if ensure_draft_false and self.raw.get("draft") is True:
             self.raw["draft"] = False

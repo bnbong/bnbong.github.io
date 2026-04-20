@@ -13,6 +13,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Protocol
 
+from ..errors import AdapterError
+
 
 @dataclass
 class AdapterResult:
@@ -91,6 +93,28 @@ def invoke(
             stderr=f"TIMEOUT after {effective_timeout}s",
         )
         raise
+    except FileNotFoundError as exc:
+        # argv[0] missing on PATH — without this catch, subprocess.run raises
+        # FileNotFoundError straight through the adapter and the CLI prints a
+        # full Python traceback. Convert to AdapterError so users see an
+        # actionable install hint instead. First-run UX on machines without
+        # both `claude` and `codex` preinstalled broke without this.
+        spinner.stop()
+        duration = int((time.monotonic() - start) * 1000)
+        binary = cmd[0] if cmd else adapter_name
+        msg = (
+            f"{adapter_name} binary {binary!r} not found on PATH. "
+            f"Install the CLI and re-run, or set a custom path in .blogflow/config.yaml."
+        )
+        _write_log(
+            log_path,
+            cmd=cmd,
+            exit_code=-1,
+            duration_ms=duration,
+            stdout="",
+            stderr=f"{type(exc).__name__}: {exc}",
+        )
+        raise AdapterError(msg) from exc
     finally:
         spinner.stop()
     duration = int((time.monotonic() - start) * 1000)

@@ -39,8 +39,14 @@ class Context:
                 continue
             if not text.startswith("---"):
                 continue
+            parts = text.split("---", 2)
+            # A valid frontmatter block has opening fence, body, closing fence
+            # → three parts after splitting with maxsplit=2. Skip anything
+            # shorter (e.g. file that opens `---` but never closes it) instead
+            # of silently picking up whatever YAML-parses from the opener.
+            if len(parts) < 3:
+                continue
             try:
-                parts = text.split("---", 2)
                 meta = yaml.safe_load(parts[1]) or {}
             except Exception:
                 continue
@@ -86,9 +92,12 @@ def build_context(start: Path | None = None) -> Context:
 
 
 def _load_config_or_default(repo_root: Path) -> dict[str, Any]:
-    try:
-        return load_config(repo_root)
-    except ConfigError:
+    # Only the missing-config case falls back to defaults — a present-but-malformed
+    # config.yaml (bad YAML, wrong shape) must propagate as an error, otherwise
+    # the workflow would silently use default author/paths/sandbox values while
+    # the user thinks their config is in effect.
+    config_path = repo_root / ".blogflow" / "config.yaml"
+    if not config_path.exists():
         return {
             "author": "author",
             "blog_dir": "docs/blog/posts",
@@ -101,6 +110,7 @@ def _load_config_or_default(repo_root: Path) -> dict[str, Any]:
             },
             "publish": {"update_updated_date": True, "ensure_draft_false": True},
         }
+    return load_config(repo_root)
 
 
 def _optional_timeout(value: Any) -> int | None:

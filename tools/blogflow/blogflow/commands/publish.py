@@ -31,10 +31,11 @@ def publish_cmd(session_id: str | None, post_path_override: str | None) -> None:
     ctx = ctx_mod.build_context()
     session = ctx.store.resolve_latest(session_id)
     session_dir = ctx.store.session_path(session.id)
+    blog_dir = str(ctx.config.get("blog_dir") or publish_mod.DEFAULT_BLOG_DIR)
 
     if post_path_override is not None:
         # Validate first so a bad path doesn't mutate the session silently.
-        publish_mod.validate_post_path(ctx.repo_root, post_path_override)
+        publish_mod.validate_post_path(ctx.repo_root, post_path_override, blog_dir)
         if session.target_post_path and session.target_post_path != post_path_override:
             click.echo(
                 f"overriding target_post_path: "
@@ -51,9 +52,12 @@ def publish_cmd(session_id: str | None, post_path_override: str | None) -> None:
         final_path=final_path,
     )
 
-    post_path = publish_mod.validate_post_path(ctx.repo_root, session.target_post_path)
+    post_path = publish_mod.validate_post_path(
+        ctx.repo_root, session.target_post_path, blog_dir
+    )
     publish_cfg = ctx.config.get("publish") or {}
     ensure_draft_false = bool(publish_cfg.get("ensure_draft_false", True))
+    update_updated_date = bool(publish_cfg.get("update_updated_date", True))
 
     # Warn if we're about to replace a non-trivial existing body. The author
     # can Ctrl+C, restore from git, and merge manually instead of losing content.
@@ -79,6 +83,7 @@ def publish_cmd(session_id: str | None, post_path_override: str | None) -> None:
         ensure_draft_false=ensure_draft_false,
         topic=session.topic,
         author=ctx.author(),
+        update_updated_date=update_updated_date,
     )
 
     state.transition(session, state.STATUS_PUBLISHED)
@@ -90,5 +95,7 @@ def publish_cmd(session_id: str | None, post_path_override: str | None) -> None:
     click.echo(f"published → {rel_post}")
     click.echo("")
     click.echo("suggested git commands (run yourself when ready):")
-    for cmd in publish_mod.suggested_git_commands(rel_post, session_rel):
+    for cmd in publish_mod.suggested_git_commands(
+        rel_post, session_rel, repo_root=ctx.repo_root
+    ):
         click.echo(f"  {cmd}")

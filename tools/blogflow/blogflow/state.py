@@ -212,7 +212,12 @@ def load_config(repo_root: Path) -> dict[str, Any]:
             f".blogflow/config.yaml not found under {repo_root}. "
             "Run blogflow from the repo root."
         )
-    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError as exc:
+        # Surface malformed config as BlogflowError so the CLI wrapper formats
+        # a clean `error: ...` line instead of leaking a PyYAML traceback.
+        raise ConfigError(f"{path} is not valid YAML: {exc}") from exc
     if not isinstance(data, dict):
         raise ConfigError(".blogflow/config.yaml must be a YAML mapping.")
     return data

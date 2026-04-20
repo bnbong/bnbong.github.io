@@ -5,6 +5,8 @@ import subprocess
 from pathlib import Path
 from unittest.mock import patch
 
+import pytest
+
 from blogflow.adapters import base as base_mod
 from blogflow.adapters.claude import ClaudeAdapter
 from blogflow.adapters.codex import (
@@ -15,6 +17,7 @@ from blogflow.adapters.codex import (
     CodexAdapter,
     parse_gate,
 )
+from blogflow.errors import AdapterError
 
 
 def _fake_completed(stdout: str = "", stderr: str = "", returncode: int = 0):
@@ -226,6 +229,29 @@ def test_codex_adapter_skips_effort_flag_when_none(tmp_path: Path):
         adapter.run("prompt", log_dir=tmp_path / "logs", stage="draft")
     called_cmd = mock_run.call_args.args[0]
     assert not any(a.startswith("model_reasoning_effort=") for a in called_cmd)
+
+
+def test_invoke_raises_adapter_error_when_binary_missing(tmp_path: Path):
+    """A missing `claude` / `codex` binary used to bubble up as a raw
+    FileNotFoundError traceback — breaks first-run UX on machines that don't
+    have both CLIs installed. Must surface as AdapterError with an actionable
+    hint so the top-level CLI wrapper formats it cleanly."""
+    with patch.object(base_mod.subprocess, "run", side_effect=FileNotFoundError()):
+        with pytest.raises(AdapterError) as exc_info:
+            base_mod.invoke(
+                ["nonexistent-binary"],
+                stdin_text=None,
+                timeout_sec=None,
+                log_dir=tmp_path / "logs",
+                stage="brief",
+                adapter_name="claude",
+            )
+    msg = str(exc_info.value)
+    assert "nonexistent-binary" in msg
+    assert "PATH" in msg
+    # Log file must still be written so the failure is auditable.
+    logs = list((tmp_path / "logs").glob("brief-claude-*.log"))
+    assert len(logs) == 1
 
 
 def test_parse_gate_variants():

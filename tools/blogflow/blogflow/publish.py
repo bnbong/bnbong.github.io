@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import subprocess
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -11,15 +12,26 @@ from .errors import PublishError
 from .models import Frontmatter
 
 
-def validate_post_path(repo_root: Path, rel_path: str) -> Path:
-    """Ensure the target post path lives under docs/blog/posts/ and ends with .md."""
-    blog_root = (repo_root / "docs" / "blog" / "posts").resolve()
+DEFAULT_BLOG_DIR = "docs/blog/posts"
+
+
+def validate_post_path(
+    repo_root: Path, rel_path: str, blog_dir: str = DEFAULT_BLOG_DIR
+) -> Path:
+    """Ensure the target post path lives under the configured blog dir and ends with .md.
+
+    ``blog_dir`` defaults to ``docs/blog/posts`` for callers that do not thread
+    the full config through (e.g. unit tests). Callers that have access to
+    ``ctx.config`` should pass ``config["blog_dir"]`` so that overriding
+    ``blog_dir`` in ``.blogflow/config.yaml`` actually takes effect.
+    """
+    blog_root = (repo_root / blog_dir).resolve()
     target = (repo_root / rel_path).resolve()
     try:
         target.relative_to(blog_root)
     except ValueError as exc:
         raise PublishError(
-            f"Post path {rel_path!r} must live under docs/blog/posts/."
+            f"Post path {rel_path!r} must live under {blog_dir}/."
         ) from exc
     if target.suffix != ".md":
         raise PublishError(f"Post path {rel_path!r} must have a .md extension.")
@@ -49,23 +61,62 @@ def merge_final_into_post(
     ensure_draft_false: bool,
     topic: str,
     author: str,
+    update_updated_date: bool = True,
 ) -> None:
     if post_path.exists():
         fm = fm_mod.read(post_path)
     else:
         fm = build_skeleton(topic, today=today, author=author)
     fm.body = final_body.lstrip("\n")
-    fm.ensure_published(today=today, ensure_draft_false=ensure_draft_false)
+    fm.ensure_published(
+        today=today,
+        ensure_draft_false=ensure_draft_false,
+        update_updated_date=update_updated_date,
+    )
     fm_mod.write_atomic(post_path, fm)
 
 
-def suggested_git_commands(post_path: Path, session_dir_rel: str) -> list[str]:
+def suggested_git_commands(
+    post_path: Path,
+    session_dir_rel: str,
+    *,
+    repo_root: Path | None = None,
+) -> list[str]:
+    """Return copy-pasteable `git add / commit / push` suggestions.
+
+    The push command targets whatever branch the repo is currently on. If we
+    can't detect the branch (no git, detached HEAD, repo_root not passed), we
+    emit a bare `git push` so the user's tracking config decides — much safer
+    than hardcoding `master`/`main` and misleading users on the other layout.
+    """
     rel_post = post_path.as_posix()
+    branch = _detect_current_branch(repo_root) if repo_root else None
+    push_cmd = f"git push origin {branch}" if branch else "git push"
     return [
         f"git add {rel_post} {session_dir_rel}",
         f'git commit -m "post: $(basename {rel_post} .md)"',
-        "git push origin master",
+        push_cmd,
     ]
+
+
+def _detect_current_branch(repo_root: Path) -> str | None:
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repo_root), "rev-parse", "--abbrev-ref", "HEAD"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if result.returncode != 0:
+        return None
+    branch = result.stdout.strip()
+    # `HEAD` means detached — no branch to push to.
+    if not branch or branch == "HEAD":
+        return None
+    return branch
 
 
 def guard_publish(
@@ -81,7 +132,9 @@ def guard_publish(
         )
     if not target_post_path:
         raise PublishError(
-            "Session has no target_post_path set. Use `blogflow init --post-path ...` next time."
+            "Session has no target_post_path set. Either re-run publish with "
+            "`blogflow publish --post-path <docs/blog/posts/...>` to set it "
+            "retroactively, or pass `--post-path` to `blogflow init` next time."
         )
     if not final_path.exists():
         raise PublishError(

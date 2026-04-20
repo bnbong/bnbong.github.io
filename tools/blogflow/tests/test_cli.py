@@ -5,6 +5,7 @@ import subprocess
 from pathlib import Path
 from unittest.mock import patch
 
+import pytest
 from click.testing import CliRunner
 
 from blogflow.adapters.base import AdapterResult
@@ -436,6 +437,59 @@ def _only_session(repo_root: Path) -> str:
     dirs = [p for p in d.iterdir() if p.is_dir()]
     assert len(dirs) == 1, dirs
     return dirs[0].name
+
+
+def test_recent_post_titles_skips_posts_without_closing_fence(repo_root: Path):
+    """A post that opens `---` but never closes it must not be accepted — the
+    old parser treated `parts[1]` (the post body!) as YAML and surfaced junk
+    titles. Mirror the strict frontmatter parser and require a closing fence.
+    """
+    from blogflow.commands._context import Context
+    from blogflow.state import SessionStore, load_config
+
+    broken = repo_root / "docs" / "blog" / "posts" / "broken" / "bad.md"
+    broken.parent.mkdir(parents=True, exist_ok=True)
+    broken.write_text(
+        "---\ntitle: Real Title\nlooks like yaml but no closing fence\n",
+        encoding="utf-8",
+    )
+    good = repo_root / "docs" / "blog" / "posts" / "good" / "ok.md"
+    good.parent.mkdir(parents=True, exist_ok=True)
+    good.write_text(
+        "---\ntitle: Good Post\n---\n\nbody\n",
+        encoding="utf-8",
+    )
+
+    ctx = Context(
+        repo_root=repo_root,
+        config=load_config(repo_root),
+        store=SessionStore(repo_root),
+    )
+    titles = ctx.recent_post_titles()
+    assert "Good Post" in titles
+    assert "Real Title" not in titles, (
+        "unclosed frontmatter must not leak through the parser"
+    )
+
+
+def test_build_context_fails_fast_on_malformed_config(repo_root: Path):
+    """A present-but-malformed `.blogflow/config.yaml` used to fall back to
+    defaults silently via a broad `except ConfigError`, so users thought their
+    sandbox/author/blog_dir overrides were in effect while blogflow quietly
+    ignored them. Now the CLI must surface the parse error so it can be fixed.
+    """
+    from blogflow.commands._context import build_context
+    from blogflow.errors import ConfigError
+
+    (repo_root / ".blogflow" / "config.yaml").write_text(
+        "author: bnbong\nblog_dir: [unterminated list\n",
+        encoding="utf-8",
+    )
+    with patch(
+        "blogflow.commands._context.find_repo_root", return_value=repo_root
+    ):
+        with pytest.raises(ConfigError):
+            build_context(repo_root)
 
 
 def test_status_default_picks_session_saved_last(repo_root: Path):
