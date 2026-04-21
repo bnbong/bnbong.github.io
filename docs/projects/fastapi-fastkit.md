@@ -1,6 +1,6 @@
 ---
-title: FastAPI FastKit
-description: cli operation으로 FastAPI 프로젝트를 탬플릿으로 빠르게 생성하는 패키지
+title: FastAPI-fastkit
+description: FastAPI 프로젝트 초기 구성을 CLI와 템플릿으로 자동화한 오픈소스 패키지
 authors:
   - bnbong
 tags:
@@ -14,7 +14,7 @@ tags:
   - backend
 featured: true
 period: 2024.08 - 진행중
-role: 개인 OSS 운영
+role: 개인 OSS 운영 · CLI 설계 / 템플릿 시스템 / 문서 / 릴리스 관리
 ---
 
 # FastAPI FastKit
@@ -23,60 +23,114 @@ role: 개인 OSS 운영
 
 ![fastapi-fastkit](img/fastkit_general_logo.png)
 
-cli operation으로 FastAPI 프로젝트를 탬플릿으로 빠르게 생성하는 패키지
+!!! tip "아이템 한줄 설명"
+    FastAPI 입문자가 프로젝트 초기 구조를 빠르게 만들 수 있도록 돕는 CLI 기반 스타터 키트
 
-FastAPI 개발자 tiangolo가 최근 개발한 fastapi-cli 프로젝트의 개발 의의를 이어받아 ==개발한== 오픈소스 패키지 프로젝트이다.
-
-:fontawesome-regular-copyright: copyright : bnbong
+FastAPI-fastkit은 FastAPI 프로젝트를 생성하고, 필요한 스택을 선택하고, 템플릿에 맞춰 코드와 설정 파일을 자동으로 만들어 주는 OSS 패키지다. 단순한 보일러플레이트 저장소가 아니라, **CLI 경험 자체를 하나의 제품처럼 설계한 개발자 도구**이다.
 
 ### 저장소
 
 <https://github.com/bnbong/FastAPI-fastkit>
 
-## 소개 (원문)
+## 왜 만들었는가
 
-This project was created to speed up the configuration of the development environment needed to develop Python-based web apps for new users of Python and [FastAPI](https://github.com/fastapi/fastapi).
+이 프로젝트는 FastAPI 생태계에서 반복적으로 마주친 문제에서 출발했다.
 
-This project was inspired by the `SpringBoot initializer` of the JAVA ecosystem & Python Django's `django-admin` cli operation.
+- 입문자는 FastAPI 자체보다 프로젝트 초기 세팅에서 먼저 막힌다.
+- `main.py` 하나로 시작하는 건 쉽지만, 막상 개발을 진행하려면 환경 변수, 테스트, Docker, DB 설정이 금방 필요해진다.
+- 템플릿 저장소를 직접 복제하는 방식은 유연성이 떨어지고, 패키지 매니저나 옵션 조합을 반영하기도 어렵다.
 
-## Abstract
+그래서 이 문제를 단순한 예제 저장소가 아니라, **`django-admin`이나 Spring Initializr처럼 시작점을 만들어 주는 도구**로
+풀고 싶었다.
 
-FastAPI는 느린 성능으로 외면을 받던 Python의 웹 앱 개발 상황에 대한 사람들의 인식을 바꾼 프레임워크이다.
+## 설계 방향
 
-Python 3.10 버전이 출시되면서 Python 언어 자체에 대한 성능 향상과 맞물려 FastAPI는 강력한 비동기 기능 지원과 빠른 성능을 자랑한다.
+FastAPI-fastkit은 "프로젝트 생성기"이면서 동시에 "입문자용 가이드" 역할도 한다.
+그래서 설계할 때 다음 기준을 중요하게 봤다.
 
-점차 FastAPI에 여러 기능들이 추가되기 시작하면서 FastAPI 개발자 tiangolo는 FastAPI[standard] 혹은 FastAPI[slim] 옵션을 넣어서 불필요한 패키지를 제외하여 개발 환경에 설치하여 내 프로젝트를 경량화시킬 수 있는 기능을 제공하였다.
+- 가장 간단하고 직관적인 인터페이스인 CLI만으로 프로젝트 생성 흐름을 끝낼 수 있어야 한다.
+- 생성된 결과물이 예제 코드가 아니라 실제 개발 시작점으로 쓸 만해야 한다.
+- 데이터베이스, 인증, 배포, 테스트처럼 자주 필요한 기능을 조합식으로 선택할 수 있어야 한다.
+- 초보 사용자도 출력만 보고 다음 행동을 이해할 수 있어야 한다.
 
-FastAPI[slim] 옵션으로 설치를 하게 되도 FastAPI 런타임을 디버깅하는데는 전혀 문제가 없으며 많은 유저들이 이를 알고 있다. 그러나 FastAPI의 author인 tiangolo가 갑자기 fastapi-cli branch를 파서 작업한 후 다른 컨트리뷰터들이 리뷰할 충분한 기간을 주지 않고 독단적으로 merge를 한 흔적이 있다.
+## 핵심 기능
 
-많은 기여자들이 이를 강하게 비판한 것을 확인할 수 있었으며 ‘[이 기능이 정말 필요한 기능인지 잘 모르겠다](https://github.com/fastapi/fastapi/pull/11522#issuecomment-2092774734)’고 평가한 의견도 볼 수 있었다.
+2026년 기준 FastAPI-fastkit은 다음 기능을 제공한다.
 
-상단의 링크에서 tiangolo의 기능 추가 급발진(?)을 조목조목 강하게 비판하는 댓글을 볼 수 있으며, 좋아요 수가 20개가 넘는다.
+- `fastkit init` : 새 FastAPI 프로젝트 초기 생성
+- `fastkit init --interactive` : DB, 인증, 캐시, 모니터링, 테스트, 배포 옵션을 대화형으로 선택
+- `fastkit startdemo` : 사전 정의된 템플릿으로 프로젝트 생성
+- `fastkit addroute` : 라우트 추가
+- `fastkit runserver` : 개발 서버 실행
+- `fastkit list-templates` : 사용 가능한 템플릿 조회
 
-핵심 개발자 tiangolo는 8월에 이에 대한 reply를 남겼다. 해당 내용을 요약하자면 FastAPI 입문자를 위해 초심자 편의를 고려하여 해당 기능을 넣기로 했으며 dependancy를 경량화하고 싶은 수요를 고려하여 fastapi[standard] / fastapi[slim] 으로 분기하여 패키지를 설치할 수 있도록 쪼개고자 하는 아이디어에서 이어진 기능이라고 한다.
+여기서 중요한 점은, 단순히 디렉터리를 복사하는 게 아니라 **선택한 조합에 맞는 코드와 설정을 생성한다**는 부분이다.
 
-오랫동안 FastAPI를 활용한 나 또한 비판 의견에 동의를 하는 바지만, 사람들에게 약간이나마 편의성을 제공한다는 측면을 고려해봤을 때 해당 기능이 꼭 필요없는 기능은 아니기에 기여할 가치가 있다고 판단하여 해당 프로젝트에 기여를 할 수 있는 부분을 탐색하였다.
+## 기술 선택 이유
 
-따라서 처음에는 fastapi-cli 프로젝트의 터미널 출력을 직관적으로 개선하는 방향으로 기여를 수행하였으나, 위의 Discussion에서 논의된 내용을 계속해서 고민해본 결과, fastapi-cli 프로젝트로는 FastAPI 프레임워크에 입문하는 사람들의 진입장벽을 낮추기 힘들다고 생각하였다.
+### `click`
 
-근본적인 문제를 해결하기 위해 차라리 내가 오픈소스 프로젝트를 파서 기여를 하는 방향으로 접근하였다. cli 기능은 Python 뿐만아니라 다른 언어로 개발된 패키지에서도 지원하며, 많은 개발자들은 cli operation으로 편리하게 기능을 사용할 수 있는 역량이 있다.
+CLI 인터페이스를 빠르게 구성하면서도 명령 구조를 명확하게 유지하기 위해 `click`을 택했다.
+Python 사용자에게 익숙하고, 명령 계층을 깔끔하게 나누기 좋았다.
 
-그 측면에서 fastapi-cli의 기능적인 도움을 받는 것은 좋은 방향이라고 생각하였다. 거기에 추가로 Python Django의 django-admin operation으로 빠르게 project init을 수행할 수 있는 기능에 영감을 받아 비슷한 기능을 수행하는 cli operation을 내가 만들 새로운 프로젝트에 접목시키기로 결정하였으며, 이렇게 해서 fastapi-fastkit 프로젝트를 만들게 되었다.
+### `rich`
 
-## Stack
+개발자 도구는 기능만큼 피드백 경험도 중요하다. 생성 중인 작업, 에러, 다음 단계 안내가 잘 보이도록 터미널 출력을 꾸미기 위해 `rich`를 사용했다. 특히 입문자용 도구에서는 "무슨 일이 일어나는지 설명해 주는 출력" 그 자체가 UX의 일부라고 봤다.
 
-- python 3.12
-- click 8.1.7
-- fastapi-cli 0.0.5
-- rich 13.9.2
+### 템플릿 기반 구조
 
+FastAPI 프로젝트는 팀마다 스타일이 다르다. 그래서 하나의 정답 구조를 강제하기보다,
+여러 템플릿과 기능 조합을 지원하는 방향이 더 적합했다.
+
+Github에서 확인 가능한 최대한 다양한 FastAPI 프로젝트들을 참고하여 FastAPI 구조의 best practice를 도출하여 템플릿에 녹였다.
+
+### 다중 패키지 매니저 지원
+
+현실적으로 Python 사용자는 `pip`, `uv`, `pdm`, `poetry`를 혼용한다. 특정 툴 하나를 정답처럼 강제하기보다, 사용자의 선호를 반영하는 쪽이 도구로서 설득력 있다고 판단했다.
+
+## 구현 포인트
+
+### 대화형 빌더
+
+`--interactive` 모드는 단순 옵션 질문기가 아닌 사용자가 선택한 항목에 따라
+
+- `main.py`
+- 인증 설정
+- 데이터베이스 설정
+- Docker 관련 파일
+- 테스트 구성
+
+이 함께 생성되도록 설계했다. 기능 선택이 곧바로 코드 생성과 이어지도록 설계했다.
+
+### 템플릿 품질 보증
+
+템플릿 프로젝트의 가장 큰 문제는 시간이 지나면 금방 깨진다는 점이다. 이를 막기 위해 주기적인 자동 테스트 흐름을 GitHub Actions 워크플로우로 두어 템플릿이 계속 동작하도록 관리하고 있다.
+
+### 문서와 튜토리얼
+
+패키지 하나 배포하는 것으로 끝내지 않았다. Quick Start, Tutorial, CLI Reference, Template QA 문서를 함께 운영하는 이유는, 이 도구가 겨냥하는 사용자가 **입문자**이기 때문이다.
+
+## 왜 업스트림 기여 대신 독립 프로젝트였는가
+
+초기에는 FastAPI CLI 관련 논의를 따라가며 기존 생태계 안에서 기여할 부분을 찾아봤다. 그런데 결국 내가 풀고 싶었던 문제는 "FastAPI 프레임워크 내부 CLI"가 아니라 **FastAPI 입문자의 시작 경험**에 있었다.
+
+그래서 FastAPI FastKit은 특정 프로젝트의 부가 기능이 아니라, 별도의 철학을 가진 개발자 도구로 분리해 운영하는 쪽이 맞다고 판단했다.
 
 ## 역할
 
-- 프로젝트 설계
-- 패키지 개발
+- CLI 명령 구조 설계
+- 템플릿 시스템 구현
+- 생성 코드 및 설정 파일 구조 설계
+- 문서 사이트 구성
+- 오픈소스 배포 및 릴리스 관리
 
-## 비고
+## 현재 상태와 방향
 
-- Template을 통해 FastAPI 프로젝트를 빠르게 Workspace에 배포할 수 있는 기본 기능 구현 완료
-- 추가 기능 및 더 강력한 cli operation 기능 구현 중
+- PyPI 배포형 패키지로 운영 중
+- 다양한 스택 조합을 지원하는 대화형 빌더 확장 중
+- 템플릿 품질 검증과 문서 보강을 지속 진행 중
+
+## 배운 점
+
+- 템플릿 프로젝트는 한 번 만드는 것보다 **시간이 지나도 계속 동작하게 유지하는 일**이 더 중요하다.
+- FastAPI 생태계에서 필요한 건 프레임워크 자체만이 아니라, **좋은 시작 경험**이라는 점을 다시 확인했다.

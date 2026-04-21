@@ -15,7 +15,7 @@ hide:
 
   현재 docs/projects/ 하위 상세 md 목록 (index/femu 제외 순서 무관):
     wegis, fall-in,
-    bifrost, tookindfriendchat, univapi, ricktcal, kakaotalk-weatherforecast,
+    bngdrasil, tookindfriendchat, univapi, ricktcal, kakaotalk-weatherforecast,
     project-pinned, awesomechat, mugip, kbuddy,
     jgw-hub, jgw-penalty-python, jgw-attendance-python, qr-phishing-detector,
     azure-sdk-python, azure-sdk-python-kor, fastapi-fastkit, blog-post-workflow,
@@ -24,7 +24,7 @@ hide:
 
 # Projects
 
-지금까지 진행한 프로젝트를 **Featured → Archive** 순으로 정리했습니다.
+지금까지 진행해 온 프로젝트를 **Featured → Archive** 순으로 정리했습니다.
 
 ## Featured
 
@@ -124,7 +124,7 @@ hide:
 ## Archive
 
 모든 프로젝트 상세 문서는 링크에서 바로 확인할 수 있습니다. 한 프로젝트가 여러
-카테고리에 등장할 수 있습니다 (예: `fastapi-fastkit`는 OSS이자 Personal).
+카테고리에 동시에 등장할 수 있습니다 (예: `fastapi-fastkit`는 OSS이자 Personal).
 
 ### Backend
 
@@ -139,7 +139,7 @@ hide:
 - [JaramGroupware Penalty](jgw-penalty-python.md) · 2023
 - [JaramGroupware Attendance](jgw-attendance-python.md) · 2023
 - [Awesome Chatting App](awesomechat.md) · 2022
-- [Bifrost MSA Gateway](bifrost.md) · 2022
+- [BNGdrasil](bngdrasil.md) · 2022 – 진행중
 - [Mugip](mugip.md) · 2020.09 – 2021.04
 - [KakaoTalk-channel-WeatherToday](kakaotalk-weatherforecast.md) · 2023
 - [Azure SDK for Python](azure-sdk-python.md) · 2023
@@ -151,6 +151,7 @@ hide:
 <div class="project-archive-list" markdown>
 
 - [K-Buddy](kbuddy.md) · 2023.09 – 2024.06 <span class="tag-badge">Featured</span>
+- [BNGdrasil](bngdrasil.md) · 2022 – 진행중
 - [Blog Post Workflow](blog-post-workflow.md) · 2024
 
 </div>
@@ -199,7 +200,7 @@ hide:
 - [FastAPI-fastkit](fastapi-fastkit.md) · 2024.08 – 진행중 <span class="tag-badge">Featured</span>
 - [FEMU Monitoring & Hot/Cold](femu-monitoring.md) · 2024.09 – 2024.12 <span class="tag-badge">Featured</span>
 - [헤쳐 모여! (Fall In!)](fall-in.md) · 2026.01 – 진행중 <span class="tag-badge">Featured</span>
-- [Bifrost MSA Gateway](bifrost.md) · 2022
+- [BNGdrasil](bngdrasil.md) · 2022 – 진행중
 - [TooKindFriendChat](tookindfriendchat.md) · 2022
 - [JaramUniv Sugang API](univapi.md) · 2023
 - [rickTcal_DayLife](ricktcal.md) · 2023
