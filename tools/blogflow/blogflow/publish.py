@@ -44,7 +44,7 @@ def build_skeleton(topic: str, *, today: date, author: str) -> Frontmatter:
             "title": topic,
             "description": topic,
             "authors": [author],
-            "date": {"created": today.isoformat(), "updated": today.isoformat()},
+            "date": {"created": today, "updated": today},
             "categories": [],
             "tags": [],
             "comments": True,

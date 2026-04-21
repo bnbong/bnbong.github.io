@@ -27,7 +27,9 @@ def test_ensure_published_updates_dates_only():
     )
     fm.ensure_published(today=date(2026, 4, 20), ensure_draft_false=True)
     assert fm.raw["date"]["created"] == "2025-01-01"
-    assert fm.raw["date"]["updated"] == "2026-04-20"
+    # Stored as a `date` object so PyYAML serializes it unquoted for the
+    # mkdocs-material blog plugin.
+    assert fm.raw["date"]["updated"] == date(2026, 4, 20)
     assert "draft" not in fm.raw
 
 
@@ -40,8 +42,25 @@ def test_ensure_published_flips_only_when_draft_true():
 def test_ensure_published_leaves_date_created_when_missing():
     fm = Frontmatter(raw={}, body="")
     fm.ensure_published(today=date(2026, 4, 20), ensure_draft_false=True)
-    assert fm.raw["date"]["created"] == "2026-04-20"
-    assert fm.raw["date"]["updated"] == "2026-04-20"
+    assert fm.raw["date"]["created"] == date(2026, 4, 20)
+    assert fm.raw["date"]["updated"] == date(2026, 4, 20)
+
+
+def test_dump_emits_unquoted_iso_dates_without_yaml_anchors():
+    """Regression: mkdocs-material's blog plugin aborts the build when
+    `date.updated` is a quoted string (`'2026-04-20'`) or a YAML alias
+    (`*id001`). Storing the value as `datetime.date` + a no-alias dumper
+    makes the serialized frontmatter a plain `updated: 2026-04-20` line.
+    """
+    fm = Frontmatter(
+        raw={"date": {"created": "2025-01-01", "updated": "2025-01-01"}},
+        body="",
+    )
+    fm.ensure_published(today=date(2026, 4, 20), ensure_draft_false=True)
+    text = fm_mod.dump(fm)
+    assert "updated: 2026-04-20" in text
+    assert "updated: '2026-04-20'" not in text
+    assert "&id" not in text and "*id" not in text
 
 
 def test_parse_rejects_unclosed_fence():

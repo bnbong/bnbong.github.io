@@ -43,7 +43,10 @@ def test_merge_final_creates_skeleton(repo_root: Path):
     text = target.read_text(encoding="utf-8")
     assert "title: New Post" in text
     assert "## Intro" in text
-    assert "created: '2026-04-20'" in text or "created: 2026-04-20" in text
+    # mkdocs-material's blog plugin rejects quoted dates, so the serialized
+    # frontmatter must use the unquoted `YYYY-MM-DD` form.
+    assert "created: 2026-04-20" in text
+    assert "created: '2026-04-20'" not in text
 
 
 def test_merge_final_updates_existing(sample_post: Path):
@@ -58,8 +61,9 @@ def test_merge_final_updates_existing(sample_post: Path):
     text = sample_post.read_text(encoding="utf-8")
     assert "## Updated" in text
     assert "Hello, world." not in text
-    assert "created: 2025-01-01" in text or "created: '2025-01-01'" in text
-    assert "updated: '2026-04-20'" in text or "updated: 2026-04-20" in text
+    assert "created: 2025-01-01" in text
+    assert "updated: 2026-04-20" in text
+    assert "updated: '2026-04-20'" not in text
 
 
 def test_guard_publish_requires_approved():

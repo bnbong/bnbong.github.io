@@ -14,6 +14,19 @@ from .models import Frontmatter
 FENCE = "---"
 
 
+class _NoAliasDumper(yaml.SafeDumper):
+    """PyYAML emits `&id001` / `*id001` anchors when the same Python object
+    appears twice in a mapping (e.g. `date.created` and `date.updated` both
+    bound to the same `datetime.date`). mkdocs-material's blog plugin doesn't
+    follow those aliases and the CI build fails on the first post that hits
+    this path. Disabling aliases keeps the serialized frontmatter trivially
+    readable for both humans and the plugin.
+    """
+
+    def ignore_aliases(self, data):  # noqa: ARG002
+        return True
+
+
 def parse(text: str) -> Frontmatter:
     if not text.startswith(FENCE):
         return Frontmatter(raw={}, body=text)
@@ -35,8 +48,9 @@ def read(path: Path) -> Frontmatter:
 
 
 def dump(fm: Frontmatter) -> str:
-    yaml_text = yaml.safe_dump(
+    yaml_text = yaml.dump(
         fm.raw,
+        Dumper=_NoAliasDumper,
         sort_keys=False,
         allow_unicode=True,
         default_flow_style=False,
