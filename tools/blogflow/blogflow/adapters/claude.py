@@ -38,7 +38,20 @@ class ClaudeAdapter:
         extra: dict[str, Any] | None = None,
     ) -> AdapterResult:
         extra = extra or {}
-        cmd: list[str] = [self.binary, "-p", "--output-format", "json"]
+        # `--tools ""` disables every built-in tool in the spawned `claude -p`
+        # subprocess. blogflow's contract is text-in / text-out — Claude prints
+        # the result to stdout and the orchestrator (Python) handles all file
+        # writes under .blogflow/. Without this, the model may try to "help" by
+        # calling Write/Edit/Bash, which fail in non-interactive mode (no user
+        # to approve the prompt) and surface as confusing permission errors.
+        cmd: list[str] = [
+            self.binary,
+            "-p",
+            "--output-format",
+            "json",
+            "--tools",
+            "",
+        ]
         if self.model:
             cmd.extend(["--model", self.model])
 
