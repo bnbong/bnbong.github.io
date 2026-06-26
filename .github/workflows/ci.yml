@@ -15,8 +15,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # redirect/ 만 담은 orphan gh-pages 브랜치를 새로 만들어
           # 기존 MkDocs 빌드 산출물을 완전히 비우고 강제 푸시한다
           cd redirect
