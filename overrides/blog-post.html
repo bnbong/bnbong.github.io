@@ -103,8 +103,10 @@
               </li>
             </ul>
           </nav>
-          {% if "toc.integrate" in features %}
-            {% include "partials/toc.html" %}
+          {% if page.toc %}
+            <div class="md-post__toc">
+              {% include "partials/toc.html" %}
+            </div>
           {% endif %}
         </div>
       </div>

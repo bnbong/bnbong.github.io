@@ -4,6 +4,28 @@
   {{ super() }}
 {% endblock %}
 
+{# 우측 TOC(이 페이지의 요소들)를 좌측 내비게이션 아래로 이동 #}
+{% block site_nav %}
+  {% if nav %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+    {% endif %}
+    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/nav.html" %}
+          {% if page.toc and (page.toc | first) %}
+            <div class="md-post__toc md-sidebar__toc">
+              {% include "partials/toc.html" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {# 기존 우측 md-sidebar--secondary 는 의도적으로 렌더링하지 않음 #}
+{% endblock %}
+
 {% block analytics %}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G1E1JBX2WR"></script>

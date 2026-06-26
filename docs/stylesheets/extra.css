@@ -206,8 +206,66 @@ body,
 }
 
 /* ========================================
+   레이아웃: TOC(이 페이지의 요소들)를 왼쪽 사이드바로 이동
+   우측 md-sidebar--secondary 는 main.html 의 site_nav 오버라이드에서
+   아예 렌더링하지 않으므로, 여기서는 좌측에 들어간 TOC 스타일만 정의한다.
+   ======================================== */
+
+/* 왼쪽 사이드바 안에 들어간 TOC 영역 */
+.md-post__toc {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.md-post__toc .md-nav--secondary {
+    font-size: 0.7rem;
+}
+
+/* 임베드된 TOC는 항상 펼친 상태로 보이도록 */
+.md-post__toc .md-nav--secondary > .md-nav__list {
+    display: block;
+}
+
+.md-post__toc .md-nav__title {
+    padding: 0 0 0.4rem;
+    font-weight: 700;
+    color: var(--md-default-fg-color--light);
+    box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .md-post__toc {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ========================================
    블로그 피드 카드 스타일
    ======================================== */
+
+/* 게시물 리스트(블로그 인덱스/아카이브/카테고리)를 한 줄 2개 그리드로 */
+.md-content__inner:has(> .md-post--excerpt) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* 카드가 아닌 요소(제목 헤더, 페이지네이션 등)는 전체 너비 차지 */
+.md-content__inner:has(> .md-post--excerpt) > *:not(.md-post--excerpt) {
+    grid-column: 1 / -1;
+}
+
+/* 그리드에서는 카드 간격을 gap으로 관리하므로 개별 margin 제거 */
+.md-content__inner:has(> .md-post--excerpt) > .md-post--excerpt {
+    margin-bottom: 0;
+}
+
+/* 화면이 좁을 때는 한 줄에 1개로 복귀 */
+@media screen and (max-width: 76.1875em) {
+    .md-content__inner:has(> .md-post--excerpt) {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* 블로그 게시물 카드 컨테이너 */
 article.md-post--excerpt {

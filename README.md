@@ -1,32 +1,18 @@
-# bnbong's tech Blog
+# bnbong's tech Blog — Redirect Bridge
 
-기술 관련 내용을 포스팅하는 블로그 소스코드 저장소입니다.
+> ⚠️ 이 블로그는 **[bnbong.com](https://bnbong.com/)** 으로 이전했습니다.
 
-## Stack
+이 저장소는 더 이상 블로그 본문을 빌드하지 않습니다.
 
-> with [material for MKDocs](https://squidfunk.github.io/mkdocs-material/)
+`https://bnbong.github.io` 로 들어오는 모든 요청(옛 글 딥링크 포함)을 `https://bnbong.com` 으로 보내는 **리다이렉트 브리지**로만 동작합니다.
 
-- Python 3.12.4
-- Material for MKDocs
+## 동작 방식
 
-## Blog Convention
+- [`redirect/index.html`](redirect/index.html) — 루트 진입 리다이렉트
+- [`redirect/404.html`](redirect/404.html) — 존재하지 않는 모든 경로(옛 블로그 URL 등)를 GitHub Pages의 404 처리로 가로채 홈으로 리다이렉트 (catch-all)
+- 각 페이지는 `<meta refresh>` + `location.replace()` + `<link rel="canonical">` + `noindex` 조합으로 리다이렉트와 검색엔진 색인 정리를 함께 처리한다.
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) 가 push 시 `redirect/` 만 orphan `gh-pages` 브랜치로 강제 배포한다.
 
-### material for MKDocs general convention
+## 원본 소스 (보관용)
 
-https://squidfunk.github.io/mkdocs-material/conventions/
-
-### bnbong's blog specific convention
-
-#### 마크다운 본문 작성 시 주의사항
-
-- .md 파일 최상단에 정의하는 메타데이터의 title이 문서 렌더 시 H1 태그로 렌더링된다.
-  따라서 본문 작성 시 문서 시작 부분에는 H1 태그를 사용하지 않는다.
-- 블로그 포스팅은 docs/blog/posts 디렉토리 내에 {년월일-제목} 형식의 폴더 생성 후 그 안에 .md 파일로 본문을 작성한다.
-  - 이미지 파일은 같은 디렉토리 내에 images 폴더를 생성 후 그 안에 저장한다.
-  - 폴더 타이틀 작명은 항상 slug 타이틀로 적지 않아도 됨, 영어로 작성하는 것을 권장.
-- Category, Tags 이름은 영어 대문자로 시작하도록 작성한다.
-
-## MileStone
-
-- [ ] Portfolio, Blog, Project 컨텐츠 추가
-- [ ] Notion과 연동? (가능성 낮음)
+이전 MkDocs(Material) 기반 블로그 소스(`docs/`, `overrides/`, `mkdocs.yml`, `requirements.txt` 등)는 히스토리 보관 목적으로 남겨두었으며 더 이상 빌드/배포되지 않는다.
